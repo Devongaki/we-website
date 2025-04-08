@@ -1,26 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Prices.css';
 
 const Prices = () => {
   const navigate = useNavigate();
-  const [serverStatus, setServerStatus] = useState('checking');
   
-  // Test server connection
-  useEffect(() => {
-    console.log('Testing server connection on port 5001');
-    fetch('http://localhost:5001/api/test')
-      .then(res => res.json())
-      .then(data => {
-        console.log('Server test response:', data);
-        setServerStatus('connected');
-      })
-      .catch(err => {
-        console.error('Server test error:', err);
-        setServerStatus('error');
-      });
-  }, []);
-
   const pricingData = [
     {
       duration: '12 months',
@@ -88,12 +72,6 @@ const Prices = () => {
         <p className="prices__subtitle">
           Select the perfect coaching package that aligns with your fitness goals
         </p>
-        
-        {serverStatus === 'error' && (
-          <div className="prices__error">
-            <p>Unable to connect to the payment server. Please try again later.</p>
-          </div>
-        )}
         
         <div className="prices__grid">
           {pricingData.map((plan, index) => (
