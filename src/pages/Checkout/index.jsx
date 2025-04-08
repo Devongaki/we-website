@@ -83,6 +83,7 @@ const CheckoutPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [clientSecret, setClientSecret] = useState(null);
+  const [error, setError] = useState(null);
 
   const selectedPlan = location.state?.plan;
 
@@ -112,12 +113,12 @@ const CheckoutPage = () => {
 
         if (!isSubscribed) return;
 
+        const data = await response.json();
+
         if (!response.ok) {
-          const errorData = await response.json();
-          throw new Error(errorData.error || 'Failed to create payment intent');
+          throw new Error(data.error || data.details || 'Failed to create payment intent');
         }
 
-        const data = await response.json();
         if (data.clientSecret && isSubscribed) {
           setClientSecret(data.clientSecret);
         } else {
@@ -126,6 +127,7 @@ const CheckoutPage = () => {
       } catch (err) {
         if (!isSubscribed) return;
         console.error('Payment intent error:', err);
+        setError(err.message);
         setClientSecret(null);
       }
     };
