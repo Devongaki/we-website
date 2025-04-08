@@ -1,6 +1,16 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 exports.handler = async (event, context) => {
+  // Check if Stripe key is configured
+  if (!process.env.STRIPE_SECRET_KEY) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ 
+        error: 'Stripe key not configured. Please set STRIPE_SECRET_KEY in environment variables.' 
+      })
+    };
+  }
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -40,7 +50,10 @@ exports.handler = async (event, context) => {
     console.error('Error creating payment intent:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: error.message }),
+      body: JSON.stringify({ 
+        error: error.message,
+        details: 'Please ensure STRIPE_SECRET_KEY is properly configured.'
+      }),
     };
   }
 }; 
