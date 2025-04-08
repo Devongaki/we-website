@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Home from './pages/Home';
+import Prices from './pages/Prices';
 
 // Temporary page components
-const Prices = () => <div className="container mt-lg">Pricing Page</div>;
 const Blog = () => <div className="container mt-lg">Blog Page</div>;
 
 function App() {
