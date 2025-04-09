@@ -1,6 +1,61 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/FreeConsultation.css';
+import Select from 'react-select';
+
+// Add these custom styles for React Select
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    padding: 'var(--spacing-sm)',
+    borderColor: state.isFocused ? 'var(--color-brand-primary)' : '#e2e8f0',
+    borderRadius: 'var(--radius-md)',
+    boxShadow: state.isFocused ? '0 0 0 3px rgba(var(--color-brand-primary-rgb), 0.15)' : 'none',
+    '&:hover': {
+      borderColor: 'var(--color-brand-primary)'
+    }
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? 'var(--color-brand-primary)' : 'white',
+    color: state.isSelected ? 'white' : 'var(--color-text-primary)',
+    '&:hover': {
+      backgroundColor: state.isSelected ? 'var(--color-brand-primary)' : 'var(--color-brand-primary)',
+      color: 'white'
+    },
+    cursor: 'pointer',
+    padding: '12px 16px'
+  }),
+  menu: (provided) => ({
+    ...provided,
+    backgroundColor: 'white',
+    boxShadow: 'var(--shadow-md)',
+    borderRadius: 'var(--radius-md)'
+  })
+};
+
+// Add these options for the dropdowns
+const ageOptions = [
+  { value: '18-24', label: '18-24' },
+  { value: '25-34', label: '25-34' },
+  { value: '35-44', label: '35-44' },
+  { value: '45-54', label: '45-54' },
+  { value: '55+', label: '55+' }
+];
+
+const levelOptions = [
+  { value: 'beginner', label: 'Beginner (new to strength training)' },
+  { value: 'intermediate', label: 'Intermediate (some experience)' },
+  { value: 'advanced', label: 'Advanced (experienced)' }
+];
+
+const goalOptions = [
+  { value: 'muscle', label: 'Build Muscle' },
+  { value: 'weight-loss', label: 'Weight Loss' },
+  { value: 'strength', label: 'Build Strength for Mental Health' },
+  { value: 'booty', label: 'Build Booty' },
+  { value: 'other', label: 'Other' }
+];
 
 const FreeConsultation = () => {
   const navigate = useNavigate();
@@ -8,27 +63,34 @@ const FreeConsultation = () => {
     name: '',
     email: '',
     phone: '',
-    fitnessGoal: '',
+    ageRange: null,
     experience: 'beginner',
-    preferredTime: '',
-    message: ''
+    primaryGoal: null,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // Validate form whenever formData changes
+  // Update validation to handle React Select values
   useEffect(() => {
     const validateForm = () => {
       const requiredFields = {
         name: formData.name.trim(),
         email: formData.email.trim(),
-        fitnessGoal: formData.fitnessGoal.trim(),
-        experience: formData.experience.trim()
+        phone: formData.phone.trim(),
+        ageRange: formData.ageRange,
+        experience: formData.experience,
+        primaryGoal: formData.primaryGoal
       };
 
-      const isValid = Object.values(requiredFields).every(field => field !== '');
+      const isValid = Object.values(requiredFields).every(field => {
+        // Handle both string and select values
+        if (typeof field === 'string') {
+          return field !== '';
+        }
+        return field !== null;
+      });
       
       // Additional email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -45,6 +107,13 @@ const FreeConsultation = () => {
     setFormData(prev => ({
       ...prev,
       [name]: value
+    }));
+  };
+
+  const handleSelectChange = (selectedOption, { name }) => {
+    setFormData(prev => ({
+      ...prev,
+      [name]: selectedOption ? selectedOption.value : null
     }));
   };
 
@@ -90,13 +159,13 @@ const FreeConsultation = () => {
         <div className="consultation__content">
           <h1 className="consultation__title">Free Consultation</h1>
           <p className="consultation__description">
-            Take the first step towards your fitness goals. Fill out this short questionnaire 
-            and we'll get back to you within 24 hours to schedule your free consultation.
+            Take the first step towards your strength training journey. Fill out this short questionnaire 
+            and we'll get back to you shortly.
           </p>
 
           <form className="consultation__form" onSubmit={handleSubmit}>
             <div className="form__group">
-              <label htmlFor="name">Full Name *</label>
+              <label htmlFor="name">Full Name</label>
               <input
                 type="text"
                 id="name"
@@ -104,12 +173,11 @@ const FreeConsultation = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                placeholder="Enter your full name"
               />
             </div>
 
             <div className="form__group">
-              <label htmlFor="email">Email Address *</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -117,7 +185,6 @@ const FreeConsultation = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                placeholder="Enter your email address"
               />
             </div>
 
@@ -129,76 +196,62 @@ const FreeConsultation = () => {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="Enter your phone number"
+                required
               />
             </div>
 
             <div className="form__group">
-              <label htmlFor="fitnessGoal">Primary Fitness Goal *</label>
-              <select
-                id="fitnessGoal"
-                name="fitnessGoal"
-                value={formData.fitnessGoal}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select your primary goal</option>
-                <option value="weight-loss">Weight Loss</option>
-                <option value="muscle-gain">Muscle Gain</option>
-                <option value="strength">Strength Training</option>
-                <option value="endurance">Endurance</option>
-                <option value="general-fitness">General Fitness</option>
-              </select>
+              <label htmlFor="ageRange">Age</label>
+              <Select
+                id="ageRange"
+                name="ageRange"
+                options={ageOptions}
+                styles={customStyles}
+                value={ageOptions.find(option => option.value === formData.ageRange)}
+                onChange={(option, meta) => handleSelectChange(option, { name: 'ageRange' })}
+                placeholder="Select your age range"
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
             </div>
 
             <div className="form__group">
-              <label htmlFor="experience">Fitness Experience Level *</label>
-              <select
+              <label htmlFor="experience">What's your current strength training level?</label>
+              <Select
                 id="experience"
                 name="experience"
-                value={formData.experience}
-                onChange={handleChange}
+                options={levelOptions}
+                styles={customStyles}
+                value={levelOptions.find(option => option.value === formData.experience)}
+                onChange={(option, meta) => handleSelectChange(option, { name: 'experience' })}
+                placeholder="Select your training level"
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
+            </div>
+
+            <div className="form__group">
+              <label htmlFor="primaryGoal">What's your primary goal? *</label>
+              <Select
+                id="primaryGoal"
+                name="primaryGoal"
+                options={goalOptions}
+                styles={customStyles}
+                value={goalOptions.find(option => option.value === formData.primaryGoal)}
+                onChange={(option, meta) => handleSelectChange(option, { name: 'primaryGoal' })}
+                placeholder="Select your primary goal"
+                className="react-select-container"
+                classNamePrefix="react-select"
                 required
-              >
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
-              </select>
+              />
             </div>
 
-            <div className="form__group">
-              <label htmlFor="preferredTime">Preferred Consultation Time</label>
-              <select
-                id="preferredTime"
-                name="preferredTime"
-                value={formData.preferredTime}
-                onChange={handleChange}
-              >
-                <option value="">Select preferred time</option>
-                <option value="morning">Morning (9AM - 12PM)</option>
-                <option value="afternoon">Afternoon (12PM - 5PM)</option>
-                <option value="evening">Evening (5PM - 8PM)</option>
-              </select>
-            </div>
-
-            <div className="form__group">
-              <label htmlFor="message">Additional Information</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Tell us about any specific concerns, injuries, or goals you'd like to discuss"
-                rows="4"
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              className={`button button--primary button--large consultation__submit ${!isFormValid ? 'button--disabled' : ''}`}
-              disabled={isSubmitting || !isFormValid}
+            <button
+              type="submit"
+              className={`button button--primary consultation__submit ${!isFormValid || isSubmitting ? 'button--disabled' : ''}`}
+              disabled={!isFormValid || isSubmitting}
             >
-              {isSubmitting ? 'Submitting...' : 'Schedule Consultation'}
+              {isSubmitting ? 'Submitting...' : 'Book Free Consultation'}
             </button>
           </form>
         </div>
