@@ -139,18 +139,25 @@ const Prices = () => {
         {/* Mobile Tabs View */}
         <div className="prices__tabs">
           <div className="prices__tab-buttons">
-            {pricingData.map((plan, index) => (
-              <button
-                key={plan.duration}
-                className={`prices__tab-button ${activeTab === index ? 'prices__tab-button--active' : ''}`}
-                onClick={() => handleTabClick(index)}
-                type="button"
-              >
-                <div className="prices__tab-button-content">
-                  <span className="prices__tab-duration">{plan.duration}</span>
-                </div>
-              </button>
-            ))}
+            <div className="prices__tab-background" data-active={activeTab} />
+            <button
+              className={`prices__tab-button ${activeTab === 0 ? 'prices__tab-button--active' : ''}`}
+              onClick={() => setActiveTab(0)}
+            >
+              12 months
+            </button>
+            <button
+              className={`prices__tab-button ${activeTab === 1 ? 'prices__tab-button--active' : ''}`}
+              onClick={() => setActiveTab(1)}
+            >
+              6 months
+            </button>
+            <button
+              className={`prices__tab-button ${activeTab === 2 ? 'prices__tab-button--active' : ''}`}
+              onClick={() => setActiveTab(2)}
+            >
+              3 months
+            </button>
           </div>
 
           <div className="prices__tab-content">

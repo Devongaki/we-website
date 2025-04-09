@@ -72,6 +72,8 @@
   background-color: var(--color-bg-primary);
   padding: var(--spacing-xs);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
 }
 
 .prices__tab-button {
@@ -89,6 +91,8 @@
   border-radius: var(--radius-md);
   color: var(--color-text-secondary);
   outline: none;
+  position: relative;
+  z-index: 1;
 }
 
 .prices__tab-button:hover {
@@ -96,9 +100,32 @@
 }
 
 .prices__tab-button--active {
-  background-color: var(--color-brand-primary) !important;
   color: var(--color-white) !important;
   font-weight: 600;
+}
+
+.prices__tab-background {
+  position: absolute;
+  height: calc(100% - var(--spacing-xs));
+  top: calc(var(--spacing-xs) / 2);
+  left: calc(var(--spacing-xs) / 2);
+  background-color: var(--color-brand-primary);
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease;
+  z-index: 0;
+  width: calc((100% - var(--spacing-xs)) / 3);
+}
+
+.prices__tab-background[data-active="0"] {
+  transform: translateX(0);
+}
+
+.prices__tab-background[data-active="1"] {
+  transform: translateX(100%);
+}
+
+.prices__tab-background[data-active="2"] {
+  transform: translateX(200%);
 }
 
 .prices__tab-button-content {
