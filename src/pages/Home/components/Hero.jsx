@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import FreeProgram from '../../../components/FreeProgram/FreeProgram';
 import '../styles/Hero.css';
 
 const Hero = () => {
+  const [showFreeProgram, setShowFreeProgram] = useState(false);
+
   return (
     <section className="hero">
       <div className="container hero__container">
@@ -15,9 +19,12 @@ const Hero = () => {
             and a supportive community. Start your transformation today.
           </p>
           <div className="hero__cta-group">
-            <Link to="/free-program" className="button button--primary button--large">
+            <button 
+              onClick={() => setShowFreeProgram(true)}
+              className="button button--primary button--large"
+            >
               Get Free Program
-            </Link>
+            </button>
             <Link to="/free-consultation" className="button button--outline button--large">
               Free Consultation
             </Link>
@@ -31,6 +38,11 @@ const Hero = () => {
           />
         </div>
       </div>
+
+      <FreeProgram 
+        isOpen={showFreeProgram}
+        onClose={() => setShowFreeProgram(false)}
+      />
     </section>
   );
 };

@@ -1,39 +1,9 @@
 import { useState } from 'react';
+import FreeProgram from '../../../components/FreeProgram/FreeProgram';
 import '../styles/FreeWorkoutOffer.css';
 
 const FreeWorkoutOffer = () => {
-  const [email, setEmail] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [error, setError] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError('');
-
-    try {
-      const response = await fetch('/.netlify/functions/send-workout-plan', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send workout plan');
-      }
-
-      setIsSubmitted(true);
-      setEmail('');
-    } catch (err) {
-      setError('Something went wrong. Please try again.');
-      console.error('Error sending workout plan:', err);
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+  const [showFreeProgram, setShowFreeProgram] = useState(false);
 
   return (
     <section className="free-workout-offer">
@@ -45,34 +15,12 @@ const FreeWorkoutOffer = () => {
             Perfect for those just starting out or getting back into fitness.
           </p>
           
-          {!isSubmitted ? (
-            <form onSubmit={handleSubmit} className="free-workout-offer__form">
-              <div className="free-workout-offer__input-group">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="free-workout-offer__input"
-                />
-                <button 
-                  type="submit" 
-                  className="button button--primary free-workout-offer__button"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? 'Sending...' : 'Get Free Plan'}
-                </button>
-              </div>
-              {error && <p className="free-workout-offer__error">{error}</p>}
-            </form>
-          ) : (
-            <div className="free-workout-offer__success">
-              <div className="free-workout-offer__success-icon">✓</div>
-              <h3>Check Your Email!</h3>
-              <p>Your free workout plan has been sent to your email address.</p>
-            </div>
-          )}
+          <button 
+            onClick={() => setShowFreeProgram(true)}
+            className="button button--primary free-workout-offer__button"
+          >
+            Get Free Plan
+          </button>
           
           <div className="free-workout-offer__features">
             <div className="free-workout-offer__feature">
@@ -90,6 +38,11 @@ const FreeWorkoutOffer = () => {
           </div>
         </div>
       </div>
+
+      <FreeProgram 
+        isOpen={showFreeProgram}
+        onClose={() => setShowFreeProgram(false)}
+      />
     </section>
   );
 };
