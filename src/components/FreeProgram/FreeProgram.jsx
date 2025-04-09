@@ -13,7 +13,7 @@ const FreeProgram = ({ isOpen, onClose }) => {
     setError('');
 
     try {
-      const response = await fetch('/.netlify/functions/send-workout-plan', {
+      const response = await fetch(`${window.location.origin}/.netlify/functions/send-workout-plan`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,7 +22,8 @@ const FreeProgram = ({ isOpen, onClose }) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send workout plan');
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send workout plan');
       }
 
       setShowSuccess(true);
@@ -32,7 +33,8 @@ const FreeProgram = ({ isOpen, onClose }) => {
         setEmail('');
       }, 3000);
     } catch (err) {
-      setError('Failed to send the workout plan. Please try again.');
+      setError(err.message || 'Failed to send the workout plan. Please try again.');
+      console.error('Error submitting form:', err);
     } finally {
       setIsSubmitting(false);
     }
