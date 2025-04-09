@@ -8,10 +8,9 @@ const FreeConsultation = () => {
     name: '',
     email: '',
     phone: '',
-    fitnessGoal: '',
+    ageRange: '',
     experience: 'beginner',
-    preferredTime: '',
-    message: ''
+    primaryGoal: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -24,8 +23,10 @@ const FreeConsultation = () => {
       const requiredFields = {
         name: formData.name.trim(),
         email: formData.email.trim(),
-        fitnessGoal: formData.fitnessGoal.trim(),
-        experience: formData.experience.trim()
+        phone: formData.phone.trim(),
+        ageRange: formData.ageRange.trim(),
+        experience: formData.experience.trim(),
+        primaryGoal: formData.primaryGoal.trim()
       };
 
       const isValid = Object.values(requiredFields).every(field => field !== '');
@@ -90,8 +91,8 @@ const FreeConsultation = () => {
         <div className="consultation__content">
           <h1 className="consultation__title">Free Consultation</h1>
           <p className="consultation__description">
-            Take the first step towards your fitness goals. Fill out this short questionnaire 
-            and we'll get back to you within 24 hours to schedule your free consultation.
+            Take the first step towards your strength training journey. Fill out this short questionnaire 
+            and we'll get back to you shortly.
           </p>
 
           <form className="consultation__form" onSubmit={handleSubmit}>
@@ -104,12 +105,11 @@ const FreeConsultation = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                placeholder="Enter your full name"
               />
             </div>
 
             <div className="form__group">
-              <label htmlFor="email">Email Address *</label>
+              <label htmlFor="email">Email *</label>
               <input
                 type="email"
                 id="email"
@@ -117,37 +117,34 @@ const FreeConsultation = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                placeholder="Enter your email address"
               />
             </div>
 
             <div className="form__group">
-              <label htmlFor="phone">Phone Number</label>
+              <label htmlFor="phone">Phone Number *</label>
               <input
                 type="tel"
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="Enter your phone number"
+                required
               />
             </div>
 
             <div className="form__group">
-              <label htmlFor="fitnessGoal">Primary Fitness Goal *</label>
+              <label htmlFor="ageRange">Age Range *</label>
               <select
-                id="fitnessGoal"
-                name="fitnessGoal"
-                value={formData.fitnessGoal}
+                id="ageRange"
+                name="ageRange"
+                value={formData.ageRange}
                 onChange={handleChange}
                 required
               >
-                <option value="">Select your primary goal</option>
-                <option value="weight-loss">Weight Loss</option>
-                <option value="muscle-gain">Muscle Gain</option>
-                <option value="strength">Strength Training</option>
-                <option value="endurance">Endurance</option>
-                <option value="general-fitness">General Fitness</option>
+                <option value="">Select your age range</option>
+                <option value="20-29">20-29 years</option>
+                <option value="30-39">30-39 years</option>
+                <option value="40-49">40-49 years</option>
               </select>
             </div>
 
@@ -167,38 +164,29 @@ const FreeConsultation = () => {
             </div>
 
             <div className="form__group">
-              <label htmlFor="preferredTime">Preferred Consultation Time</label>
+              <label htmlFor="primaryGoal">What's your primary goal? *</label>
               <select
-                id="preferredTime"
-                name="preferredTime"
-                value={formData.preferredTime}
+                id="primaryGoal"
+                name="primaryGoal"
+                value={formData.primaryGoal}
                 onChange={handleChange}
+                required
               >
-                <option value="">Select preferred time</option>
-                <option value="morning">Morning (9AM - 12PM)</option>
-                <option value="afternoon">Afternoon (12PM - 5PM)</option>
-                <option value="evening">Evening (5PM - 8PM)</option>
+                <option value="">Select your primary goal</option>
+                <option value="weight-loss">Weight Loss</option>
+                <option value="muscle-gain">Muscle Gain</option>
+                <option value="strength">Strength Training</option>
+                <option value="endurance">Endurance & Stamina</option>
+                <option value="overall-fitness">Overall Fitness & Health</option>
               </select>
             </div>
 
-            <div className="form__group">
-              <label htmlFor="message">Additional Information</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Tell us about any specific concerns, injuries, or goals you'd like to discuss"
-                rows="4"
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              className={`button button--primary button--large consultation__submit ${!isFormValid ? 'button--disabled' : ''}`}
-              disabled={isSubmitting || !isFormValid}
+            <button
+              type="submit"
+              className={`button button--primary consultation__submit ${!isFormValid || isSubmitting ? 'button--disabled' : ''}`}
+              disabled={!isFormValid || isSubmitting}
             >
-              {isSubmitting ? 'Submitting...' : 'Schedule Consultation'}
+              {isSubmitting ? 'Submitting...' : 'Book Free Consultation'}
             </button>
           </form>
         </div>
