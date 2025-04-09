@@ -27,7 +27,6 @@ const Prices = () => {
       duration: '12 months',
       price: '1000',
       signUpFee: 'FREE',
-      isPopular: true,
       features: [
         'Personalized training program',
         'Nutrition guidance and support (ongoing)',
@@ -94,12 +93,8 @@ const Prices = () => {
           {pricingData.map((plan) => (
             <div 
               key={plan.duration} 
-              className={`price-card ${plan.isPopular ? 'price-card--popular' : ''}`}
+              className="price-card"
             >
-              {plan.isPopular && (
-                <div className="price-card__badge">Most Popular</div>
-              )}
-              
               <div className="price-card__header">
                 <h2 className="price-card__duration">{plan.duration}</h2>
                 <div className="price-card__price">
@@ -127,7 +122,7 @@ const Prices = () => {
               </ul>
 
               <button 
-                className={`button button--large ${plan.isPopular ? 'button--primary' : 'button--outline'}`}
+                className="button button--large button--outline"
                 onClick={() => handlePlanSelect(plan)}
               >
                 Get Started
@@ -166,7 +161,6 @@ const Prices = () => {
                 key={plan.duration}
                 className={`prices__tab-panel ${activeTab === index ? 'prices__tab-panel--active' : ''}`}
               >
-                {plan.isPopular && <div className="prices__tab-badge">Most Popular</div>}
                 <div className="prices__tab-header">
                   <h2 className="prices__tab-title">{plan.duration} Plan</h2>
                   <div className="prices__tab-price-large">
@@ -194,7 +188,7 @@ const Prices = () => {
                 </ul>
 
                 <button 
-                  className={`button button--large ${plan.isPopular ? 'button--primary' : 'button--outline'}`}
+                  className="button button--large button--outline"
                   onClick={() => handlePlanSelect(plan)}
                 >
                   Get Started

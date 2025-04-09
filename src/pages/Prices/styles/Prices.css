@@ -74,12 +74,14 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: relative;
   overflow: hidden;
+  margin-top: 0;
 }
 
 .prices__tab-button {
+  flex: 1;
+  position: relative;
   appearance: none;
   -webkit-appearance: none;
-  flex: 1;
   min-width: 100px;
   padding: var(--spacing-sm) var(--spacing-md);
   background: transparent;
@@ -91,7 +93,6 @@
   border-radius: var(--radius-md);
   color: var(--color-text-secondary);
   outline: none;
-  position: relative;
   z-index: 1;
 }
 
@@ -453,18 +454,4 @@
 .prices__tab-price {
   font-size: 1rem;
   font-weight: 700;
-}
-
-.prices__tab-badge {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: linear-gradient(135deg, var(--color-success) 0%, #22c55e 100%);
-  color: var(--color-white);
-  padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: var(--radius-full);
-  font-size: 0.75rem;
-  font-weight: 600;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 2;
 } 
