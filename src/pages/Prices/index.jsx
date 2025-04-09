@@ -1,16 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Prices.css';
 
 const Prices = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleTabClick = (index) => {
+    console.log('Tab clicked:', index);
+    setActiveTab(index);
+  };
+
   const pricingData = [
     {
       duration: '12 months',
       price: '1000',
       signUpFee: 'FREE',
-      isPopular: true,
       features: [
         'Personalized training program',
         'Nutrition guidance and support (ongoing)',
@@ -61,7 +77,6 @@ const Prices = () => {
   ];
 
   const handlePlanSelect = (plan) => {
-    console.log('Plan selected:', plan);
     navigate('/checkout', { state: { plan } });
   };
 
@@ -73,16 +88,13 @@ const Prices = () => {
           Select the perfect coaching package that aligns with your fitness goals
         </p>
         
+        {/* Desktop Grid View */}
         <div className="prices__grid">
-          {pricingData.map((plan, index) => (
+          {pricingData.map((plan) => (
             <div 
               key={plan.duration} 
-              className={`price-card ${plan.isPopular ? 'price-card--popular' : ''}`}
+              className="price-card"
             >
-              {plan.isPopular && (
-                <div className="price-card__badge">Most Popular</div>
-              )}
-              
               <div className="price-card__header">
                 <h2 className="price-card__duration">{plan.duration}</h2>
                 <div className="price-card__price">
@@ -110,13 +122,80 @@ const Prices = () => {
               </ul>
 
               <button 
-                className={`button button--large ${plan.isPopular ? 'button--primary' : 'button--outline'}`}
+                className="button button--large button--outline"
                 onClick={() => handlePlanSelect(plan)}
               >
                 Get Started
               </button>
             </div>
           ))}
+        </div>
+
+        {/* Mobile Tabs View */}
+        <div className="prices__tabs">
+          <div className="prices__tab-buttons">
+            <div className="prices__tab-background" data-active={activeTab} />
+            <button
+              className={`prices__tab-button ${activeTab === 0 ? 'prices__tab-button--active' : ''}`}
+              onClick={() => setActiveTab(0)}
+            >
+              12 months
+            </button>
+            <button
+              className={`prices__tab-button ${activeTab === 1 ? 'prices__tab-button--active' : ''}`}
+              onClick={() => setActiveTab(1)}
+            >
+              6 months
+            </button>
+            <button
+              className={`prices__tab-button ${activeTab === 2 ? 'prices__tab-button--active' : ''}`}
+              onClick={() => setActiveTab(2)}
+            >
+              3 months
+            </button>
+          </div>
+
+          <div className="prices__tab-content">
+            {pricingData.map((plan, index) => (
+              <div 
+                key={plan.duration}
+                className={`prices__tab-panel ${activeTab === index ? 'prices__tab-panel--active' : ''}`}
+              >
+                <div className="prices__tab-header">
+                  <h2 className="prices__tab-title">{plan.duration} Plan</h2>
+                  <div className="prices__tab-price-large">
+                    <span className="prices__tab-currency">NOK</span>
+                    <span className="prices__tab-amount">{plan.price}</span>
+                    <span className="prices__tab-period">/ month</span>
+                  </div>
+                  <div className="prices__tab-signup">
+                    Sign-up fee: {plan.signUpFee === 'FREE' ? 
+                      <span className="prices__tab-free">FREE</span> : 
+                      <span>{plan.signUpFee} NOK</span>
+                    }
+                  </div>
+                </div>
+
+                <ul className="prices__tab-features">
+                  {plan.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="prices__tab-feature">
+                      <svg className="prices__tab-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 6L9 17L4 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                <button 
+                  className="button button--large button--outline"
+                  onClick={() => handlePlanSelect(plan)}
+                >
+                  Get Started
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
