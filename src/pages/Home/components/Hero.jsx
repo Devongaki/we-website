@@ -15,26 +15,12 @@ const Hero = () => {
             and a supportive community. Start your transformation today.
           </p>
           <div className="hero__cta-group">
-            <Link to="/get-started" className="button button--primary button--large">
-              Start Your Journey
+            <Link to="/free-program" className="button button--primary button--large">
+              Get Free Program
             </Link>
             <Link to="/free-consultation" className="button button--outline button--large">
               Free Consultation
             </Link>
-          </div>
-          <div className="hero__stats">
-            <div className="hero__stat">
-              <span className="hero__stat-number">500+</span>
-              <span className="hero__stat-label">Success Stories</span>
-            </div>
-            <div className="hero__stat">
-              <span className="hero__stat-number">98%</span>
-              <span className="hero__stat-label">Client Satisfaction</span>
-            </div>
-            <div className="hero__stat">
-              <span className="hero__stat-number">10+</span>
-              <span className="hero__stat-label">Years Experience</span>
-            </div>
           </div>
         </div>
         <div className="hero__image-wrapper">
