@@ -97,7 +97,7 @@ const FreeConsultation = () => {
 
           <form className="consultation__form" onSubmit={handleSubmit}>
             <div className="form__group">
-              <label htmlFor="name">Full Name *</label>
+              <label htmlFor="name">Full Name</label>
               <input
                 type="text"
                 id="name"
@@ -109,7 +109,7 @@ const FreeConsultation = () => {
             </div>
 
             <div className="form__group">
-              <label htmlFor="email">Email *</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -121,7 +121,7 @@ const FreeConsultation = () => {
             </div>
 
             <div className="form__group">
-              <label htmlFor="phone">Phone Number *</label>
+              <label htmlFor="phone">Phone Number</label>
               <input
                 type="tel"
                 id="phone"
@@ -133,7 +133,7 @@ const FreeConsultation = () => {
             </div>
 
             <div className="form__group">
-              <label htmlFor="ageRange">Age Range *</label>
+              <label htmlFor="ageRange">Age</label>
               <select
                 id="ageRange"
                 name="ageRange"
@@ -149,7 +149,7 @@ const FreeConsultation = () => {
             </div>
 
             <div className="form__group">
-              <label htmlFor="experience">Fitness Experience Level *</label>
+              <label htmlFor="experience">What's your current strength training level?</label>
               <select
                 id="experience"
                 name="experience"
@@ -157,9 +157,8 @@ const FreeConsultation = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
+                <option value="beginner">Beginner (new to strength training)</option>
+                <option value="intermediate">Intermediate (have experience but want to improve)</option>
               </select>
             </div>
 
@@ -172,12 +171,12 @@ const FreeConsultation = () => {
                 onChange={handleChange}
                 required
               >
-                <option value="">Select your primary goal</option>
-                <option value="weight-loss">Weight Loss</option>
-                <option value="muscle-gain">Muscle Gain</option>
-                <option value="strength">Strength Training</option>
-                <option value="endurance">Endurance & Stamina</option>
-                <option value="overall-fitness">Overall Fitness & Health</option>
+                 <option value="">Select your primary goal</option>
+                <option value="weight-loss">Build Muscle</option>
+                <option value="muscle-gain">Weight Loss</option>
+                <option value="strength">Build Booty</option>
+                <option value="endurance">Build Strength for Mental Health</option>
+                <option value="other">Other</option>
               </select>
             </div>
 
