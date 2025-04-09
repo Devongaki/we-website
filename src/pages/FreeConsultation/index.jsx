@@ -15,6 +15,7 @@ const FreeConsultation = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,8 +36,13 @@ const FreeConsultation = () => {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Redirect to success page or show success message
-      navigate('/consultation-success');
+      // Show success message
+      setShowSuccess(true);
+      
+      // Redirect to home page after 3 seconds
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
     } catch (error) {
       console.error('Error submitting form:', error);
     } finally {
@@ -46,6 +52,17 @@ const FreeConsultation = () => {
 
   return (
     <div className="consultation">
+      {showSuccess && (
+        <div className="consultation__success">
+          <div className="consultation__success-content">
+            <div className="consultation__success-icon">✓</div>
+            <h2>Thank You, {formData.name}!</h2>
+            <p>Your consultation request has been submitted successfully.</p>
+            <p>We will contact you shortly to schedule your free consultation.</p>
+            <p className="consultation__success-redirect">Redirecting to homepage...</p>
+          </div>
+        </div>
+      )}
       <div className="container">
         <div className="consultation__content">
           <h1 className="consultation__title">Free Consultation</h1>
