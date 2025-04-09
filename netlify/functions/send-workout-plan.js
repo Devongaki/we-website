@@ -1,9 +1,19 @@
 const nodemailer = require('nodemailer');
-const fs = require('fs');
 const path = require('path');
+const fs = require('fs').promises;
 
-exports.handler = async (event, context) => {
-  // Only allow POST requests
+// Create a transporter using environment variables
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
+  secure: true,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
+
+exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -12,7 +22,6 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Parse the request body
     const { email } = JSON.parse(event.body);
 
     if (!email) {
@@ -22,52 +31,37 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Create a transporter using environment variables
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
     // Read the PDF file
     const pdfPath = path.join(__dirname, '../../public/pdfs/beginner-workout-plan.pdf');
-    const pdfContent = fs.readFileSync(pdfPath);
+    const pdfContent = await fs.readFile(pdfPath);
 
-    // Send the email with the PDF attachment
+    // Send email with PDF attachment
     await transporter.sendMail({
-      from: `"WE Online Coaching" <${process.env.SMTP_FROM}>`,
+      from: `"WE Fitness" <${process.env.SMTP_USER}>`,
       to: email,
-      subject: 'Your Free Beginner Workout Plan',
+      subject: 'Your Free Workout Program',
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #004AAD;">Your Free Workout Plan is Here!</h1>
-          <p>Thank you for requesting our beginner workout plan. We're excited to help you start your fitness journey!</p>
-          <p>You'll find the attached PDF with your 4-week beginner workout plan. This program is designed to help you build a solid foundation and develop good habits.</p>
-          <h2 style="color: #004AAD;">What's Included:</h2>
-          <ul>
-            <li>4-week structured program</li>
-            <li>Beginner-friendly exercises with instructions</li>
-            <li>Progressive overload principles</li>
-            <li>Rest and recovery guidelines</li>
-          </ul>
-          <p>If you have any questions about the program, feel free to reply to this email.</p>
-          <p>Good luck with your fitness journey!</p>
-          <p>The WE Online Coaching Team</p>
-        </div>
+        <h2>Thank You for Your Interest!</h2>
+        <p>Here's your free workout program to help you get started on your fitness journey.</p>
+        <p>This program is designed for beginners and includes:</p>
+        <ul>
+          <li>Detailed workout routines</li>
+          <li>Exercise descriptions</li>
+          <li>Progress tracking guidelines</li>
+        </ul>
+        <p>If you have any questions, feel free to reach out to us!</p>
+        <br>
+        <p>Best regards,</p>
+        <p>The WE Fitness Team</p>
       `,
       attachments: [
         {
-          filename: 'beginner-workout-plan.pdf',
+          filename: 'WE-Fitness-Beginner-Workout-Plan.pdf',
           content: pdfContent,
         },
       ],
     });
 
-    // Return success response
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Workout plan sent successfully' }),
