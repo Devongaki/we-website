@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/FreeConsultation.css';
 
@@ -16,6 +16,29 @@ const FreeConsultation = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  // Validate form whenever formData changes
+  useEffect(() => {
+    const validateForm = () => {
+      const requiredFields = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        fitnessGoal: formData.fitnessGoal.trim(),
+        experience: formData.experience.trim()
+      };
+
+      const isValid = Object.values(requiredFields).every(field => field !== '');
+      
+      // Additional email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isEmailValid = emailRegex.test(formData.email);
+
+      setIsFormValid(isValid && isEmailValid);
+    };
+
+    validateForm();
+  }, [formData]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -172,8 +195,8 @@ const FreeConsultation = () => {
 
             <button 
               type="submit" 
-              className="button button--primary button--large consultation__submit"
-              disabled={isSubmitting}
+              className={`button button--primary button--large consultation__submit ${!isFormValid ? 'button--disabled' : ''}`}
+              disabled={isSubmitting || !isFormValid}
             >
               {isSubmitting ? 'Submitting...' : 'Schedule Consultation'}
             </button>
