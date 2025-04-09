@@ -1,11 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/Prices.css';
 
 const Prices = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
   
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 100);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleTabClick = (index) => {
+    console.log('Tab clicked:', index);
+    setActiveTab(index);
+  };
+
   const pricingData = [
     {
       duration: '12 months',
@@ -62,7 +78,6 @@ const Prices = () => {
   ];
 
   const handlePlanSelect = (plan) => {
-    console.log('Plan selected:', plan);
     navigate('/checkout', { state: { plan } });
   };
 
@@ -128,13 +143,11 @@ const Prices = () => {
               <button
                 key={plan.duration}
                 className={`prices__tab-button ${activeTab === index ? 'prices__tab-button--active' : ''}`}
-                onClick={() => setActiveTab(index)}
+                onClick={() => handleTabClick(index)}
                 type="button"
               >
                 <div className="prices__tab-button-content">
                   <span className="prices__tab-duration">{plan.duration}</span>
-                  <span className="prices__tab-price">{plan.price} NOK</span>
-                  {plan.isPopular && <span className="prices__tab-badge">Popular</span>}
                 </div>
               </button>
             ))}
@@ -145,8 +158,8 @@ const Prices = () => {
               <div 
                 key={plan.duration}
                 className={`prices__tab-panel ${activeTab === index ? 'prices__tab-panel--active' : ''}`}
-                style={{ display: activeTab === index ? 'block' : 'none' }}
               >
+                {plan.isPopular && <div className="prices__tab-badge">Most Popular</div>}
                 <div className="prices__tab-header">
                   <h2 className="prices__tab-title">{plan.duration} Plan</h2>
                   <div className="prices__tab-price-large">
