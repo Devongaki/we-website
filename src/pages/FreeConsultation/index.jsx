@@ -1,6 +1,61 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/FreeConsultation.css';
+import Select from 'react-select';
+
+// Add these custom styles for React Select
+const customStyles = {
+  control: (provided, state) => ({
+    ...provided,
+    padding: 'var(--spacing-sm)',
+    borderColor: state.isFocused ? 'var(--color-brand-primary)' : '#e2e8f0',
+    borderRadius: 'var(--radius-md)',
+    boxShadow: state.isFocused ? '0 0 0 3px rgba(var(--color-brand-primary-rgb), 0.15)' : 'none',
+    '&:hover': {
+      borderColor: 'var(--color-brand-primary)'
+    }
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? 'var(--color-brand-primary)' : 'white',
+    color: state.isSelected ? 'white' : 'var(--color-text-primary)',
+    '&:hover': {
+      backgroundColor: state.isSelected ? 'var(--color-brand-primary)' : 'var(--color-brand-primary)',
+      color: 'white'
+    },
+    cursor: 'pointer',
+    padding: '12px 16px'
+  }),
+  menu: (provided) => ({
+    ...provided,
+    backgroundColor: 'white',
+    boxShadow: 'var(--shadow-md)',
+    borderRadius: 'var(--radius-md)'
+  })
+};
+
+// Add these options for the dropdowns
+const ageOptions = [
+  { value: '18-24', label: '18-24' },
+  { value: '25-34', label: '25-34' },
+  { value: '35-44', label: '35-44' },
+  { value: '45-54', label: '45-54' },
+  { value: '55+', label: '55+' }
+];
+
+const levelOptions = [
+  { value: 'beginner', label: 'Beginner (new to strength training)' },
+  { value: 'intermediate', label: 'Intermediate (some experience)' },
+  { value: 'advanced', label: 'Advanced (experienced)' }
+];
+
+const goalOptions = [
+  { value: 'muscle', label: 'Build Muscle' },
+  { value: 'weight-loss', label: 'Weight Loss' },
+  { value: 'strength', label: 'Build Strength for Mental Health' },
+  { value: 'booty', label: 'Build Booty' },
+  { value: 'other', label: 'Other' }
+];
 
 const FreeConsultation = () => {
   const navigate = useNavigate();
@@ -8,28 +63,34 @@ const FreeConsultation = () => {
     name: '',
     email: '',
     phone: '',
-    ageRange: '',
+    ageRange: null,
     experience: 'beginner',
-    primaryGoal: '',
+    primaryGoal: null,
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // Validate form whenever formData changes
+  // Update validation to handle React Select values
   useEffect(() => {
     const validateForm = () => {
       const requiredFields = {
         name: formData.name.trim(),
         email: formData.email.trim(),
         phone: formData.phone.trim(),
-        ageRange: formData.ageRange.trim(),
-        experience: formData.experience.trim(),
-        primaryGoal: formData.primaryGoal.trim()
+        ageRange: formData.ageRange,
+        experience: formData.experience,
+        primaryGoal: formData.primaryGoal
       };
 
-      const isValid = Object.values(requiredFields).every(field => field !== '');
+      const isValid = Object.values(requiredFields).every(field => {
+        // Handle both string and select values
+        if (typeof field === 'string') {
+          return field !== '';
+        }
+        return field !== null;
+      });
       
       // Additional email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,6 +107,13 @@ const FreeConsultation = () => {
     setFormData(prev => ({
       ...prev,
       [name]: value
+    }));
+  };
+
+  const handleSelectChange = (selectedOption, { name }) => {
+    setFormData(prev => ({
+      ...prev,
+      [name]: selectedOption ? selectedOption.value : null
     }));
   };
 
@@ -134,50 +202,48 @@ const FreeConsultation = () => {
 
             <div className="form__group">
               <label htmlFor="ageRange">Age</label>
-              <select
+              <Select
                 id="ageRange"
                 name="ageRange"
-                value={formData.ageRange}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select your age range</option>
-                <option value="20-29">20-29 years</option>
-                <option value="30-39">30-39 years</option>
-                <option value="40-49">40-49 years</option>
-              </select>
+                options={ageOptions}
+                styles={customStyles}
+                value={ageOptions.find(option => option.value === formData.ageRange)}
+                onChange={(option, meta) => handleSelectChange(option, { name: 'ageRange' })}
+                placeholder="Select your age range"
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
             </div>
 
             <div className="form__group">
               <label htmlFor="experience">What's your current strength training level?</label>
-              <select
+              <Select
                 id="experience"
                 name="experience"
-                value={formData.experience}
-                onChange={handleChange}
-                required
-              >
-                <option value="beginner">Beginner (new to strength training)</option>
-                <option value="intermediate">Intermediate (have experience but want to improve)</option>
-              </select>
+                options={levelOptions}
+                styles={customStyles}
+                value={levelOptions.find(option => option.value === formData.experience)}
+                onChange={(option, meta) => handleSelectChange(option, { name: 'experience' })}
+                placeholder="Select your training level"
+                className="react-select-container"
+                classNamePrefix="react-select"
+              />
             </div>
 
             <div className="form__group">
               <label htmlFor="primaryGoal">What's your primary goal? *</label>
-              <select
+              <Select
                 id="primaryGoal"
                 name="primaryGoal"
-                value={formData.primaryGoal}
-                onChange={handleChange}
+                options={goalOptions}
+                styles={customStyles}
+                value={goalOptions.find(option => option.value === formData.primaryGoal)}
+                onChange={(option, meta) => handleSelectChange(option, { name: 'primaryGoal' })}
+                placeholder="Select your primary goal"
+                className="react-select-container"
+                classNamePrefix="react-select"
                 required
-              >
-                 <option value="">Select your primary goal</option>
-                <option value="weight-loss">Build Muscle</option>
-                <option value="muscle-gain">Weight Loss</option>
-                <option value="strength">Build Booty</option>
-                <option value="endurance">Build Strength for Mental Health</option>
-                <option value="other">Other</option>
-              </select>
+              />
             </div>
 
             <button
