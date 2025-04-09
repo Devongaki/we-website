@@ -27,54 +27,118 @@
   margin: 0 auto;
 }
 
-.price-card {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-xl);
+/* Mobile Tabs Styles */
+.prices__tabs {
+  display: none;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.prices__tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border-light);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0 var(--spacing-md);
+  gap: var(--spacing-md);
+}
+
+.prices__tab-buttons::-webkit-scrollbar {
+  display: none;
+}
+
+.prices__tab-button {
+  flex: 1;
+  min-width: 120px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.3s ease;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: -1px;
+}
+
+.prices__tab-button-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
 }
 
-.price-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
+.prices__tab-button--active {
+  border-bottom-color: var(--color-brand-primary);
+  color: var(--color-brand-primary);
 }
 
-.price-card--popular {
-  border: 2px solid var(--color-brand-primary);
-  box-shadow: var(--shadow-md);
+.prices__tab-button:hover {
+  color: var(--color-brand-primary);
 }
 
-.price-card__badge {
-  position: absolute;
-  top: 0;
-  right: var(--spacing-md);
-  transform: translateY(-50%);
+.prices__tab-duration {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.prices__tab-price {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.prices__tab-badge {
   background-color: var(--color-brand-primary);
   color: var(--color-white);
-  padding: var(--spacing-xs) var(--spacing-md);
-  border-radius: var(--radius-md);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
   font-weight: 600;
-  font-size: 0.875rem;
+  position: absolute;
+  top: -8px;
+  right: -8px;
 }
 
-.price-card__header {
+.prices__tab-content {
+  position: relative;
+  min-height: 400px;
+  padding: 0 var(--spacing-md);
+}
+
+.prices__tab-panel {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: opacity 0.3s ease;
+}
+
+.prices__tab-panel--active {
+  opacity: 1;
+}
+
+.prices__tab-header {
   text-align: center;
-  margin-bottom: var(--spacing-xl);
-  padding-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
   border-bottom: 1px solid var(--color-border-light);
 }
 
-.price-card__duration {
+.prices__tab-title {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
   color: var(--color-text-primary);
 }
 
-.price-card__price {
+.prices__tab-price-large {
   display: flex;
   align-items: baseline;
   justify-content: center;
@@ -82,42 +146,41 @@
   margin-bottom: var(--spacing-sm);
 }
 
-.price-card__currency {
+.prices__tab-currency {
   font-size: 1.25rem;
   font-weight: 500;
   color: var(--color-text-secondary);
 }
 
-.price-card__amount {
-  font-size: 3rem;
+.prices__tab-amount {
+  font-size: 2.5rem;
   font-weight: 700;
   color: var(--color-text-primary);
   line-height: 1;
 }
 
-.price-card__period {
+.prices__tab-period {
   font-size: 1rem;
   color: var(--color-text-secondary);
 }
 
-.price-card__signup {
+.prices__tab-signup {
   font-size: 0.875rem;
   color: var(--color-text-secondary);
 }
 
-.price-card__free {
+.prices__tab-free {
   color: var(--color-brand-primary);
   font-weight: 600;
 }
 
-.price-card__features {
+.prices__tab-features {
   list-style: none;
   padding: 0;
-  margin: 0 0 var(--spacing-xl);
-  flex-grow: 1;
+  margin: 0 0 var(--spacing-lg);
 }
 
-.price-card__feature {
+.prices__tab-feature {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
@@ -125,15 +188,22 @@
   color: var(--color-text-primary);
 }
 
-.price-card__check {
+.prices__tab-check {
   width: 20px;
   height: 20px;
   color: var(--color-brand-primary);
   flex-shrink: 0;
 }
 
-.price-card .button {
-  width: 100%;
+/* Media Queries */
+@media (max-width: 767px) {
+  .prices__grid {
+    display: none;
+  }
+
+  .prices__tabs {
+    display: block;
+  }
 }
 
 @media (min-width: 768px) {
