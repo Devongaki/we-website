@@ -1,9 +1,22 @@
-const nodemailer = require('nodemailer');
-const fs = require('fs');
-const path = require('path');
+import dotenv from 'dotenv';
+import sgMail from '@sendgrid/mail';
+import { join } from 'path';
+import { promises as fs } from 'fs';
 
-exports.handler = async (event, context) => {
-  // Only allow POST requests
+// Load environment variables in development
+if (process.env.NODE_ENV !== 'production') {
+  dotenv.config();
+}
+
+export const handler = async (event) => {
+  // Enable detailed logging
+  console.log('Function started');
+  console.log('Environment check:', {
+    hasApiKey: !!process.env.SENDGRID_API_KEY,
+    hasFromEmail: !!process.env.SENDGRID_FROM_EMAIL,
+    apiKeyLength: process.env.SENDGRID_API_KEY ? process.env.SENDGRID_API_KEY.length : 0
+  });
+
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -12,8 +25,14 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    // Parse the request body
+    // Set SendGrid API key
+    if (!process.env.SENDGRID_API_KEY) {
+      throw new Error('SendGrid API key is missing');
+    }
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
     const { email } = JSON.parse(event.body);
+    console.log('Received email:', email);
 
     if (!email) {
       return {
@@ -22,61 +41,76 @@ exports.handler = async (event, context) => {
       };
     }
 
-    // Create a transporter using environment variables
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      secure: process.env.SMTP_SECURE === 'true',
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
     // Read the PDF file
-    const pdfPath = path.join(__dirname, '../../public/pdfs/beginner-workout-plan.pdf');
-    const pdfContent = fs.readFileSync(pdfPath);
+    const pdfPath = join(process.cwd(), 'public', 'pdfs', 'beginner-workout-plan.pdf');
+    console.log('PDF path:', pdfPath);
+    const pdfBuffer = await fs.readFile(pdfPath);
+    
+    // Convert PDF to base64
+    const pdfBase64 = pdfBuffer.toString('base64');
+    console.log('PDF converted to base64');
 
-    // Send the email with the PDF attachment
-    await transporter.sendMail({
-      from: `"WE Online Coaching" <${process.env.SMTP_FROM}>`,
+    // Prepare email
+    const msg = {
       to: email,
-      subject: 'Your Free Beginner Workout Plan',
+      from: {
+        email: process.env.SENDGRID_FROM_EMAIL,
+        name: 'WE Fitness'
+      },
+      subject: 'Your Free Workout Program',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #004AAD;">Your Free Workout Plan is Here!</h1>
-          <p>Thank you for requesting our beginner workout plan. We're excited to help you start your fitness journey!</p>
-          <p>You'll find the attached PDF with your 4-week beginner workout plan. This program is designed to help you build a solid foundation and develop good habits.</p>
-          <h2 style="color: #004AAD;">What's Included:</h2>
+          <h2 style="color: #333;">Thank You for Your Interest!</h2>
+          <p>Here's your free workout program to help you get started on your fitness journey.</p>
+          <p>This program is designed for beginners and includes:</p>
           <ul>
-            <li>4-week structured program</li>
-            <li>Beginner-friendly exercises with instructions</li>
-            <li>Progressive overload principles</li>
-            <li>Rest and recovery guidelines</li>
+            <li>Detailed workout routines</li>
+            <li>Exercise descriptions</li>
+            <li>Progress tracking guidelines</li>
           </ul>
-          <p>If you have any questions about the program, feel free to reply to this email.</p>
-          <p>Good luck with your fitness journey!</p>
-          <p>The WE Online Coaching Team</p>
+          <p>If you have any questions, feel free to reach out to us!</p>
+          <br>
+          <p>Best regards,</p>
+          <p>The WE Fitness Team</p>
         </div>
       `,
       attachments: [
         {
-          filename: 'beginner-workout-plan.pdf',
-          content: pdfContent,
-        },
-      ],
-    });
+          content: pdfBase64,
+          filename: 'WE-Fitness-Beginner-Workout-Plan.pdf',
+          type: 'application/pdf',
+          disposition: 'attachment'
+        }
+      ]
+    };
 
-    // Return success response
+    console.log('Attempting to send email to:', email);
+    // Send email
+    await sgMail.send(msg);
+    console.log('Email sent successfully');
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: 'Workout plan sent successfully' }),
     };
   } catch (error) {
-    console.error('Error sending workout plan:', error);
+    console.error('Function Error:', {
+      message: error.message,
+      stack: error.stack,
+      response: error.response ? {
+        body: error.response.body,
+        headers: error.response.headers,
+        status: error.response.status
+      } : null
+    });
+
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send workout plan' }),
+      body: JSON.stringify({ 
+        error: 'Failed to send workout plan',
+        details: error.message,
+        response: error.response?.body
+      }),
     };
   }
 }; 
