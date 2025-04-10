@@ -1,6 +1,6 @@
 import Hero from './components/Hero';
 import Features from './components/Features';
-import Testimonials from './components/Testimonials';
+import Process from './components/Process';
 import CTA from './components/CTA';
 import './styles/Home.css';
 
@@ -9,7 +9,7 @@ const Home = () => {
     <div className="home">
       <Hero />
       <Features />
-      <Testimonials />
+      <Process />
       <CTA />
     </div>
   );
