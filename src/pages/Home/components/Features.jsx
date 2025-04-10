@@ -1,9 +1,5 @@
 import React from "react";
 import "../styles/Features.css";
-import workout1 from "../../../assets/images/features/workout-1.jpg";
-import weeklyCheckin from "../../../assets/images/features/mariia-shalabaieva-wPfX1O_E-UE-unsplash.jpg";
-import nutrition from "../../../assets/images/features/irina-del-uJQYVRza0VY-unsplash.jpg";
-import appFeature from "../../../assets/images/features/dalibor-janecek-SjKw-0EcsdM-unsplash.jpg";
 
 const Features = () => {
   return (
@@ -23,7 +19,7 @@ const Features = () => {
             <div className="features__image-grid">
               <div className="features__image-item">
                 <img 
-                  src={workout1} 
+                  src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800"
                   alt="Personalized training program"
                   title="Custom workout plans tailored to your goals" 
                 />
@@ -31,7 +27,7 @@ const Features = () => {
               </div>
               <div className="features__image-item">
                 <img 
-                  src={weeklyCheckin} 
+                  src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=800"
                   alt="Weekly online check-ins and progress tracking"
                   title="Regular progress monitoring and adjustments" 
                 />
@@ -39,7 +35,7 @@ const Features = () => {
               </div>
               <div className="features__image-item">
                 <img 
-                  src={nutrition} 
+                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800"
                   alt="Personalized nutrition guidance and meal planning"
                   title="Expert nutrition guidance for optimal results" 
                 />
@@ -62,7 +58,7 @@ const Features = () => {
 
           <div className="features__main-image">
             <img 
-              src={appFeature} 
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800"
               alt="All-in-one fitness tracking app"
               title="Track your progress and connect with your coach" 
             />
