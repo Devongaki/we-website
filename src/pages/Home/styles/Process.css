@@ -356,82 +356,6 @@
   }
 }
 
-.process__mobile {
-  display: none;
-}
-
-.process__slider-container {
-  overflow: hidden;
-  width: 100%;
-}
-
-.process__slider {
-  display: flex;
-  transition: transform 0.3s ease-in-out;
-  width: 100%;
-}
-
-.process__slide {
-  flex: 0 0 100%;
-  width: 100%;
-}
-
-.process__controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.process__control-btn {
-  background: none;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  font-size: 1.2rem;
-}
-
-.process__control-btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.process__control-btn--disabled,
-.process__control-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.process__dots {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.process__dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.process__dot--active {
-  background: white;
-  transform: scale(1.2);
-}
-
 @media (max-width: 768px) {
   .process {
     padding: 2rem 0 3rem;
@@ -488,17 +412,5 @@
   .process__timeline {
     padding: 0 1rem;
     gap: 0.5rem;
-  }
-
-  .process__desktop {
-    display: none;
-  }
-
-  .process__mobile {
-    display: block;
-  }
-
-  .process__step-content {
-    margin: 0;
   }
 } 
