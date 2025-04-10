@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+
+[build.environment]
+  STRIPE_PUBLISHABLE_KEY = "your_stripe_publishable_key"
+  STRIPE_SECRET_KEY = "your_stripe_secret_key"
+  SMTP_HOST = "your_smtp_host"
+  SMTP_PORT = "587"
+  SMTP_USER = "your_smtp_user"
+  SMTP_PASS = "your_smtp_password"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200 

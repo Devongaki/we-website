@@ -1,0 +1,512 @@
+.checkout-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f7fafc;
+}
+
+.checkout-page__container {
+  width: 100%;
+  max-width: 1000px;
+  background: linear-gradient(135deg, #004AAD 0%, #0063E5 100%);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 32px;
+  padding: 32px;
+}
+
+.checkout-page__details {
+  padding-right: 32px;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.checkout-page__payment {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+}
+
+.checkout-page__back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.checkout-page__logo {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.checkout-page__logo img {
+  height: 48px;
+  width: auto;
+  filter: brightness(0) invert(1); /* This will make the logo white */
+}
+
+.checkout-page__summary {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  border-radius: 8px;
+  color: white;
+}
+
+.checkout-page__summary h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+  color: white;
+}
+
+.checkout-page__price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.checkout-page__amount {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+}
+
+.checkout-page__period {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+.checkout-page__signup-fee {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Right Panel */
+.checkout-page__payment h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 2rem;
+}
+
+.checkout-page__payment-methods {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.payment-method {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.payment-method.active {
+  border-color: #5469d4;
+  background-color: #f8fafd;
+}
+
+.payment-method img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.payment-method span {
+  font-size: 14px;
+  color: #424770;
+}
+
+.checkout-page__form {
+  max-width: 480px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group:last-of-type {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #424770;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #424770;
+  background-color: white;
+  transition: border-color 0.15s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.form-input::placeholder {
+  color: #aab7c4;
+}
+
+.checkout-page__error {
+  margin: 20px 0;
+  padding: 12px;
+  border-radius: 4px;
+  background-color: #fff2f0;
+  border: 1px solid #ffccc7;
+}
+
+.checkout-page__error p {
+  color: #ff4d4f;
+  margin: 0;
+}
+
+.checkout-page__submit {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 16px;
+  background-color: #5469d4;
+  color: white;
+  border-radius: 4px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkout-page__submit:hover:not(:disabled) {
+  background-color: #4a5cc9;
+}
+
+.checkout-page__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkout-page__security {
+  margin-top: 12px;
+  padding: 12px;
+  background-color: #f8fafd;
+  border-radius: 4px;
+}
+
+.security-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  color: #697386;
+  font-size: 13px;
+}
+
+.security-item:last-child {
+  margin-bottom: 0;
+}
+
+.security-item .icon {
+  margin-right: 8px;
+}
+
+/* Loading state styles */
+.checkout-page__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: white;
+}
+
+.checkout-page__spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #004AAD;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .checkout-page {
+    padding: 0;
+    background-color: white;
+  }
+
+  .checkout-page__container {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .checkout-page__details {
+    order: 2;
+    padding: 24px 16px;
+    border-right: none;
+    background: linear-gradient(135deg, #004AAD 0%, #0063E5 100%);
+    border-radius: 24px 24px 0 0;
+    margin-top: -24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .checkout-page__payment {
+    order: 1;
+    padding: 16px;
+    border-radius: 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .checkout-page__payment h1 {
+    font-size: 20px;
+    margin: 0 0 24px;
+    text-align: center;
+  }
+
+  .checkout-page__logo {
+    display: none; /* Hide logo on mobile since it's likely in the header */
+  }
+
+  .checkout-page__back-button {
+    position: absolute;
+    top: -40px;
+    left: 16px;
+    color: #0f172a;
+  }
+
+  .checkout-page__summary {
+    padding: 16px;
+    margin-top: 8px;
+  }
+
+  .checkout-page__benefits {
+    margin-top: 16px;
+  }
+
+  .checkout-page__benefits h3 {
+    margin-bottom: 12px;
+  }
+
+  .checkout-page__benefits li {
+    margin-bottom: 8px;
+  }
+
+  .checkout-page__guarantee {
+    margin-top: 16px;
+  }
+
+  .guarantee-badge {
+    padding: 12px;
+  }
+
+  .checkout-page__contact {
+    margin-top: 16px;
+    padding: 12px;
+  }
+
+  /* Form adjustments */
+  .checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group:last-of-type {
+    margin-bottom: 8px;
+  }
+
+  .checkout-page__submit {
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .checkout-page__security {
+    margin-top: 8px;
+    padding: 8px 0;
+    background: none;
+  }
+
+  .security-item {
+    margin-bottom: 2px;
+    font-size: 12px;
+    color: #6b7280;
+  }
+
+  .security-item:last-child {
+    margin-bottom: 8px;
+  }
+}
+
+.stripe-element {
+  padding: 15px;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  transition: box-shadow 150ms ease;
+  margin-top: 8px;
+  min-height: 44px;
+}
+
+.stripe-element:focus-within {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+  border-color: #80bdff;
+}
+
+.stripe-element.StripeElement--focus {
+  border-color: #80bdff;
+}
+
+.stripe-element.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.stripe-element.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-element iframe {
+  width: 100%;
+  min-height: 20px;
+}
+
+.checkout-page__benefits {
+  color: white;
+  margin-top: 8px;
+}
+
+.checkout-page__benefits h3 {
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: white;
+  opacity: 0.9;
+}
+
+.checkout-page__benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.checkout-page__benefits li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.checkout-page__benefits .icon {
+  margin-right: 12px;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.checkout-page__guarantee {
+  margin-top: 24px;
+}
+
+.guarantee-badge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.guarantee-badge .icon {
+  font-size: 24px;
+  color: #FFD700;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.guarantee-badge h3 {
+  font-size: 16px;
+  color: white;
+  margin: 8px 0;
+}
+
+.guarantee-badge p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.checkout-page__contact {
+  margin-top: 24px;
+  text-align: center;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.checkout-page__contact h3 {
+  font-size: 16px;
+  color: white;
+  margin: 0 0 8px 0;
+}
+
+.checkout-page__contact p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 4px 0;
+}
+
+.checkout-page__contact a {
+  color: white;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+}
+
+.checkout-page__contact a:hover {
+  border-bottom-color: white;
+} 
