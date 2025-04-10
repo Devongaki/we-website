@@ -52,7 +52,7 @@ const Features = () => {
                 <span>Video Instructions</span>
               </div>
               <div className="features__highlight">
-                <span>24/7 Chat Support</span>
+                <span>Chat Support</span>
               </div>
               <div className="features__highlight">
                 <span>Progress Tracking</span>
@@ -99,7 +99,7 @@ const Features = () => {
                       </svg>
                     </div>
                     <div className="features__app-feature-text">
-                      <h5>24/7 Chat Support</h5>
+                      <h5>Chat Support</h5>
                       <p>Always connected to your coach</p>
                     </div>
                   </div>
