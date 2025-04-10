@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/Features.css";
-import workout1 from "/public/images/features/workout-1.jpg";
-import weeklyCheckin from "/public/images/features/mariia-shalabaieva-wPfX1O_E-UE-unsplash.jpg";
-import nutrition from "/public/images/features/irina-del-uJQYVRza0VY-unsplash.jpg";
-import appFeature from "/public/images/features/dalibor-janecek-SjKw-0EcsdM-unsplash.jpg";
+import workout1 from "../../../assets/images/features/workout-1.jpg";
+import weeklyCheckin from "../../../assets/images/features/mariia-shalabaieva-wPfX1O_E-UE-unsplash.jpg";
+import nutrition from "../../../assets/images/features/irina-del-uJQYVRza0VY-unsplash.jpg";
+import appFeature from "../../../assets/images/features/dalibor-janecek-SjKw-0EcsdM-unsplash.jpg";
 
 const Features = () => {
   return (
