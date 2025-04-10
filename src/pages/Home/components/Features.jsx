@@ -1,5 +1,9 @@
 import React from "react";
 import "../styles/Features.css";
+import workout1 from "../../../assets/images/features/workout-1.jpg";
+import weeklyCheckin from "../../../assets/images/features/mariia-shalabaieva-wPfX1O_E-UE-unsplash.jpg";
+import nutrition from "../../../assets/images/features/irina-del-uJQYVRza0VY-unsplash.jpg";
+import appFeature from "../../../assets/images/features/dalibor-janecek-SjKw-0EcsdM-unsplash.jpg";
 
 const Features = () => {
   return (
@@ -19,7 +23,7 @@ const Features = () => {
             <div className="features__image-grid">
               <div className="features__image-item">
                 <img 
-                  src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800" 
+                  src={workout1} 
                   alt="Personalized training program"
                   title="Custom workout plans tailored to your goals" 
                 />
@@ -27,7 +31,7 @@ const Features = () => {
               </div>
               <div className="features__image-item">
                 <img 
-                  src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800" 
+                  src={weeklyCheckin} 
                   alt="Weekly online check-ins and progress tracking"
                   title="Regular progress monitoring and adjustments" 
                 />
@@ -35,7 +39,7 @@ const Features = () => {
               </div>
               <div className="features__image-item">
                 <img 
-                  src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800" 
+                  src={nutrition} 
                   alt="Personalized nutrition guidance and meal planning"
                   title="Expert nutrition guidance for optimal results" 
                 />
@@ -58,7 +62,7 @@ const Features = () => {
 
           <div className="features__main-image">
             <img 
-              src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=800" 
+              src={appFeature} 
               alt="All-in-one fitness tracking app"
               title="Track your progress and connect with your coach" 
             />
