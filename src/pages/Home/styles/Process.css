@@ -1,16 +1,15 @@
 .process {
-  padding: 2rem 0 4rem;
   background: linear-gradient(135deg, #000080, #000046);
-  position: relative;
-  overflow: hidden;
-  opacity: 1;
-  transform: none;
-  transition: none;
+  padding: 4rem 0;
+  color: white;
 }
 
-.process--visible {
-  opacity: 1;
-  transform: none;
+.process__title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
 }
 
 .process__header {
@@ -26,19 +25,6 @@
   font-weight: 600;
   letter-spacing: 0.2em;
   margin-bottom: 1rem;
-}
-
-.process__title {
-  text-align: center;
-  font-size: 3.5rem;
-  font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 1;
-  letter-spacing: -0.02em;
-  color: white;
-  text-transform: uppercase;
 }
 
 .process__title::after {
@@ -121,21 +107,25 @@
 
 .process__step-number {
   position: absolute;
-  top: -15px;
-  left: -15px;
-  width: 40px;
-  height: 40px;
+  top: -20px;
+  left: -20px;
+  width: 50px;
+  height: 50px;
   background: linear-gradient(135deg, #000080, #000046);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  font-size: 24px;
   font-weight: bold;
-  font-size: 1.2rem;
-  box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.3);
-  z-index: 3;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 2;
+  color: white;
+  line-height: 1;
+  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
 .process__step-icon {
@@ -356,61 +346,326 @@
   }
 }
 
+/* Mobile carousel styles */
+.process__mobile-carousel {
+  overflow: visible;
+  position: relative;
+  width: 100%;
+}
+
+.process__slide {
+  overflow: hidden;
+  padding: 20px;
+}
+
+.process__card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  position: relative;
+  text-align: center;
+}
+
+.process__step-number {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #000080, #000046);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+.process__step-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.process__step-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.process__features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.process__feature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+}
+
+.process__checkmark {
+  color: white;
+}
+
+.process__action-button {
+  background: white;
+  color: #000046;
+  border: none;
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.process__action-button:hover {
+  transform: translateY(-2px);
+}
+
+.process__navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.process__nav-arrow {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.process__nav-arrow:hover {
+  opacity: 1;
+}
+
+.process__dots {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.process__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.process__dot--active {
+  background: white;
+  transform: scale(1.2);
+}
+
+/* Hide mobile carousel on desktop */
+@media (min-width: 769px) {
+  .process__mobile-carousel {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .process {
-    padding: 2rem 0 3rem;
+    padding: 2rem 0;
+    min-height: auto;
   }
 
-  .process__header {
-    margin-bottom: 1.5rem;
+  .process.process--visible {
+    min-height: auto;
+    padding-bottom: 1rem;
   }
 
-  .process__title-before {
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
+  .process__mobile-carousel {
+    margin-bottom: 2rem;
+  }
+
+  .process__slide {
+    padding: 20px;
+    min-height: auto;
   }
 
   .process__title {
-    font-size: 2.5rem;
-  }
-
-  .process__subtitle {
-    font-size: 1.2rem;
-    padding: 0 1.5rem;
-  }
-
-  .process__step-content {
-    flex-direction: column;
-    align-items: center;
+    color: white;
     text-align: center;
-    padding: 1rem;
-    gap: 1rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
   }
 
-  .process__step-icon {
-    margin-bottom: 0.75rem;
+  .process__desktop-view {
+    display: none;
   }
 
-  .process__step-title::after {
-    left: 50%;
-    transform: translateX(-50%);
+  .process__mobile-carousel {
+    display: block;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .process__carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .process__carousel-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+  }
+
+  .process__carousel-slide {
+    flex: 0 0 100%;
+    width: 100%;
+  }
+
+  .process__step-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    color: white;
+    text-align: center;
+    margin: 0 0.5rem;
+  }
+
+  .process__step-number {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .process__step-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .process__step-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
   }
 
   .process__step-features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .process__feature {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+  }
+
+  .process__step-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    margin-top: 0.5rem;
+    background: white;
+    color: #000046;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
   }
 
-  .process__circle {
-    opacity: 0.03;
+  .process__carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
   }
 
-  .process__step {
-    margin-bottom: 0;
+  .process__carousel-arrow {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
   }
 
-  .process__timeline {
-    padding: 0 1rem;
+  .process__carousel-arrow:hover {
+    opacity: 1;
+  }
+
+  .process__carousel-dots {
+    display: flex;
     gap: 0.5rem;
+    align-items: center;
   }
+
+  .process__carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .process__carousel-dot--active {
+    background: white;
+    transform: scale(1.2);
+  }
+}
+
+.process__step-number-wrapper {
+  position: absolute;
+  top: -25px;
+  left: -25px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.process__step-number-mobile {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #000080, #000046);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  line-height: 50px; /* Match the height */
+  text-align: center;
 } 
