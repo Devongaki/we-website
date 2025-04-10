@@ -1,5 +1,9 @@
 import React from "react";
 import "../styles/Features.css";
+import workout1 from "/public/images/features/workout-1.jpg";
+import weeklyCheckin from "/public/images/features/mariia-shalabaieva-wPfX1O_E-UE-unsplash.jpg";
+import nutrition from "/public/images/features/irina-del-uJQYVRza0VY-unsplash.jpg";
+import appFeature from "/public/images/features/dalibor-janecek-SjKw-0EcsdM-unsplash.jpg";
 
 const Features = () => {
   return (
@@ -19,7 +23,7 @@ const Features = () => {
             <div className="features__image-grid">
               <div className="features__image-item">
                 <img 
-                  src={`${import.meta.env.BASE_URL}images/features/workout-1.jpg`} 
+                  src={workout1} 
                   alt="Personalized training program"
                   title="Custom workout plans tailored to your goals" 
                 />
@@ -27,7 +31,7 @@ const Features = () => {
               </div>
               <div className="features__image-item">
                 <img 
-                  src={`${import.meta.env.BASE_URL}images/features/mariia-shalabaieva-wPfX1O_E-UE-unsplash.jpg`} 
+                  src={weeklyCheckin} 
                   alt="Weekly online check-ins and progress tracking"
                   title="Regular progress monitoring and adjustments" 
                 />
@@ -35,7 +39,7 @@ const Features = () => {
               </div>
               <div className="features__image-item">
                 <img 
-                  src={`${import.meta.env.BASE_URL}images/features/irina-del-uJQYVRza0VY-unsplash.jpg`} 
+                  src={nutrition} 
                   alt="Personalized nutrition guidance and meal planning"
                   title="Expert nutrition guidance for optimal results" 
                 />
@@ -58,7 +62,7 @@ const Features = () => {
 
           <div className="features__main-image">
             <img 
-              src={`${import.meta.env.BASE_URL}images/features/dalibor-janecek-SjKw-0EcsdM-unsplash.jpg`} 
+              src={appFeature} 
               alt="All-in-one fitness tracking app"
               title="Track your progress and connect with your coach" 
             />
@@ -104,8 +108,6 @@ const Features = () => {
             </div>
           </div>
         </div>
-
-        
       </div>
     </section>
   );
