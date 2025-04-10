@@ -218,8 +218,9 @@
 
 .process__step-features span::before {
   content: '✓';
-  color: white;
+  color: #4CAF50;
   font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 .process__step-link {
@@ -414,6 +415,12 @@
   font-size: 0.95rem;
 }
 
+.process__feature::before {
+  content: '✓';
+  color: #4CAF50;
+  font-weight: bold;
+}
+
 .process__checkmark {
   color: white;
 }
@@ -428,6 +435,10 @@
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .process__action-button:hover {

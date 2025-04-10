@@ -77,14 +77,14 @@ const Process = () => {
               <div className="process__features">
                 {steps[currentSlide].features.map((feature, index) => (
                   <div key={index} className="process__feature">
-                    <span className="process__checkmark">✓</span> {feature}
+                    {feature}
                   </div>
                 ))}
               </div>
               {steps[currentSlide].action && (
-                <button className="process__action-button">
+                <Link to="/free-consultation" className="process__action-button">
                   {steps[currentSlide].action} →
-                </button>
+                </Link>
               )}
             </div>
           </div>
@@ -130,9 +130,9 @@ const Process = () => {
                   <div className="process__step-description">
                     <p>Share your fitness goals and journey with us through our consultation form.</p>
                     <div className="process__step-features">
-                      <span>✓ Quick Assessment</span>
-                      <span>✓ Goal Setting</span>
-                      <span>✓ Current Fitness Level</span>
+                      <span>Quick Assessment</span>
+                      <span>Goal Setting</span>
+                      <span>Current Fitness Level</span>
                     </div>
                   </div>
                   <Link to="/free-consultation" className="process__step-link">
@@ -157,9 +157,9 @@ const Process = () => {
                   <div className="process__step-description">
                     <p>Our expert team crafts your personalized fitness strategy.</p>
                     <div className="process__step-features">
-                      <span>✓ Strategy Discussion</span>
-                      <span>✓ Custom Plan Creation</span>
-                      <span>✓ Schedule Alignment</span>
+                      <span> Strategy Discussion</span>
+                      <span> Custom Plan Creation</span>
+                      <span> Schedule Alignment</span>
                     </div>
                   </div>
                   <div className="process__step-timeline">
@@ -183,9 +183,9 @@ const Process = () => {
                   <div className="process__step-description">
                     <p>Start your transformation with expert guidance and support.</p>
                     <div className="process__step-features">
-                      <span>✓ Personalized Workouts</span>
-                      <span>✓ Nutrition Guidance</span>
-                      <span>✓ Progress Tracking</span>
+                      <span> Personalized Workouts</span>
+                      <span> Nutrition Guidance</span>
+                      <span> Progress Tracking</span>
                     </div>
                   </div>
                   <div className="process__step-progress">
