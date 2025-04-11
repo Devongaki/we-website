@@ -715,4 +715,32 @@
   color: white;
   line-height: 50px; /* Match the height */
   text-align: center;
+}
+
+/* Only change the background color */
+.features--minimal {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #000080, #000046);
+  color: white;
+}
+
+/* Update text colors for better contrast with dark background */
+.features__header-minimal h2 {
+  color: white;
+}
+
+.feature-item h3 {
+  color: white;
+}
+
+.feature-item p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.features__app-content h3 {
+  color: white;
+}
+
+.app-point p {
+  color: rgba(255, 255, 255, 0.9);
 } 
