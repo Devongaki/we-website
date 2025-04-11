@@ -12,4 +12,11 @@ export default defineConfig({
       },
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: './WE ONLINE COACHING/apps/main.jsx',
+      },
+    },
+  },
 })
