@@ -3,7 +3,7 @@ import Header from '../ui/components/Layout/Header/Header';
 import Home from '../features/Home';
 import Prices from '../features/Prices';
 import CheckoutPage from '../features/Checkout';
-import FreeConsultation from '../features/FreeConsultation/FressConsultation';
+import FreeConsultation from '../features/FreeConsultation/FreeConsultation';
 
 // Import theme styles
 import '../theme/index.css';
