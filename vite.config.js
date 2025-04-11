@@ -1,9 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, '.'),
+    },
+  },
   server: {
     proxy: {
       '/.netlify/functions': {
@@ -15,7 +21,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: './WE ONLINE COACHING/apps/main.jsx',
+        main: './index.html',
       },
     },
   },
