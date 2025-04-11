@@ -1,0 +1,191 @@
+/* Updated WE ONLINE COACHING/ui/components/Layout/Footer/footer.css */
+.footer {
+  background-color: #00005a; /* Dark blue background */
+  color: white;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+/* Logo and company section */
+.footer__company {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer__logo {
+  height: 40px;
+  margin-bottom: 1rem;
+}
+
+.footer__tagline {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.footer__description {
+  margin-top: 1rem;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+/* Links section */
+.footer__heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.footer__heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  width: 40px;
+  height: 3px;
+  background-color: white;
+}
+
+.footer__links-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.footer__links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links-list li {
+  margin-bottom: 0.75rem;
+}
+
+.footer__link {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+/* Contact section */
+.footer__contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__contact-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.footer__contact-icon {
+  margin-right: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.footer__contact-link {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer__contact-link:hover {
+  text-decoration: underline;
+}
+
+.footer__social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
+}
+
+.footer__social-link:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* Divider */
+.footer__divider {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 2rem 0;
+}
+
+/* Integrated CTA section */
+.footer__cta {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.footer__cta-title {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  font-weight: 700;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.footer__cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Copyright */
+.footer__bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__copyright {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: white;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .footer__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .footer__cta-buttons {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .footer__grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}

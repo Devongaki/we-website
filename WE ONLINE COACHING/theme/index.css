@@ -1,0 +1,110 @@
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './utilities.css';
+@import './shadows.css';
+/* etc. */
+
+/* Main theme entry point - import all theme files */
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './utilities.css';
+@import './shadows.css';
+
+:root {
+  /* Global styles not specifically tied to colors, typography, or spacing */
+  --animation-speed-fast: 0.2s;
+  --animation-speed-normal: 0.3s;
+  --animation-speed-slow: 0.5s;
+  --z-index-header: 1000;
+  --z-index-modal: 2000;
+  --z-index-tooltip: 3000;
+  --content-width: 1400px;
+  --page-padding: 1rem;
+}
+
+/* Global resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+/* Basic document styling */
+body {
+  min-height: 100vh;
+  font-family: var(--font-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Global container class */
+.container {
+  width: 100%;
+  max-width: var(--content-width, 1400px);
+  margin: 0 auto;
+  padding: 0 var(--page-padding, 1rem);
+}
+
+/* Section styles */
+.section {
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 2rem 0;
+  }
+}
+
+/* Common focus styles for accessibility */
+:focus {
+  outline: 2px solid var(--color-primary, #000080);
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users, but keep for keyboard */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* For screen readers only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Image handling */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* List reset */
+ul, ol {
+  list-style: none;
+}
+
+/* Basic table styles */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
