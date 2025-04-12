@@ -353,6 +353,9 @@
   overflow: visible;
   position: relative;
   width: 100%;
+  z-index: 2;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .process__slide {
@@ -368,6 +371,7 @@
   padding: 2rem 1.5rem;
   position: relative;
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .process__step-number {
@@ -440,6 +444,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 3;
 }
 
 .process__action-button:hover {
@@ -452,17 +458,19 @@
   justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
+  position: relative;
+  z-index: 3;
 }
 
 .process__nav-arrow {
+  color: white;
   background: none;
   border: none;
-  color: white;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
   opacity: 0.7;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 
 .process__nav-arrow:hover {
@@ -510,6 +518,11 @@
 
   .process__mobile-carousel {
     margin-bottom: 2rem;
+    cursor: grab;
+  }
+
+  .process__mobile-carousel:active {
+    cursor: grabbing;
   }
 
   .process__slide {
