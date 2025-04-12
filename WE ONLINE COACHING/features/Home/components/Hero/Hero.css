@@ -56,20 +56,20 @@
 
 .hero__badge {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background-color: rgba(255, 215, 0, 0.2);
-  color: #FFD700;
+  padding: 0.35rem 0.8rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-text-inverse);
   border-radius: 2rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 1rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: 1px solid rgba(255, 215, 0, 0.3);
+  letter-spacing: var(--letter-spacing-wide);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .hero__title {
-  font-size: clamp(3rem, 6vw, 5rem);
+  font-size: var(--font-size-heading-1);
   line-height: 1.1;
   margin-bottom: 1.5rem;
   color: white;
@@ -108,7 +108,7 @@
 
 .button.button--primary {
   background-color: #FFD700;
-  color: #000046;
+  color:var(--color-text-inverse);
   border: none;
   font-weight: 600;
   box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
@@ -139,11 +139,12 @@
 .hero__stats {
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 2.5rem;
   flex-wrap: wrap;
   width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 2rem;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .hero__stat {
@@ -153,18 +154,18 @@
 }
 
 .hero__stat-number {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #FFD700;
-  line-height: 1;
-  margin-bottom: 0.5rem;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-inverse);
+  line-height: var(--line-height-none);
+  margin-bottom: 0.3rem;
 }
 
 .hero__stat-label {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--font-size-xs);
+  color: rgba(255, 255, 255, 0.7);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--letter-spacing-wide);
 }
 
 .hero__media {
