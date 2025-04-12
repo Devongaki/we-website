@@ -9,15 +9,8 @@ const Footer = () => {
       <div className="container">
         {/* Main Footer Content */}
         <div className="footer__grid">
-          {/* Column 1: Logo and company info */}
           <div className="footer__company">
             <img src={logo} alt="WE Online Coaching" className="footer__logo" />
-            <p className="footer__tagline" style={{ color: "white" }}>
-              Transform Your Body, Transform Your Life
-            </p>
-            <p className="footer__description" style={{ color: "white", marginTop: "1rem" }}>
-              Expert online personal training tailored to your needs. We help you achieve real, sustainable results.
-            </p>
           </div>
           
           {/* Column 2: Quick Links */}
