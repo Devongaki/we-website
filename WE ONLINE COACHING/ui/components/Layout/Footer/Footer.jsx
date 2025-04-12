@@ -1,5 +1,6 @@
 // WE ONLINE COACHING/ui/components/Layout/Footer/Footer.jsx
 import { Link } from 'react-router-dom';
+import logo from '../../../assets/WE_Logo.png';
 import './footer.css';
 
 const Footer = () => {
@@ -8,15 +9,8 @@ const Footer = () => {
       <div className="container">
         {/* Main Footer Content */}
         <div className="footer__grid">
-          {/* Column 1: Logo and company info */}
           <div className="footer__company">
-            <img src="/WE ONLINE COACHING/assets/WE_Logo.png" alt="WE Online Coaching" className="footer__logo" />
-            <p className="footer__tagline" style={{ color: "white" }}>
-              Transform Your Body, Transform Your Life
-            </p>
-            <p className="footer__description" style={{ color: "white", marginTop: "1rem" }}>
-              Expert online personal training tailored to your needs. We help you achieve real, sustainable results.
-            </p>
+            <img src={logo} alt="WE Online Coaching" className="footer__logo" />
           </div>
           
           {/* Column 2: Quick Links */}

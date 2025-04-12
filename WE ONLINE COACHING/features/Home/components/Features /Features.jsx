@@ -3,105 +3,73 @@ import "./Features.css";
 
 const Features = () => {
   return (
-    <section className="features">
-      <div className="container"> 
-        <div className="features__header">
-          <h2 className="features__title">WHY CHOOSE US ?</h2>
+    <section className="features features--minimal">
+      <div className="container">
+        <div className="features__header-minimal">
+          <span className="features__label">Why choose us</span>
+          <h2>Transform with Expert Support</h2>
+          <div className="features__underline"></div>
+        </div>
+        
+        <div className="features__grid">
+          <div className="feature-item">
+            <div className="feature-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+            </div>
+            <h3>Personalized Coaching</h3>
+            <p>Custom training programs designed specifically for your body, goals, and lifestyle.</p>
+          </div>
+
+          <div className="feature-item">
+            <div className="feature-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <h3>Progress Tracking</h3>
+            <p>Monitor your fitness journey with detailed analytics and visual progress reports.</p>
+          </div>
+
+          <div className="feature-item">
+            <div className="feature-item__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+            </div>
+            <h3>Nutrition Guidance</h3>
+            <p>Expert dietary advice to fuel your workouts and optimize your results.</p>
+          </div>
         </div>
 
-        <div className="features__grid">
-          <div className="features__content">
-            <div className="features__text">
-              <h3>Expert Guidance & Support</h3>
-              <p>Get personalized training, nutrition guidance, and regular check-ins to ensure your success</p>
-            </div>
-
-            <div className="features__image-grid">
-              <div className="features__image-item">
-                <img 
-                  src="./images/features/workout-1.jpg" 
-                  alt="Personalized training program"
-                  title="Custom workout plans tailored to your goals" 
-                />
-                <span className="features__image-label">Personalized Programs</span>
+        <div className="features__app">
+          <div className="features__app-content">
+            <h3>All-in-One Fitness Platform</h3>
+            <div className="features__app-points">
+              <div className="app-point">
+                <span>✓</span>
+                <p>Workout video library</p>
               </div>
-              <div className="features__image-item">
-                <img 
-                  src="./images/features/mariia-shalabaieva-wPfX1O_E-UE-unsplash.jpg" 
-                  alt="Weekly online check-ins and progress tracking"
-                  title="Regular progress monitoring and adjustments" 
-                />
-                <span className="features__image-label">Weekly Check-ins</span>
+              <div className="app-point">
+                <span>✓</span>
+                <p>Direct coach messaging</p>
               </div>
-              <div className="features__image-item">
-                <img 
-                  src="./images/features/irina-del-uJQYVRza0VY-unsplash.jpg" 
-                  alt="Personalized nutrition guidance and meal planning"
-                  title="Expert nutrition guidance for optimal results" 
-                />
-                <span className="features__image-label">Nutrition Guidance</span>
+              <div className="app-point">
+                <span>✓</span>
+                <p>Progress photo tracking</p>
               </div>
-            </div>
-
-            <div className="features__highlights">
-              <div className="features__highlight">
-                <span>Video Instructions</span>
-              </div>
-              <div className="features__highlight">
-                <span>Chat Support</span>
-              </div>
-              <div className="features__highlight">
-                <span>Progress Tracking</span>
+              <div className="app-point">
+                <span>✓</span>
+                <p>Exercise demonstrations</p>
               </div>
             </div>
           </div>
-
-          <div className="features__main-image">
+          <div className="features__app-img">
             <img 
-              src="./images/features/dalibor-janecek-SjKw-0EcsdM-unsplash.jpg" 
-              alt="All-in-one fitness tracking app"
-              title="Track your progress and connect with your coach" 
+              src="./images/features/app-showcase.jpg" 
+              alt="WE Fitness App Interface"
             />
-            <div className="features__main-overlay">
-              <div className="features__main-text">
-                <h4>All-in-One Fitness App</h4>
-                <div className="features__app-features">
-                  <div className="features__app-feature">
-                    <div className="features__app-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                    </div>
-                    <div className="features__app-feature-text">
-                      <h5>Log your training</h5>
-                      <p>Track every workout session</p>
-                    </div>
-                  </div>
-                  <div className="features__app-feature">
-                    <div className="features__app-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                      </svg>
-                    </div>
-                    <div className="features__app-feature-text">
-                      <h5>Track progress</h5>
-                      <p>Monitor your improvements</p>
-                    </div>
-                  </div>
-                  <div className="features__app-feature">
-                    <div className="features__app-icon">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    </div>
-                    <div className="features__app-feature-text">
-                      <h5>Chat Support</h5>
-                      <p>Always connected to your coach</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

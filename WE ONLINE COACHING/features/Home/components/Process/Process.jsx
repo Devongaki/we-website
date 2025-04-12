@@ -77,9 +77,7 @@ const Process = () => {
   return (
     <section className="process" ref={processRef}>
       <div className="container">
-        <div className="process__header">
-          <h2 className="process__title">HOW IT WORKS</h2>
-        </div>
+        <h2 className="process__title">HOW IT WORKS</h2>
         
         <div className="process__mobile-carousel">
           <div className="process__slide">
