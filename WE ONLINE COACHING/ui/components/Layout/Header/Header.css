@@ -237,7 +237,7 @@
     flex-direction: column;
     gap: var(--spacing-md);
     padding: var(--spacing-md);
-    background-color: var(--color-bg-primary);
+    background: linear-gradient(135deg, #000080, #000046); 
     box-shadow: var(--shadow-md);
     position: absolute;
     top: 100%;
