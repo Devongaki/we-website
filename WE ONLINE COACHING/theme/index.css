@@ -181,22 +181,25 @@ table {
   pointer-events: none;
 }
 
-/* Force all section backgrounds to be transparent */
+/* Force all section backgrounds to be transparent EXCEPT footer */
 .home .hero,
 .home .features--minimal,
-.home .process,
-.home .footer {
+.home .process {
   background: transparent !important;
   background-image: none !important;
   background-color: transparent !important;
 }
 
-/* Remove all dividing lines and borders */
+/* Remove borders for sections EXCEPT footer */
 .home .features--minimal,
-.home .process,
-.home .footer {
+.home .process {
   border-top: none !important;
   border-bottom: none !important;
+}
+
+/* Make footer styling exceptions */
+.home .footer {
+  background: #000040 !important;
 }
 
 /* Remove any ::before and ::after that might create visual dividers */
