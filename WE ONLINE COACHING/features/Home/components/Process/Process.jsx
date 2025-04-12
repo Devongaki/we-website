@@ -109,7 +109,7 @@ const Process = () => {
 
           <div className="process__navigation">
             <button 
-              className="process__nav-arrow process__nav-arrow--prev" 
+              className="process__carousel-arrow process__carousel-arrow--prev" 
               onClick={() => setCurrentSlide(prev => prev === 0 ? steps.length - 1 : prev - 1)}
             >
               ←
@@ -124,7 +124,7 @@ const Process = () => {
               ))}
             </div>
             <button 
-              className="process__nav-arrow process__nav-arrow--next"
+              className="process__carousel-arrow process__carousel-arrow--next"
               onClick={() => setCurrentSlide(prev => prev === steps.length - 1 ? 0 : prev + 1)}
             >
               →

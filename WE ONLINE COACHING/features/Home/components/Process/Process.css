@@ -353,6 +353,7 @@
   overflow: visible;
   position: relative;
   width: 100%;
+  z-index: 2;
 }
 
 .process__slide {
@@ -440,6 +441,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 3;
 }
 
 .process__action-button:hover {
@@ -452,17 +455,19 @@
   justify-content: center;
   gap: 1.5rem;
   margin-top: 2rem;
+  position: relative;
+  z-index: 3;
 }
 
 .process__nav-arrow {
+  color: white;
   background: none;
   border: none;
-  color: white;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
   opacity: 0.7;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 }
 
 .process__nav-arrow:hover {
