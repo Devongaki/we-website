@@ -4,7 +4,10 @@ import './Process.css';
 
 const Process = () => {
   const processRef = useRef(null);
+  const carouselRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const steps = [
     {
@@ -74,12 +77,47 @@ const Process = () => {
     setCurrentSlide((prev) => (prev === 0 ? steps.length - 1 : prev - 1));
   };
 
+  // Minimum swipe distance (in px) to trigger slide change
+  const minSwipeDistance = 50;
+
+  const handleTouchStart = (e) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    if (isLeftSwipe) {
+      nextSlide();
+    } else if (isRightSwipe) {
+      prevSlide();
+    }
+    
+    // Reset values
+    setTouchStart(0);
+    setTouchEnd(0);
+  };
+
   return (
     <section className="process" ref={processRef}>
       <div className="container">
         <h2 className="process__title">HOW IT WORKS</h2>
         
-        <div className="process__mobile-carousel">
+        <div 
+          className="process__mobile-carousel"
+          ref={carouselRef}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div className="process__slide">
             <div className="process__card">
               <div className="process__step-number-wrapper">

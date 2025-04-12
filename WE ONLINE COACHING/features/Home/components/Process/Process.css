@@ -354,6 +354,8 @@
   position: relative;
   width: 100%;
   z-index: 2;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .process__slide {
@@ -369,6 +371,7 @@
   padding: 2rem 1.5rem;
   position: relative;
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .process__step-number {
@@ -515,6 +518,11 @@
 
   .process__mobile-carousel {
     margin-bottom: 2rem;
+    cursor: grab;
+  }
+
+  .process__mobile-carousel:active {
+    cursor: grabbing;
   }
 
   .process__slide {
