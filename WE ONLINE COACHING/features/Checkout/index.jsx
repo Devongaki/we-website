@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import './Checkout';
-import logo from '../../ui/assets/WE_Logo.png';
 
 // Use test key temporarily
 const stripePromise = loadStripe('pk_test_51RBDv39vE5ISpIBOC9RKqlFa4BPvQNUM4y3W4QQdzOLS2T3TW5jBntkt3lPlFlQXIRmZgFWQtIqyBEiz1LE8P7Zp00pYT3XYLp');
@@ -178,9 +177,6 @@ const CheckoutPage = () => {
           >
             ← Back
           </button>
-          <div className="checkout-page__logo">
-            <img src={logo} alt="WE Online Coaching" />
-          </div>
           <div className="checkout-page__summary">
             <h2>{selectedPlan.duration}</h2>
             <div className="checkout-page__price">
