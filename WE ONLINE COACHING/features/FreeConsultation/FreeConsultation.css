@@ -2,8 +2,23 @@
 /* Main Layout */
 .consultation {
   padding: var(--spacing-2xl) 0;
-  background-color: var(--color-bg-secondary);
+  background: linear-gradient(135deg, #000080, #000046);
   min-height: calc(100vh - 64px);
+  position: relative;
+  color: white;
+}
+
+.consultation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .consultation .container {
@@ -16,22 +31,25 @@
 
 /* Content Section */
 .consultation__content {
-  background-color: var(--color-bg-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: var(--spacing-xl);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .consultation__title {
   font-size: clamp(2rem, 4vw, 2.5rem);
-  color: var(--color-text-primary);
+  color: white;
   margin-bottom: var(--spacing-md);
   text-align: center;
 }
 
 .consultation__description {
   font-size: clamp(1rem, 2vw, 1.125rem);
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: var(--spacing-xl);
   text-align: center;
   max-width: 600px;
@@ -46,44 +64,128 @@
 }
 
 .form__group {
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 24px;
 }
 
 .form__group label {
   display: block;
-  margin-bottom: var(--spacing-xs);
+  margin-bottom: 8px;
   font-weight: 500;
-  color: var(--color-text-primary);
+  color: white;
+  font-size: 16px;
 }
 
-/* Form Inputs */
+/* Consistent styling for all input fields */
 .form__group input,
 .form__group textarea,
-.form__group select {
+.form__group select,
+.react-select__control,
+.form__group .react-select-container .react-select__control {
   width: 100%;
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 2px solid #e2e8f0;
-  border-radius: var(--radius-md);
-  font-size: 1rem;
-  color: var(--color-text-primary);
-  background-color: var(--color-white);
+  padding: 14px 16px;
+  height: 54px; /* Consistent height */
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.9);
   transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-top: 6px;
 }
 
+/* Hover state for all inputs */
 .form__group input:hover,
 .form__group textarea:hover,
-.form__group select:hover {
-  border-color: var(--color-brand-primary);
+.form__group select:hover,
+.react-select__control:hover,
+.form__group .react-select-container .react-select__control:hover {
+  border-color: rgba(0, 0, 128, 0.5);
+  background-color: white;
 }
 
+/* Focus state for all inputs */
 .form__group input:focus,
 .form__group textarea:focus,
-.form__group select:focus {
+.form__group select:focus,
+.react-select__control--is-focused,
+.form__group .react-select-container .react-select__control--is-focused {
   outline: none;
-  border-color: var(--color-brand-primary);
-  box-shadow: 0 0 0 3px rgba(var(--color-brand-primary-rgb), 0.15);
+  border-color: #000080;
+  box-shadow: 0 0 0 3px rgba(0, 0, 128, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
+/* Error state */
+.form__group input.error,
+.form__group textarea.error,
+.form__group select.error,
+.form__group .react-select--error .react-select__control {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+/* React Select specific styling to match other inputs */
+.react-select__control,
+.form__group .react-select-container .react-select__control {
+  display: flex;
+  align-items: center;
+  min-height: 54px;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.react-select__value-container {
+  padding: 2px 8px;
+  margin: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.react-select__indicators {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  height: 100%;
+  padding-right: 8px;
+}
+
+.react-select__indicator {
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 128, 0.5);
+}
+
+.react-select__indicator-separator {
+  align-self: center;
+  height: 60%;
+  margin: 0 4px;
+}
+
+.react-select__placeholder,
+.react-select__single-value {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  transform: none;
+}
+
+.css-13cymwt-control,
+.css-t3ipsp-control {
+  min-height: 54px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.react-select__dropdown-indicator svg,
 /* Placeholders */
 .form__group input::placeholder,
 .form__group textarea::placeholder {
@@ -126,14 +228,76 @@
 }
 
 /* Submit Button */
-.consultation__submit {
+.consultation__submit,
+button[type="submit"].consultation__submit {
   width: 100%;
-  margin-top: var(--spacing-lg);
+  padding: 16px 24px; /* Larger size */
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000080, #000046);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
 }
 
-.consultation__submit:disabled {
-  opacity: 0.7;
+/* Active state with subtle animation */
+.consultation__submit:not(:disabled):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Add shine animation on hover */
+.consultation__submit:not(:disabled)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.consultation__submit:not(:disabled):hover::before {
+  left: 100%;
+}
+
+/* Very clear disabled state */
+.consultation__submit:disabled,
+.button--disabled.consultation__submit {
+  background: linear-gradient(135deg, #5c5c7c, #4a4a66) !important;
+  color: rgba(255, 255, 255, 0.5);
   cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.7;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+/* Add a subtle "lock" effect to the disabled button */
+.consultation__submit:disabled::after {
+  content: '🔒';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.5;
 }
 
 /* Info Cards Section */
@@ -144,37 +308,59 @@
 }
 
 .info-card {
-  background-color: var(--color-bg-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: var(--spacing-lg);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Card headings */
 .info-card h3 {
   font-size: 1.25rem;
-  color: var(--color-text-primary);
+  color: white;
   margin-bottom: var(--spacing-md);
+  position: relative;
+  padding-bottom: 0.5rem;
 }
 
-.info-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Add a subtle underline to the headings */
+.info-card h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: #FFD700; /* Gold color accent */
 }
 
+/* Card list items */
 .info-card li {
   display: flex;
   align-items: center;
   padding: var(--spacing-xs) 0;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.9);
 }
 
+/* Checkmark icon */
 .info-card li::before {
   content: '✓';
   display: inline-block;
   margin-right: var(--spacing-sm);
-  color: var(--color-brand-primary);
+  color: #FFD700; /* Gold checkmark */
   font-weight: bold;
+}
+
+/* Hover effect */
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
 }
 
 /* Success Modal */
@@ -292,11 +478,27 @@
 }
 
 .react-select__placeholder {
-  color: var(--color-text-secondary);
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0;
+  padding: 0;
+  color: #888;
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: calc(100% - 32px);
 }
 
 .react-select__single-value {
-  color: var(--color-text-primary);
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  max-width: calc(100% - 32px);
 }
 
 /* Animations */
@@ -327,4 +529,254 @@
     position: sticky;
     top: var(--spacing-xl);
   }
+}
+
+/* Improve placeholder text alignment */
+.react-select__placeholder {
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0;
+  padding: 0;
+  color: #888;
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: calc(100% - 32px);
+}
+
+/* Also fix text input placeholders */
+.form__group input::placeholder,
+.form__group textarea::placeholder {
+  color: #888;
+  opacity: 1;
+  font-size: 16px;
+  line-height: normal;
+  vertical-align: middle;
+}
+
+/* Fix the single value text alignment */
+.react-select__single-value {
+  position: absolute;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  max-width: calc(100% - 32px);
+}
+
+/* Fix any custom React Select styling that might be affecting placeholder alignment */
+div[class*="-placeholder"] {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Make sure the input container maintains proper height */
+.react-select__input-container {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex !important;
+  align-items: center !important;
+}
+
+/* Fix Firefox-specific placeholder alignment issues */
+@-moz-document url-prefix() {
+  .react-select__placeholder,
+  .react-select__single-value {
+    line-height: normal;
+  }
+}
+
+/* Ensure cross-browser compatibility for input placeholders */
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  line-height: normal;
+  vertical-align: middle;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  line-height: normal;
+  vertical-align: middle;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  line-height: normal;
+  vertical-align: middle;
+}
+:-moz-placeholder { /* Firefox 18- */
+  line-height: normal;
+  vertical-align: middle;
+}
+
+/* Style the dropdown menu to match site theme */
+.react-select__menu,
+div[class*="-menu"] {
+  background-color: rgba(0, 0, 60, 0.95) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  margin-top: 8px !important;
+  z-index: 1000;
+}
+
+/* Style dropdown options */
+.react-select__option,
+div[class*="-option"] {
+  background-color: transparent !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  padding: 12px 16px !important;
+  cursor: pointer !important;
+  font-size: 16px !important;
+  transition: all 0.15s ease !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Hover state for options */
+.react-select__option:hover,
+div[class*="-option"]:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+/* Selected option style */
+.react-select__option--is-selected,
+div[class*="-option"][aria-selected="true"] {
+  background-color: rgba(0, 0, 128, 0.5) !important;
+  color: white !important;
+  font-weight: 500 !important;
+}
+
+/* Focused option style */
+.react-select__option--is-focused,
+div[class*="-option"][class*="-optionFocused"] {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+}
+
+/* Style the dropdown menu scrollbar */
+.react-select__menu-list::-webkit-scrollbar,
+div[class*="-menuList"]::-webkit-scrollbar {
+  width: 8px;
+}
+
+.react-select__menu-list::-webkit-scrollbar-track,
+div[class*="-menuList"]::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.react-select__menu-list::-webkit-scrollbar-thumb,
+div[class*="-menuList"]::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.react-select__menu-list::-webkit-scrollbar-thumb:hover,
+div[class*="-menuList"]::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Style the dropdown container */
+.react-select__menu-list,
+div[class*="-menuList"] {
+  padding: 6px !important;
+  max-height: 300px !important;
+}
+
+/* Add a subtle animation to the dropdown */
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.react-select__menu,
+div[class*="-menu"] {
+  animation: dropdownFadeIn 0.2s ease forwards;
+}
+
+/* Fix active state for the control */
+.react-select__control--is-focused,
+div[class*="-control"][class*="-focused"] {
+  border-color: rgba(255, 215, 0, 0.5) !important; /* Gold highlight */
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2) !important; /* Outer glow instead of inner border */
+  background-color: white !important;
+  outline: none !important;
+}
+
+/* Remove unwanted inner borders in select inputs */
+.react-select__control,
+div[class*="control"],
+.css-13cymwt-control,
+.css-t3ipsp-control {
+  border-width: 2px !important;
+  box-shadow: none !important; /* Remove default box-shadow */
+  outline: none !important;
+}
+
+/* Hide any separator that might look like an inner border */
+.react-select__indicator-separator,
+div[class*="indicatorSeparator"] {
+  display: none !important; /* Remove the separator completely */
+}
+
+/* Ensure no inner borders in value container */
+.react-select__value-container,
+div[class*="valueContainer"] {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding-left: 12px !important;
+}
+
+/* Remove any inner borders in the indicators area */
+.react-select__indicators,
+div[class*="indicators"] {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Fix any specific dropdown indicator that might have borders */
+.react-select__dropdown-indicator,
+div[class*="dropdownIndicator"] {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  color: rgba(0, 0, 80, 0.7) !important; /* Update color to match theme */
+}
+
+/* Ensure clear indicator has no borders */
+.react-select__clear-indicator,
+div[class*="clearIndicator"] {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Fix any multi-value containers that might have borders */
+.react-select__multi-value,
+div[class*="multiValue"] {
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  background-color: rgba(0, 0, 80, 0.1) !important; /* Match theme */
+}
+
+/* Remove any unwanted focus outlines in Firefox */
+.react-select__control:focus,
+.react-select__control *:focus,
+div[class*="control"]:focus,
+div[class*="control"] *:focus {
+  outline: none !important;
+  box-shadow: none !important;
 } 
