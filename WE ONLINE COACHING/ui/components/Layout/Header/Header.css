@@ -3,11 +3,13 @@
   top: 0;
   left: 0;
   right: 0;
-  height: var(--header-height);
+  width: 100%;
   z-index: 1000;
-  background: rgba(0, 0, 128, 0.1);
+  background: rgba(0, 0, 70, 0.8) !important;
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-border);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header__container {
@@ -84,22 +86,9 @@
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(var(--color-primary-rgb), 0.3);
   border-color: var(--color-border-hover);
-} 
-
-
-
-
-
-/* Header Component */
-.header {
-  background: linear-gradient(135deg, #000080, #000046);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  width: 100%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+/* Header Component */
 .header__container {
   width: 100%;
   max-width: 100%;
@@ -267,4 +256,36 @@
   .header__container {
     padding: var(--spacing-md) 8%;
   }
+}
+
+/* Enhanced styling for active navigation links */
+.header__nav-link--active {
+  color: #FFD700 !important; /* Gold text color instead of white */
+  font-weight: 700; /* Bold text */
+  position: relative;
+}
+
+/* Gold underline for active link */
+.header__nav-link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -3px; /* Slightly lower position */
+  left: var(--spacing-sm);
+  right: var(--spacing-sm);
+  height: 2px;
+  background-color: #FFD700; /* Gold color */
+  transform: scaleX(1) !important; /* Always show underline */
+  opacity: 1;
+}
+
+/* Subtle glow effect for active links */
+.header__nav-link--active {
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4); /* Subtle gold glow */
+}
+
+/* Mobile menu active item styling */
+.header__nav--mobile .header__nav-link--active {
+  background-color: rgba(255, 215, 0, 0.15); /* Gold-tinted background */
+  border-radius: 4px;
+  color: #FFD700 !important;
 }
