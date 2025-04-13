@@ -14,12 +14,12 @@ console.log('');
 rl.question('Enter your Stripe publishable key (starts with pk_test_): ', (publishableKey) => {
   rl.question('Enter your Stripe secret key (starts with sk_test_): ', (secretKey) => {
     // Update the frontend file
-    let frontendContent = fs.readFileSync('./src/pages/Prices/index.jsx', 'utf8');
+    let frontendContent = fs.readFileSync('./WE ONLINE COACHING/features/Prices/Prices.jsx', 'utf8');
     frontendContent = frontendContent.replace(
       /const stripePromise = loadStripe\('.*?'\);/,
       `const stripePromise = loadStripe('${publishableKey}');`
     );
-    fs.writeFileSync('./src/pages/Prices/index.jsx', frontendContent);
+    fs.writeFileSync('./WE ONLINE COACHING/features/Prices/Prices.jsx', frontendContent);
     
     // Update the backend file
     let backendContent = fs.readFileSync('./server.js', 'utf8');
