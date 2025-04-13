@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import './Checkout';
-import logo from '../../../assets/WE_Logo.png';
+import logo from '../../ui/assets/images/WE_Logo.png';
 
 // Use test key temporarily
 const stripePromise = loadStripe('pk_test_51RBDv39vE5ISpIBOC9RKqlFa4BPvQNUM4y3W4QQdzOLS2T3TW5jBntkt3lPlFlQXIRmZgFWQtIqyBEiz1LE8P7Zp00pYT3XYLp');
