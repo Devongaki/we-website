@@ -144,24 +144,82 @@
 }
 
 /* Submit Button */
-.consultation__submit {
-  background: linear-gradient(135deg, #000080, #000046);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
+.consultation__submit,
+button[type="submit"].consultation__submit {
   width: 100%;
-  margin-top: var(--spacing-lg);
+  padding: 16px 24px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #000080, #000046);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
 }
 
-.consultation__submit:disabled {
-  opacity: 0.7;
+.consultation__submit:not(:disabled):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.consultation__submit:not(:disabled)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.consultation__submit:not(:disabled):hover::before {
+  left: 100%;
+}
+
+.consultation__submit:disabled,
+.button--disabled.consultation__submit {
+  background: linear-gradient(135deg, #5c5c7c, #4a4a66) !important;
+  color: rgba(255, 255, 255, 0.5);
   cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  opacity: 0.7;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
-.consultation__submit:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.3);
+.consultation__submit:disabled::after {
+  content: '🔒';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.consultation__submit:not(:disabled):active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.consultation__submit:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Info Cards Section */
