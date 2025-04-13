@@ -71,17 +71,6 @@
   padding: 0;
 }
 
-.checkout-page__logo {
-  margin-bottom: 24px;
-  text-align: center;
-}
-
-.checkout-page__logo img {
-  height: 48px;
-  width: auto;
-  filter: brightness(0) invert(1); /* This will make the logo white */
-}
-
 .checkout-page__summary {
   background: rgba(255, 255, 255, 0.15);
   padding: 24px;
@@ -222,7 +211,7 @@
   width: 100%;
   padding: 12px 20px;
   margin-top: 16px;
-  background-color: #000080;
+  background: linear-gradient(135deg, #000080, #000046);
   color: white;
   border-radius: 4px;
   border: none;
@@ -230,11 +219,13 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .checkout-page__submit:hover:not(:disabled) {
-  background-color: #0000a0;
+  background: linear-gradient(135deg, #000090, #000050);
   transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .checkout-page__submit:disabled {
@@ -335,10 +326,6 @@
     font-size: 20px;
     margin: 0 0 24px;
     text-align: center;
-  }
-
-  .checkout-page__logo {
-    display: none; /* Hide logo on mobile since it's likely in the header */
   }
 
   .checkout-page__back-button {
