@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from '../ui/components/Layout/Header/Header';
 import Home from '../features/Home';
-import Prices from '../features/Prices';
+import Prices from '../features/Prices/Prices';
 import CheckoutPage from '../features/Checkout';
 import FreeConsultation from '../features/FreeConsultation/FreeConsultation';
 

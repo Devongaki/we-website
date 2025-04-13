@@ -37,13 +37,13 @@ const Prices = () => {
         'Log your training sessions',
         'Progress overview',
         'All-in-one app',
-        'Commitment period (12 months)',
+        'Commitment period (3 months)',
       ],
     },
     {
       duration: '6 months',
       price: '1250',
-      signUpFee: '125',
+      signUpFee: 'FREE',
       features: [
         'Personalized training program',
         'Nutrition guidance and support (3 months)',
@@ -54,13 +54,13 @@ const Prices = () => {
         'Log your training sessions',
         'Progress overview',
         'All-in-one app',
-        'Commitment period (6 months)',
+        'Commitment period (3 months)',
       ],
     },
     {
       duration: '3 months',
       price: '1500',
-      signUpFee: '200',
+      signUpFee: 'FREE',
       features: [
         'Personalized training program',
         'Nutrition guidance and support (1 month)',
