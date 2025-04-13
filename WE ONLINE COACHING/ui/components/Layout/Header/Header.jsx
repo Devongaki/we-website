@@ -23,6 +23,7 @@ const Header = () => {
         <div className="header__desktop">
           <nav className="header__nav">
             <Link to="/" className="header__nav-link">Home</Link>
+            <Link to="/about" className="header__nav-link">About</Link>
             <Link to="/prices" className="header__nav-link">Prices</Link>
             <Link to="/blog" className="header__nav-link">Blog</Link>
             <div className="header__auth">

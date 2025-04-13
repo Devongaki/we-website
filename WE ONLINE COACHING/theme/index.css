@@ -31,9 +31,19 @@
   box-sizing: border-box;
 }
 
-html, body {
+html, body, #root, .app {
   height: 100%;
-  scroll-behavior: smooth;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Use viewport height to ensure it takes at least the full screen */
+}
+
+main {
+  padding-top: var(--header-height, 80px); /* Adjust the value based on your header height */
+  flex: 1 0 auto; /* Keep this from the sticky footer setup */
 }
 
 /* Basic document styling */
@@ -90,7 +100,8 @@ body::before {
 
 /* Footer special styling */
 .footer {
-  background: transparent !important;
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  background: #000040 !important; /* Keep your dark blue footer */
   position: relative;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -225,12 +236,12 @@ table {
 }
 
 /* Make sure header and footer blend in */
-.header,
+/* .header,
 .footer {
   background: transparent !important;
   background-image: none !important;
   border: none !important;
-}
+} */
 
 /* Special header styling */
 .header {

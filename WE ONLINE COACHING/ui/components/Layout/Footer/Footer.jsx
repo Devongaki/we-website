@@ -19,7 +19,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer footer--custom">
+    <footer className="footer">
       <div className="container">
         {/* Main Footer Content */}
         <div className="footer__grid">
