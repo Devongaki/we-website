@@ -59,10 +59,10 @@ const BlogComingSoon = () => {
             <div className="blog-coming-soon__countdown">Coming Very Soon!</div>
           </div>
           
-          <div className="blog-coming-soon__cta">
+          {/* <div className="blog-coming-soon__cta">
             <p>Want to be notified when our blog launches?</p>
             <a href="/#newsletter" className="button button--primary">Subscribe to Our Newsletter</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
