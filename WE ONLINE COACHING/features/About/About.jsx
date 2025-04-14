@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import coachWilliam from '../../../public/images/coaches/william.png';
+import coachWilliam from '../../../public/images/coaches/william.jpg';
 import './about.css';
 
 const About = () => {
