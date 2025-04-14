@@ -122,11 +122,26 @@ const FreeConsultation = () => {
     setIsSubmitting(true);
 
     try {
-      // Here you would typically send the form data to your backend
-      console.log('Form submitted:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Send form data to Netlify function for email processing
+      const response = await fetch(`${window.location.origin}/.netlify/functions/send-consultation-confirmation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          ageRange: formData.ageRange,
+          experience: formData.experience, 
+          primaryGoal: formData.primaryGoal
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to submit consultation request');
+      }
       
       // Show success message
       setShowSuccess(true);
