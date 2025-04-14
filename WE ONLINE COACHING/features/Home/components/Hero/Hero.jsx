@@ -22,8 +22,8 @@ const Hero = () => {
           </h1>
           
           <p className="hero__description">
-            Achieve your fitness goals with personalized online coaching, expert guidance,
-            and a supportive community. Start your transformation today.
+            Achieve your strength training goals with dedicated coaches. Get a personalized program,
+            nutrition guidance, and consistent support to stay on track. Start your transformation today!
           </p>
           
           <div className="hero__cta-group">
