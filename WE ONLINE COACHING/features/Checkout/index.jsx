@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import './Checkout';
+import { event } from '../../utils/analytics';
 
 // Use test key temporarily
 const stripePromise = loadStripe('pk_test_51RBDv39vE5ISpIBOC9RKqlFa4BPvQNUM4y3W4QQdzOLS2T3TW5jBntkt3lPlFlQXIRmZgFWQtIqyBEiz1LE8P7Zp00pYT3XYLp');
@@ -23,6 +24,14 @@ const CheckoutForm = ({ clientSecret, selectedPlan }) => {
     setProcessing(true);
     setError(null);
 
+    // Track checkout initiation
+    event({
+      action: 'begin_checkout',
+      category: 'Ecommerce',
+      label: selectedPlan.duration,
+      value: selectedPlan.price
+    });
+
     try {
       const { error } = await stripe.confirmPayment({
         elements,
@@ -32,7 +41,23 @@ const CheckoutForm = ({ clientSecret, selectedPlan }) => {
       });
 
       if (error) {
+        // Track payment error
+        event({
+          action: 'payment_error',
+          category: 'Error',
+          label: error.message
+        });
         setError(error.message);
+        setProcessing(false);
+      } else {
+        // Track successful purchase
+        event({
+          action: 'purchase',
+          category: 'Ecommerce',
+          label: selectedPlan.duration,
+          value: selectedPlan.price
+        });
+        setError(null);
         setProcessing(false);
       }
     } catch (err) {
