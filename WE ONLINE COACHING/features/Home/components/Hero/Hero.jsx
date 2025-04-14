@@ -44,11 +44,11 @@ const Hero = () => {
               <span className="hero__stat-label">Personalized</span>
             </div>
             <div className="hero__stat">
-              <span className="hero__stat-number">Expert</span>
-              <span className="hero__stat-label">Guidance</span>
+              <span className="hero__stat-number">Dedicated</span>
+              <span className="hero__stat-label">Coaches</span>
             </div>
             <div className="hero__stat">
-              <span className="hero__stat-number">Flexible</span>
+              <span className="hero__stat-number">Ongoing</span>
               <span className="hero__stat-label">Support</span>
             </div>
           </div>
