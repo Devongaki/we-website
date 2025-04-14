@@ -265,6 +265,10 @@
   /* Timer */
   .blog-coming-soon__timer {
     margin: 3rem 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
   
   .blog-coming-soon__countdown {
@@ -277,6 +281,10 @@
   /* CTA */
   .blog-coming-soon__cta {
     margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
   
   .blog-coming-soon__cta p {
