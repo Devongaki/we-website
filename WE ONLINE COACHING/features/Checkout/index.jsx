@@ -211,7 +211,7 @@ const CheckoutPage = () => {
               </li>
               <li>
                 <span className="icon">✓</span>
-                24/7 chat support
+                Chat support
               </li>
             </ul>
           </div>
@@ -226,8 +226,8 @@ const CheckoutPage = () => {
 
           <div className="checkout-page__contact">
             <h3>Need help?</h3>
-            <p>Contact us at <a href="mailto:support@weonlinecoaching.com">support@weonlinecoaching.com</a></p>
-            <p>Available Monday-Friday, 9:00-17:00</p>
+            <p>Contact us at <a href="mailto:support@weonlinecoaching.com">we.onlinecoaching@gmail.com</a></p>
+            <p>Available Monday-Friday, 10:00-18:00</p>
           </div>
         </div>
 
