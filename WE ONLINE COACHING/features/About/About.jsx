@@ -8,10 +8,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="about">
-      <div className="about__background"></div>
-      <div className="about__overlay"></div>
-      
+    <div className="about home">
       <div className="container">
         <div className="about__header">
           <h1 className="about__title">Meet Your Coaches</h1>
