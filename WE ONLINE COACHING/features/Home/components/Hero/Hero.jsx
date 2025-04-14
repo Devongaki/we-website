@@ -14,7 +14,7 @@ const Hero = () => {
       
       <div className="hero__container">
         <div className="hero__content">
-          <div className="hero__badge">Premium Online Coaching</div>
+          <div className="hero__badge">WE Online Coaching</div>
           
           <h1 className="hero__title">
             Transform Your Body,
