@@ -6,11 +6,10 @@ import Prices from '../features/Prices/Prices';
 import CheckoutPage from '../features/Checkout';
 import FreeConsultation from '../features/FreeConsultation/FreeConsultation';
 import About from '../features/About/About';
+import Blog from '../features/Blog/Blog';
 // Import theme styles
 import '../theme/index.css';
 
-// Temporary page components
-const Blog = () => <div className="container mt-lg">Blog Page</div>;
 
 function App() {
   return (
