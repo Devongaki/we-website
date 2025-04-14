@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import coachWilliam from '../../../public/images/coaches/william.png';
 import './about.css';
 
 const About = () => {
@@ -23,7 +24,7 @@ const About = () => {
             <div className="coach__image-container">
               <div className="coach__image-wrapper">
                 <img
-                  src="/images/coach1.jpg" 
+                  src={coachWilliam} 
                   alt="Coach Name"
                   className="coach__image"
                 />
@@ -32,28 +33,28 @@ const About = () => {
             </div>
             
             <div className="coach__content">
-              <h2 className="coach__name">Coach Name</h2>
-              <p className="coach__title">Head Coach & Nutrition Specialist</p>
+              <h2 className="coach__name">William Ongaki</h2>
+              <p className="coach__title">Professional Dancer & Fitness Coach</p>
               
               <div className="coach__bio">
                 <p>
-                  With over 10 years of experience in fitness and nutrition coaching, I've helped hundreds of clients achieve their health and fitness goals. My approach combines evidence-based training methods with personalized nutrition strategies.
+                As a professional dancer certified at the prestigious Bådar Akademiet in Oslo, Norway, I bring a unique blend of artistry and athletic expertise to fitness coaching. With over a decade of experience in professional dance, I understand the intricate connection between movement, strength, and overall well-being.
                 </p>
                 <p>
-                  I believe that sustainable results come from building healthy habits that fit your lifestyle. My specialties include strength training, weight management, and sports-specific conditioning.
+                During my three years as a group instructor at SATS ELIXIA, I've developed and refined my approach to fitness instruction, combining my dance background with effective training methodologies. My lifetime dedication to physical training has given me deep insights into sustainable fitness practices.
                 </p>
                 <p>
-                  My certifications include:
+                My certifications include:
                 </p>
                 <ul className="coach__certifications">
-                  <li>Certified Strength and Conditioning Specialist (CSCS)</li>
-                  <li>Precision Nutrition Level 2 Coach</li>
-                  <li>Master's Degree in Exercise Physiology</li>
+                  <li>Professional Dance Certification - Bådar Akademiet, Oslo</li>
+                  <li>Group Fitness Instructor - SATS ELIXIA</li>
+                  <li>Over 10 Years Professional Dance Experience</li>
                 </ul>
               </div>
               
               <div className="coach__social">
-                <a href="https://www.instagram.com/coach1" target="_blank" rel="noopener noreferrer" className="coach__social-link">
+                <a href="https://www.instagram.com/itsongakiwilliam?igsh=MTgxcHY4Y3hwMDJ4dg%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" className="coach__social-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
               </div>
