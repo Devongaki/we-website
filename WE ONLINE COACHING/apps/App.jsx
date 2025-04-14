@@ -8,6 +8,7 @@ import FreeConsultation from '../features/FreeConsultation/FreeConsultation';
 import About from '../features/About/About';
 import Blog from '../features/Blog/Blog';
 import Login from '../features/Auth/Login';
+import PrivacyPolicy from '../features/Legal/PrivacyPolicy';
 import { useEffect } from 'react';
 import { initGA, pageview } from '../utils/analytics';
 import { useLocation } from 'react-router-dom';
@@ -46,6 +47,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/free-consultation" element={<FreeConsultation />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </main>
       <Footer />
