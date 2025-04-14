@@ -13,6 +13,7 @@ import { useEffect } from 'react';
 import { initGA, pageview } from '../utils/analytics';
 import { useLocation } from 'react-router-dom';
 import CookieConsent from '../ui/components/CookieConsent/CookieConsent';
+import ScrollToTop from '../ui/components/ScrollToTop/ScrollToTop';
 
 // Import theme styles
 import '../theme/index.css';
@@ -38,6 +39,7 @@ function App() {
   return (
     <div className="app">
       <AnalyticsTracker />
+      <ScrollToTop />
       <Header />
       <main>
         <Routes>
