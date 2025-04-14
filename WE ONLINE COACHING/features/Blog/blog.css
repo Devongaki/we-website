@@ -1,0 +1,312 @@
+/* WE ONLINE COACHING/features/Blog/BlogComingSoon.css */
+.blog-coming-soon {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #000080, #000033);
+    min-height: calc(100vh - 64px);
+    color: white;
+  }
+  
+  .blog-coming-soon__content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .blog-coming-soon__title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 3rem;
+    background: linear-gradient(90deg, #ffffff, #8ED1FC);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .blog-coming-soon__message {
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 3rem;
+    opacity: 0.9;
+  }
+  
+  /* Animation container */
+  .blog-coming-soon__animation {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  
+  /* Character base */
+  .workout-character {
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Character at different stages */
+  .workout-character--stage-1 {
+    transform: scale(0.8);
+  }
+  
+  .workout-character--stage-2 {
+    transform: scale(1);
+  }
+  
+  .workout-character--stage-3 {
+    transform: scale(1.3);
+  }
+  
+  /* Character parts */
+  .workout-character__head {
+    width: 40px;
+    height: 40px;
+    background-color: #8d5524;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .workout-character__body {
+    width: 80px;
+    height: 100px;
+    background-color: #e63946;
+    border-radius: 15px;
+    position: relative;
+    transition: all 0.5s ease;
+  }
+  
+  .workout-character--stage-2 .workout-character__body {
+    width: 90px;
+    height: 110px;
+    background-color: #e63946;
+  }
+  
+  .workout-character--stage-3 .workout-character__body {
+    width: 110px;
+    height: 120px;
+    background-color: #e63946;
+  }
+  
+  /* Arms */
+  .workout-character__arm {
+    width: 20px;
+    height: 70px;
+    background-color: #8d5524;
+    position: absolute;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+  }
+  
+  .workout-character__arm--left {
+    left: -15px;
+    top: 10px;
+    transform-origin: top center;
+    transform: rotate(20deg);
+  }
+  
+  .workout-character__arm--right {
+    right: -15px;
+    top: 10px;
+    transform-origin: top center;
+    transform: rotate(-20deg);
+  }
+  
+  .workout-character--stage-2 .workout-character__arm {
+    width: 25px;
+    height: 75px;
+  }
+  
+  .workout-character--stage-3 .workout-character__arm {
+    width: 35px;
+    height: 80px;
+  }
+  
+  /* Legs */
+  .workout-character__leg {
+    width: 25px;
+    height: 70px;
+    background-color: #006b3e;
+    position: absolute;
+    bottom: -70px;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+  }
+  
+  .workout-character__leg--left {
+    left: 15px;
+  }
+  
+  .workout-character__leg--right {
+    right: 15px;
+  }
+  
+  .workout-character--stage-2 .workout-character__leg {
+    width: 30px;
+    height: 75px;
+  }
+  
+  .workout-character--stage-3 .workout-character__leg {
+    width: 35px;
+    height: 80px;
+  }
+  
+  /* Weights */
+  .workout-character__weight {
+    position: absolute;
+    width: 30px;
+    height: 15px;
+    background: #777;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+  }
+  
+  .workout-character__weight--left {
+    left: -45px;
+    top: 60px;
+  }
+  
+  .workout-character__weight--right {
+    right: -45px;
+    top: 60px;
+  }
+  
+  .workout-character--stage-2 .workout-character__weight {
+    width: 35px;
+    height: 18px;
+  }
+  
+  .workout-character--stage-3 .workout-character__weight {
+    width: 45px;
+    height: 25px;
+  }
+  
+  /* Sweat drops animation */
+  .workout-character__sweat-drops {
+    position: absolute;
+    top: -30px;
+    right: -15px;
+  }
+  
+  .workout-character__sweat-drops span {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    animation: sweatDrop 1.5s infinite;
+    opacity: 0;
+  }
+  
+  .workout-character__sweat-drops span:nth-child(1) {
+    animation-delay: 0s;
+    left: 5px;
+  }
+  
+  .workout-character__sweat-drops span:nth-child(2) {
+    animation-delay: 0.4s;
+    left: 0;
+  }
+  
+  .workout-character__sweat-drops span:nth-child(3) {
+    animation-delay: 0.8s;
+    left: -5px;
+  }
+  
+  @keyframes sweatDrop {
+    0% {
+      transform: translateY(0) scale(1);
+      opacity: 0.7;
+    }
+    100% {
+      transform: translateY(20px) scale(0);
+      opacity: 0;
+    }
+  }
+  
+  /* Info section */
+  .blog-coming-soon__info {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .blog-coming-soon__info h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .blog-coming-soon__features {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    text-align: left;
+  }
+  
+  .blog-coming-soon__features li {
+    padding: 0.5rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+  }
+  
+  .blog-coming-soon__features .icon {
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+  }
+  
+  /* Timer */
+  .blog-coming-soon__timer {
+    margin: 3rem 0;
+  }
+  
+  .blog-coming-soon__countdown {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    color: #FFD700;
+  }
+  
+  /* CTA */
+  .blog-coming-soon__cta {
+    margin-top: 4rem;
+  }
+  
+  .blog-coming-soon__cta p {
+    margin-bottom: 1rem;
+  }
+  
+  .blog-coming-soon__cta .button {
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .blog-coming-soon {
+      padding: 4rem 0;
+    }
+    
+    .blog-coming-soon__features {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  /* Add hair to the character */
+  .workout-character__head::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 42px;
+    height: 15px;
+    background-color: #1a1a1a; /* Dark hair */
+    border-radius: 50% 50% 0 0;
+  }
+  
