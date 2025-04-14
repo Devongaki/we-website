@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './FreeProgram.css';
+import { event } from '../../utils/analytics';
 
 const FreeProgram = ({ isOpen, onClose }) => {
   const [email, setEmail] = useState('');
@@ -21,6 +22,13 @@ const FreeProgram = ({ isOpen, onClose }) => {
     setError('');
 
     try {
+      // Track form submission attempt
+      event({
+        action: 'submit_free_program',
+        category: 'Lead_Generation',
+        label: 'Free Program Form'
+      });
+
       const response = await fetch(`${window.location.origin}/.netlify/functions/send-workout-plan`, {
         method: 'POST',
         headers: {
@@ -30,9 +38,22 @@ const FreeProgram = ({ isOpen, onClose }) => {
       });
 
       if (!response.ok) {
+        // Track error
+        event({
+          action: 'free_program_error',
+          category: 'Error',
+          label: 'Form Submission Failed'
+        });
         const errorData = await response.json();
         throw new Error(errorData.error || 'Failed to send workout plan');
       }
+
+      // Track successful submission
+      event({
+        action: 'free_program_success',
+        category: 'Lead_Generation',
+        label: 'Free Program Sent'
+      });
 
       setShowSuccess(true);
       setEmail('');

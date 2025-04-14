@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from '../ui/components/Layout/Header/Header';
 import Footer from '../ui/components/Layout/Footer/Footer';
 import Home from '../features/Home';
@@ -8,30 +8,48 @@ import FreeConsultation from '../features/FreeConsultation/FreeConsultation';
 import About from '../features/About/About';
 import Blog from '../features/Blog/Blog';
 import Login from '../features/Auth/Login';
+import { useEffect } from 'react';
+import { initGA, pageview } from '../utils/analytics';
+import { useLocation } from 'react-router-dom';
 
 // Import theme styles
 import '../theme/index.css';
 
+// Create a separate component for analytics tracking
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Initialize GA
+    initGA();
+  }, []);
+
+  useEffect(() => {
+    // Track page views on route change
+    pageview(location.pathname + location.search);
+  }, [location]);
+
+  return null;
+}
 
 function App() {
   return (
-    <Router>
-      <div className="app">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/prices" element={<Prices />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/free-consultation" element={<FreeConsultation />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <div className="app">
+      <AnalyticsTracker />
+      <Header />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/prices" element={<Prices />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/free-consultation" element={<FreeConsultation />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
