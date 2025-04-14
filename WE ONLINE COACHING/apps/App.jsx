@@ -7,6 +7,8 @@ import CheckoutPage from '../features/Checkout';
 import FreeConsultation from '../features/FreeConsultation/FreeConsultation';
 import About from '../features/About/About';
 import Blog from '../features/Blog/Blog';
+import Login from '../features/Auth/Login';
+
 // Import theme styles
 import '../theme/index.css';
 
@@ -24,6 +26,7 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/free-consultation" element={<FreeConsultation />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
         <Footer />

@@ -32,7 +32,9 @@ const Header = () => {
             <Link to="/prices" className={`header__nav-link ${isActive('/prices')}`}>Prices</Link>
             <Link to="/blog" className={`header__nav-link ${isActive('/blog')}`}>Blog</Link>
             <div className="header__auth">
-              <Button variant="outline" size="small">Login</Button>
+              <Link to="/login">
+                <Button variant="outline" size="small">Login</Button>
+              </Link>
             </div>
           </nav>
         </div>
@@ -55,7 +57,9 @@ const Header = () => {
           <Link to="/prices" className={`header__nav-link ${isActive('/prices')}`} onClick={toggleMenu}>Prices</Link>
           <Link to="/blog" className={`header__nav-link ${isActive('/blog')}`} onClick={toggleMenu}>Blog</Link>
           <div className="header__auth">
-            <Button variant="outline" size="small" className="header__auth-btn">Login</Button>
+            <Link to="/login">
+              <Button variant="outline" size="small" className="header__auth-btn">Login</Button>
+            </Link>
           </div>
         </nav>
       )}
