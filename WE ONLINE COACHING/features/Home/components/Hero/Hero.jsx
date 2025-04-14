@@ -17,8 +17,8 @@ const Hero = () => {
           <div className="hero__badge">WE Online Coaching</div>
           
           <h1 className="hero__title">
-            Transform Your Body,
-            <span className="hero__title-highlight">Transform Your Life</span>
+            Build Strength.
+            <span className="hero__title-highlight">Build Confidence.</span>
           </h1>
           
           <p className="hero__description">
