@@ -1,0 +1,205 @@
+/* WE ONLINE COACHING/features/Auth/Login.css */
+.login {
+    padding: 6rem 0;
+    min-height: calc(100vh - var(--header-height));
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #000080, #000046);
+  }
+  
+  .login__wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
+  .login__card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .login__header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .login__title {
+    font-size: var(--font-size-heading-2);
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+  
+  .login__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: var(--font-size-md);
+  }
+  
+  .login__error {
+    background-color: rgba(220, 38, 38, 0.1);
+    border-left: 4px solid #dc2626;
+    color: white;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-sm);
+  }
+  
+  .login__form {
+    margin-bottom: 2rem;
+  }
+  
+  .form__group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form__group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: var(--font-weight-medium);
+    color: white;
+  }
+  
+  .form__group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: var(--font-size-base);
+    transition: all 0.3s ease;
+  }
+  
+  .form__group input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .form__group input:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+  
+  .login__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: var(--font-size-sm);
+  }
+  
+  .login__remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .login__remember input[type="checkbox"] {
+    accent-color: var(--color-primary);
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .login__forgot {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s ease;
+  }
+  
+  .login__forgot:hover {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .login__button {
+    width: 100%;
+    padding: 0.875rem !important;
+    font-size: var(--font-size-md) !important;
+    margin-top: 1rem;
+  }
+  
+  .login__footer {
+    text-align: center;
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .login__signup-link {
+    color: white;
+    font-weight: var(--font-weight-medium);
+    transition: opacity 0.2s ease;
+  }
+  
+  .login__signup-link:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+  }
+  
+  /* Benefits section */
+  .login__benefits {
+    display: none; /* Hidden on mobile */
+  }
+  
+  @media (min-width: 992px) {
+    .login__wrapper {
+      grid-template-columns: 1.5fr 1fr;
+      align-items: center;
+    }
+    
+    .login__benefits {
+      display: block;
+      padding: 2.5rem;
+      color: white;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(0, 0, 128, 0.3), rgba(0, 0, 70, 0.3));
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .login__benefits h2 {
+      font-size: var(--font-size-xl);
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+    
+    .login__benefits-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .login__benefits-list li {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .login__benefits-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .login__benefits-list .icon {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .login {
+      padding: 4rem 0;
+    }
+    
+    .login__card {
+      padding: 1.5rem;
+    }
+    
+    .login__title {
+      font-size: var(--font-size-2xl);
+    }
+  }
