@@ -95,8 +95,8 @@ const About = () => {
                   My certifications include:
                 </p>
                 <ul className="coach__certifications">
-                  <li>Certified Personal Trainer</li>
-                  <li>Certified Nutrition Advisor</li>
+                  <li>Certified Personal Trainer - AFPT</li>
+                  <li>Certified Nutrition Advisor - AFPT</li>
                   <li>Registered Nurse</li>
                   <li>Specialized in Surgical Nursing</li>
                 </ul>
