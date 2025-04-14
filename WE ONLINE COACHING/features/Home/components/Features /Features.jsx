@@ -7,7 +7,6 @@ const Features = () => {
       <div className="container">
         <div className="features__header-minimal">
           <span className="features__label">Why choose us</span>
-          <h2>Transform with Expert Support</h2>
           <div className="features__underline"></div>
         </div>
         
@@ -64,12 +63,6 @@ const Features = () => {
                 <p>Exercise demonstrations</p>
               </div>
             </div>
-          </div>
-          <div className="features__app-img">
-            <img 
-              src="./images/features/app-showcase.jpg" 
-              alt="WE Fitness App Interface"
-            />
           </div>
         </div>
       </div>

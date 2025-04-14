@@ -45,12 +45,6 @@ const Footer = () => {
             <h3 className="footer__heading">Contact Us</h3>
             <ul className="footer__contact-list">
               <li className="footer__contact-item">
-                <span className="footer__contact-icon">📱</span>
-                <a href="tel:+4741179860" className="footer__contact-link">
-                  +47 411 79 860
-                </a>
-              </li>
-              <li className="footer__contact-item">
                 <span className="footer__contact-icon">✉️</span>
                 <a href="mailto:we.onlinecoaching@gmail.com" className="footer__contact-link">
                   we.onlinecoaching@gmail.com
