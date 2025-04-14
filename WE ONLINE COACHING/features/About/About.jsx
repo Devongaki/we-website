@@ -33,7 +33,7 @@ const About = () => {
             </div>
             
             <div className="coach__content">
-              <h2 className="coach__name">William Ongaki</h2>
+              <h2 className="coach__name">Coach William</h2>
               <p className="coach__title">Professional Dancer & Fitness Coach</p>
               
               <div className="coach__bio">
@@ -50,6 +50,15 @@ const About = () => {
                   <li>Professional Dance Certification - Bådar Akademiet, Oslo</li>
                   <li>Group Fitness Instructor - SATS ELIXIA</li>
                   <li>Over 10 Years Professional Dance Experience</li>
+                </ul>
+
+                <p>
+                  Languages I speak:
+                </p>
+                <ul className="coach__languages">
+                  <li><span className="flag">🇬🇧</span> English (Fluent)</li>
+                  <li><span className="flag">🇳🇴</span> Norwegian (Conversational)</li>
+                  <li><span className="flag">🇰🇪</span> Swahili (Fluent)</li>
                 </ul>
               </div>
               
@@ -75,28 +84,35 @@ const About = () => {
             </div>
             
             <div className="coach__content">
-              <h2 className="coach__name">Coach Name 2</h2>
-              <p className="coach__title">Performance Coach & Transformation Specialist</p>
+              <h2 className="coach__name">Coach Eirill</h2>
+              <p className="coach__title">Certified Personal Trainer & Certified Nutrition Advisor</p>
               
               <div className="coach__bio">
                 <p>
-                  I specialize in helping clients transform their bodies and mindsets through strategic training and nutritional guidance. My passion is empowering people to discover their strength and resilience through fitness.
-                </p>
-                <p>
-                  Having competed in various fitness competitions, I bring practical experience and a deep understanding of what it takes to achieve dramatic physical transformations while maintaining health.
+                After years in the healthcare industry, I've rediscovered my passion for improving quality of life through strength training
                 </p>
                 <p>
                   My certifications include:
                 </p>
                 <ul className="coach__certifications">
-                  <li>Personal Trainer Certification (ACE)</li>
-                  <li>Sports Nutrition Specialist</li>
-                  <li>Functional Movement Specialist</li>
+                  <li>Certified Personal Trainer</li>
+                  <li>Certified Nutrition Advisor</li>
+                  <li>Registered Nurse</li>
+                  <li>Specialized in Surgical Nursing</li>
+                </ul>
+
+                <p>
+                  Languages I speak:
+                </p>
+                <ul className="coach__languages">
+                  <li><span className="flag">🇬🇧</span> English (Fluent)</li>
+                  <li><span className="flag">🇳🇴</span> Norwegian (Fluent)</li>
+                  <li><span className="flag">🇵🇭</span> Taglish (Fluent)</li>
                 </ul>
               </div>
               
               <div className="coach__social">
-                <a href="https://www.instagram.com/coach2" target="_blank" rel="noopener noreferrer" className="coach__social-link">
+                <a href="https://www.instagram.com/eiri.ll?igsh=dzA1ejM3d3NzZzM5" target="_blank" rel="noopener noreferrer" className="coach__social-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
               </div>
