@@ -42,7 +42,7 @@ export const handler = async (event) => {
     }
 
     // Read the PDF file
-    const pdfPath = join(process.cwd(), 'public', 'pdfs', 'beginner-workout-plan.pdf');
+    const pdfPath = join(process.cwd(), 'public', 'pdfs', 'workoutprogram.pdf');
     console.log('PDF path:', pdfPath);
     const pdfBuffer = await fs.readFile(pdfPath);
     
@@ -77,7 +77,7 @@ export const handler = async (event) => {
       attachments: [
         {
           content: pdfBase64,
-          filename: 'WE-Fitness-Beginner-Workout-Plan.pdf',
+          filename: 'WE-Fitness-Workout-Program.pdf',
           type: 'application/pdf',
           disposition: 'attachment'
         }
