@@ -12,6 +12,7 @@ import PrivacyPolicy from '../features/Legal/PrivacyPolicy';
 import { useEffect } from 'react';
 import { initGA, pageview } from '../utils/analytics';
 import { useLocation } from 'react-router-dom';
+import CookieConsent from '../ui/components/CookieConsent/CookieConsent';
 
 // Import theme styles
 import '../theme/index.css';
@@ -51,6 +52,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      <CookieConsent />
     </div>
   );
 }
