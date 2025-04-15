@@ -19,6 +19,8 @@ import NotFound from '../features/ErrorPage/NotFound';
 import TermsOfService from '../features/Legal/TermsOfService';
 import PaymentSuccess from '../features/Checkout/Success';
 import PaymentError from '../features/Checkout/Error';
+import Dashboard from '../features/Dashboard/Dashboard';
+import AuthGuard from '../features/Auth/AuthGuard';
 
 // Import theme styles
 import '../theme/index.css';
@@ -60,6 +62,11 @@ function App() {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-error" element={<PaymentError />} />
+          <Route path="/dashboard" element={
+            <AuthGuard>
+              <Dashboard />
+            </AuthGuard>
+          } />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
