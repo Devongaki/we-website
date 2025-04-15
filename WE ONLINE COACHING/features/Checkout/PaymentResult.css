@@ -1,0 +1,126 @@
+.payment-result {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(135deg, #000080, #000046);
+  color: white;
+}
+
+.payment-result__container {
+  max-width: 600px;
+  width: 100%;
+  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.payment-result__icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.payment-result__icon--success {
+  color: #4CAF50;
+}
+
+.payment-result__icon--error {
+  color: #F44336;
+}
+
+.payment-result__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.payment-result__message {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.payment-result__details {
+  margin: 2rem 0;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.payment-result__details-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.payment-result__details-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.payment-result__details-label {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.payment-result__details-value {
+  font-weight: 600;
+}
+
+.payment-result__actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment-result__button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.payment-result__button--primary {
+  background: #B98AF0;
+  color: #000046;
+  border: none;
+}
+
+.payment-result__button--primary:hover {
+  background: #A172E0;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(185, 138, 240, 0.4);
+}
+
+.payment-result__button--secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.payment-result__button--secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (min-width: 768px) {
+  .payment-result__actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

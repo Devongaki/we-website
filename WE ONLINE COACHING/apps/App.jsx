@@ -17,6 +17,8 @@ import ScrollToTop from '../ui/components/ScrollToTop/ScrollToTop';
 import DataRequest from '../features/Legal/DataRequest';
 import NotFound from '../features/ErrorPage/NotFound';
 import TermsOfService from '../features/Legal/TermsOfService';
+import PaymentSuccess from '../features/Checkout/Success';
+import PaymentError from '../features/Checkout/Error';
 
 // Import theme styles
 import '../theme/index.css';
@@ -56,6 +58,8 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/data-request" element={<DataRequest />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-error" element={<PaymentError />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

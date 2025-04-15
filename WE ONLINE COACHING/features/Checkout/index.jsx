@@ -36,7 +36,7 @@ const CheckoutForm = ({ clientSecret, selectedPlan }) => {
       const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: `${window.location.origin}/payment-confirmation`,
+          return_url: `${window.location.origin}/payment-success?plan=${encodeURIComponent(selectedPlan.duration)}&amount=${selectedPlan.price}`,
         },
       });
 
@@ -47,6 +47,10 @@ const CheckoutForm = ({ clientSecret, selectedPlan }) => {
           category: 'Error',
           label: error.message
         });
+        
+        // Redirect to error page with error type
+        window.location.href = `${window.location.origin}/payment-error?error_type=${error.type}&error_code=${error.code || ''}`;
+        
         setError(error.message);
         setProcessing(false);
       } else {
