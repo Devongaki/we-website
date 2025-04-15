@@ -15,6 +15,7 @@ import { useLocation } from 'react-router-dom';
 import CookieConsent from '../ui/components/CookieConsent/CookieConsent';
 import ScrollToTop from '../ui/components/ScrollToTop/ScrollToTop';
 import DataRequest from '../features/Legal/DataRequest';
+import NotFound from '../features/ErrorPage/NotFound';
 
 // Import theme styles
 import '../theme/index.css';
@@ -53,6 +54,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/data-request" element={<DataRequest />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
