@@ -1,0 +1,552 @@
+/* Dashboard Layout */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #040428;
+  color: white;
+}
+
+/* App Header */
+.app-header {
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+}
+
+.app-header__wrapper {
+  width: 100%;
+  padding: 0 1.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-header__menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.app-header__menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.app-header__logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.app-header__logo img {
+  height: 30px;
+  width: auto;
+}
+
+.app-header__actions {
+  display: flex;
+  align-items: center;
+}
+
+.app-header__user {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.app-header__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #B98AF0, #E83A95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.app-header__username {
+  display: none;
+}
+
+.app-header__logout {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-header__logout:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar */
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: rgba(0, 0, 40, 0.95);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.app-sidebar.open {
+  transform: translateX(0);
+}
+
+.app-sidebar__header {
+  height: 80px;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-sidebar__logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.app-sidebar__logo-image {
+  max-height: 50px;
+  max-width: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+/* You can remove these if you're not using text logo anymore */
+.app-sidebar__logo-text,
+.app-sidebar__app-name {
+  display: none;
+}
+
+.app-sidebar__close {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.app-sidebar__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-sidebar__nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0;
+}
+
+.app-sidebar__nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.app-sidebar__nav-item {
+  margin-bottom: 0.5rem;
+}
+
+.app-sidebar__nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.app-sidebar__nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.app-sidebar__nav-link.active {
+  background: rgba(185, 138, 240, 0.1);
+  color: #B98AF0;
+  border-left-color: #B98AF0;
+}
+
+.app-sidebar__nav-link svg {
+  margin-right: 0.75rem;
+}
+
+.app-sidebar__footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.app-sidebar__logout-button {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.app-sidebar__logout-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-sidebar__logout-button svg {
+  margin-right: 0.75rem;
+}
+
+/* Main Content */
+.app-content {
+  flex: 1;
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.app-content__container {
+  max-width: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Overlay */
+.app-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 150;
+  display: none;
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .app-header__menu-toggle {
+    display: none;
+  }
+  
+  .app-header__username {
+    display: block;
+    margin-right: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .app-sidebar {
+    transform: translateX(0);
+  }
+  
+  .app-sidebar__close {
+    display: none;
+  }
+  
+  .app-content {
+    margin-left: 250px;
+  }
+  
+  .app-sidebar-overlay {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-sidebar-overlay {
+    display: block;
+  }
+}
+
+/* Bottom Navigation Bar */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  background-color: rgba(0, 0, 40, 0.95);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bottom-nav__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 8px 0;
+  width: 20%;
+  transition: all 0.2s ease;
+}
+
+.bottom-nav__item svg {
+  margin-bottom: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+.bottom-nav__item span {
+  font-size: 11px;
+  text-align: center;
+}
+
+.bottom-nav__item.active {
+  color: #B98AF0;
+}
+
+.bottom-nav__item.active svg {
+  stroke: #B98AF0;
+}
+
+.bottom-nav__item:hover {
+  color: white;
+}
+
+/* Hide sidebar on mobile since we now have bottom nav */
+@media (max-width: 991px) {
+  .app-sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .app-content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .app-content__container {
+    padding: 1rem;
+    padding-bottom: 80px;
+  }
+}
+
+/* Hide bottom nav on larger screens if you want to use sidebar instead */
+@media (min-width: 992px) {
+  .bottom-nav {
+    display: none; /* Hide bottom nav on desktop */
+  }
+  
+  .app-sidebar {
+    transform: translateX(0); /* Show sidebar on desktop */
+  }
+  
+  .app-content {
+    margin-left: 250px;
+    padding-bottom: 2rem; /* Reset padding on desktop */
+  }
+}
+
+/* Target the specific container shown in your screenshot */
+.app-content__container div.app-content__container {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Fix the specific app-content-container class */
+div.app-content_container {
+  padding: 0 0 80px 0;
+  margin-top: 0;
+}
+
+/* Additional fix for the div.dashboard-layout class */
+div.dashboard-layout > main {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+/* Specifically target the content container seen in the screenshot */
+div.app-content__container,
+div.app-content_container,
+div.dashboard__container,
+[class*="app-content__container"] {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Target the specific container class shown in your screenshot */
+.app-content_container {
+  width: 100%;
+  max-width: 100%;
+}
+
+.div.app-content__container {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Mobile-specific styles to ensure content fills the entire width */
+@media (max-width: 991px) {
+  .app-content {
+    margin-left: 0;
+    padding: 0;
+    width: 100%;
+  }
+  
+  .app-content__container {
+    padding: 0 0 80px 0; /* Remove horizontal padding, keep bottom padding for nav */
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Target all potential dashboard content containers */
+  .app-content__container > div,
+  .div.app-content__container > div,
+  div[class*="dashboard"],
+  div[class*="content_container"],
+  div[class*="app-content__container"] {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Specifically target content containers */
+  div.app-content_container,
+  .app-content_container,
+  div.app-content__container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  
+  /* Additional fix for the specific container in your screenshot */
+  div.app-content__container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Add specific styling for the direct content containers observed in screenshot */
+div.app-content-container,
+div.app-content__container,
+div.dashboard__content,
+div.dashboard-content,
+.app-content-container,
+.app-content__container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Target specifically the elements with IDs or classes that have the container styles */
+#app-content__container,
+#dashboard-content-container,
+.dashboard-content-container,
+div[class*="content__container"],
+div[class*="content_container"] {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Target the specific div.app-content_container class seen in DevTools */
+.div.app-content_container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Ensure content containers inside have proper sizing */
+.app-content__container > div {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fix for elements that might be causing overflow */
+[class*="dashboard"],
+[class*="content-container"],
+[class*="app-content"] {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+/* Simplified User Profile Section */
+.app-sidebar__user {
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.app-sidebar__avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #B98AF0, #E83A95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-right: 0.75rem;
+}
+
+.app-sidebar__username {
+  font-weight: 500;
+  font-size: 1rem;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Remove these classes if they exist since we're not using them anymore */
+.app-sidebar__user-info,
+.app-sidebar__plan {
+  display: none;
+} 

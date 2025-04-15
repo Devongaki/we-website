@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import Header from '../ui/components/Layout/Header/Header';
 import Footer from '../ui/components/Layout/Footer/Footer';
 import Home from '../features/Home';
@@ -21,6 +21,7 @@ import PaymentSuccess from '../features/Checkout/Success';
 import PaymentError from '../features/Checkout/Error';
 import Dashboard from '../features/Dashboard/Dashboard';
 import AuthGuard from '../features/Auth/AuthGuard';
+import DashboardLayout from '../ui/components/Layout/DashboardLayout/DashboardLayout';
 
 // Import theme styles
 import '../theme/index.css';
@@ -42,15 +43,42 @@ function AnalyticsTracker() {
   return null;
 }
 
+// Marketing Site Layout (with Header and Footer)
+const MarketingSiteLayout = () => (
+  <>
+    <Header />
+    <main><Outlet /></main>
+    <Footer />
+  </>
+);
+
 function App() {
   return (
     <div className="app">
       <AnalyticsTracker />
       <ScrollToTop />
-      <Header />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
+      <CookieConsent />
+      
+      <Routes>
+        {/* Dashboard Routes - No Header/Footer */}
+        <Route path="/dashboard/*" element={
+          <AuthGuard>
+            <DashboardLayout>
+              <Routes>
+                <Route index element={<Dashboard />} />
+                {/* Add other dashboard routes here */}
+                {/* <Route path="program" element={<Program />} /> */}
+                {/* <Route path="progress" element={<Progress />} /> */}
+                {/* <Route path="nutrition" element={<Nutrition />} /> */}
+                {/* <Route path="settings" element={<Settings />} /> */}
+              </Routes>
+            </DashboardLayout>
+          </AuthGuard>
+        } />
+
+        {/* Marketing Site Routes - With Header/Footer */}
+        <Route element={<MarketingSiteLayout />}>
+          <Route index element={<Home />} />
           <Route path="/prices" element={<Prices />} />
           <Route path="/about" element={<About />} />
           <Route path="/checkout" element={<CheckoutPage />} />
@@ -62,16 +90,9 @@ function App() {
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/payment-success" element={<PaymentSuccess />} />
           <Route path="/payment-error" element={<PaymentError />} />
-          <Route path="/dashboard" element={
-            <AuthGuard>
-              <Dashboard />
-            </AuthGuard>
-          } />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <Footer />
-      <CookieConsent />
+        </Route>
+      </Routes>
     </div>
   );
 }
