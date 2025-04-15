@@ -1,9 +1,13 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import Button from '../../ui/components/Button/Button';
 import './login.css';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from || '/dashboard';
+  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -11,6 +15,12 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [isRememberMe, setIsRememberMe] = useState(false);
+
+  // Hardcoded test account (kept in code but not displayed on page)
+  const testAccount = {
+    email: 'test@example.com',
+    password: 'password123'
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -26,15 +36,25 @@ const Login = () => {
     setError('');
 
     try {
-      // Here you would implement actual login functionality
-      console.log('Login attempt with:', formData);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For demo purposes, always "succeed" but you would check credentials in reality
-      // Redirect or update authentication state here
-      
+      // Check against hardcoded test account
+      if (formData.email === testAccount.email && formData.password === testAccount.password) {
+        // Store auth token in localStorage
+        localStorage.setItem('authToken', 'test-token-for-dashboard');
+        localStorage.setItem('userName', 'Test User');
+        
+        // Redirect to dashboard or the page they were trying to access
+        navigate(from);
+      } else {
+        // For development, also allow any email with the test password
+        if (formData.password === testAccount.password) {
+          localStorage.setItem('authToken', 'test-token-for-dashboard');
+          localStorage.setItem('userName', formData.email.split('@')[0]);
+          
+          navigate(from);
+        } else {
+          throw new Error('Invalid credentials');
+        }
+      }
     } catch (err) {
       setError('Invalid email or password. Please try again.');
       console.error('Login error:', err);
@@ -88,30 +108,38 @@ const Login = () => {
                 />
               </div>
 
-              <div className="login__options">
-                <div className="login__remember">
+              <div className="form__options">
+                <div className="form__remember">
                   <input
                     type="checkbox"
-                    id="rememberMe"
+                    id="remember"
                     checked={isRememberMe}
                     onChange={() => setIsRememberMe(!isRememberMe)}
                   />
-                  <label htmlFor="rememberMe">Remember me</label>
+                  <label htmlFor="remember">Remember me</label>
                 </div>
-                <Link to="/forgot-password" className="login__forgot">
+                <Link to="/forgot-password" className="form__forgot">
                   Forgot password?
                 </Link>
               </div>
 
-              <Button 
-                type="submit" 
-                variant="primary" 
+              <button
+                type="submit"
+                className="button button--primary login__button"
                 disabled={isSubmitting}
-                className="login__button"
               >
                 {isSubmitting ? 'Logging in...' : 'Login'}
-              </Button>
+              </button>
             </form>
+
+            <div className="login__footer">
+              <p>
+                Don't have an account?{' '}
+                <Link to="/register" className="login__link">
+                  Sign up now
+                </Link>
+              </p>
+            </div>
           </div>
 
           <div className="login__benefits">

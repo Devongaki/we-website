@@ -13,11 +13,11 @@ const Dashboard = () => {
     // Simulate fetching user data from an API
     const fetchUserData = async () => {
       // In a real app, you would fetch from your API
-      // For now, we'll simulate a delay and use mock data
+      // For now, we'll get the name from localStorage if available
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      // Mock data - in a real app this would come from your backend
-      setUserName('William');
+      const storedName = localStorage.getItem('userName') || 'User';
+      setUserName(storedName);
       setIsLoading(false);
     };
     

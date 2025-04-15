@@ -7,8 +7,7 @@ const AuthGuard = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // In a real implementation, you would check your auth system
-    // For now, we'll use localStorage as a simple example
+    // Check if user is authenticated
     const checkAuth = () => {
       const token = localStorage.getItem('authToken');
       setIsAuthenticated(!!token);
@@ -16,13 +15,6 @@ const AuthGuard = ({ children }) => {
     };
 
     checkAuth();
-
-    // This is just for development/testing
-    // In production, you would remove this and implement proper auth
-    if (!localStorage.getItem('authToken')) {
-      localStorage.setItem('authToken', 'test-token-for-development');
-      console.log('Development auth token created for testing');
-    }
   }, []);
 
   // Show loading state while checking authentication

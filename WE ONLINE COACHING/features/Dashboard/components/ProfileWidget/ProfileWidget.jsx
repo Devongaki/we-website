@@ -10,10 +10,11 @@ const ProfileWidget = () => {
   });
 
   useEffect(() => {
-    // In a real app, you would fetch this data from your API
-    // For now, using mock data
+    // Get user name from localStorage if available
+    const storedName = localStorage.getItem('userName') || 'User';
+    
     setUserData({
-      name: 'William Ongaki',
+      name: storedName,
       plan: 'Strength Building - 12 Month Plan',
       nextPayment: '2024-05-15',
       profileImage: 'https://randomuser.me/api/portraits/men/32.jpg'
