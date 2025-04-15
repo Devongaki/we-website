@@ -14,6 +14,7 @@ import { initGA, pageview } from '../utils/analytics';
 import { useLocation } from 'react-router-dom';
 import CookieConsent from '../ui/components/CookieConsent/CookieConsent';
 import ScrollToTop from '../ui/components/ScrollToTop/ScrollToTop';
+import DataRequest from '../features/Legal/DataRequest';
 
 // Import theme styles
 import '../theme/index.css';
@@ -51,6 +52,7 @@ function App() {
           <Route path="/free-consultation" element={<FreeConsultation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/data-request" element={<DataRequest />} />
         </Routes>
       </main>
       <Footer />
