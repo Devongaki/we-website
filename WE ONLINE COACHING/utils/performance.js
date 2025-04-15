@@ -1,4 +1,4 @@
-import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
+import { onCLS, onFID, onLCP, onFCP, onTTFB } from 'web-vitals';
 
 // Function to send metrics to Google Analytics
 const sendToGoogleAnalytics = ({ name, delta, id }) => {
@@ -25,9 +25,9 @@ export const reportWebVitals = (isDevelopment = false) => {
     ? logMetric 
     : sendToGoogleAnalytics;
 
-  getCLS(reportFunction);   // Cumulative Layout Shift
-  getFID(reportFunction);   // First Input Delay
-  getLCP(reportFunction);   // Largest Contentful Paint
-  getFCP(reportFunction);   // First Contentful Paint
-  getTTFB(reportFunction);  // Time to First Byte
+  onCLS(reportFunction);   // Cumulative Layout Shift
+  onFID(reportFunction);   // First Input Delay
+  onLCP(reportFunction);   // Largest Contentful Paint
+  onFCP(reportFunction);   // First Contentful Paint
+  onTTFB(reportFunction);  // Time to First Byte
 };
