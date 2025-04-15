@@ -24,7 +24,8 @@
     "react-router-dom": "^7.5.0",
     "react-select": "^5.10.1",
     "stripe": "^14.25.0",
-    "swiper": "^11.2.6"
+    "swiper": "^11.2.6",
+    "web-vitals": "^4.2.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",

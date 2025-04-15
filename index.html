@@ -51,9 +51,53 @@
 
       gtag('config', 'G-ZNWMR9M9D9');
     </script>
+    
+    <!-- Performance timing script - add this near the top of head -->
+    <script>
+      // Simple performance timing
+      window.perfTiming = {
+        start: performance.now(),
+        firstRender: 0,
+        loaded: 0
+      };
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/WE ONLINE COACHING/apps/main.jsx"></script>
+    
+    <!-- Add this at the end of body -->
+    <script>
+      // Record when page is fully loaded
+      window.addEventListener('load', () => {
+        window.perfTiming.loaded = performance.now();
+        const loadTime = window.perfTiming.loaded - window.perfTiming.start;
+        
+        // Log performance in console during development
+        if (window.location.hostname === 'localhost') {
+          console.log(`⚡️ Page fully loaded in ${Math.round(loadTime)}ms`);
+          
+          // Log navigation timing metrics
+          const navTiming = performance.getEntriesByType('navigation')[0];
+          console.table({
+            'DNS': navTiming.domainLookupEnd - navTiming.domainLookupStart,
+            'Connection': navTiming.connectEnd - navTiming.connectStart,
+            'Response': navTiming.responseEnd - navTiming.responseStart,
+            'DOM Processing': navTiming.domComplete - navTiming.domInteractive,
+            'DOM Content Loaded': navTiming.domContentLoadedEventEnd - navTiming.navigationStart,
+            'Total Load Time': navTiming.loadEventEnd - navTiming.navigationStart
+          });
+        }
+        
+        // Send to Google Analytics
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'timing_complete', {
+            name: 'page_load',
+            value: Math.round(loadTime),
+            event_category: 'Performance'
+          });
+        }
+      });
+    </script>
   </body>
 </html>
