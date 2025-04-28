@@ -27,9 +27,9 @@ const AuthGuard = ({ children }) => {
     );
   }
 
-  // If not authenticated, redirect to login page
+  // If not authenticated, redirect to homepage instead of login page
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: window.location.pathname }} />;
+    return <Navigate to="/" />;
   }
 
   // If authenticated, render the protected component

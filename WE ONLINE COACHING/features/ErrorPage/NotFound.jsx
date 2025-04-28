@@ -19,7 +19,6 @@ const NotFound = () => {
           <div className="error-suggestions">
             <h3>You might be looking for:</h3>
             <ul>
-              <li><Link to="/prices">Our Pricing Plans</Link></li>
               <li><Link to="/free-consultation">Free Consultation</Link></li>
               <li><Link to="/about">About Us</Link></li>
             </ul>

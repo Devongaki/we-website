@@ -79,12 +79,14 @@ function App() {
         {/* Marketing Site Routes - With Header/Footer */}
         <Route element={<MarketingSiteLayout />}>
           <Route index element={<Home />} />
-          <Route path="/prices" element={<Prices />} />
+          {/* Commenting out the prices route to hide it */}
+          {/* <Route path="/prices" element={<Prices />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/free-consultation" element={<FreeConsultation />} />
-          <Route path="/login" element={<Login />} />
+          {/* Commenting out the login route to deactivate it */}
+          {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/data-request" element={<DataRequest />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
