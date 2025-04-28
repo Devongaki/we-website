@@ -29,13 +29,7 @@ const Header = () => {
           <nav className="header__nav">
             <Link to="/" className={`header__nav-link ${isActive('/')}`}>Home</Link>
             <Link to="/about" className={`header__nav-link ${isActive('/about')}`}>About</Link>
-            <Link to="/prices" className={`header__nav-link ${isActive('/prices')}`}>Prices</Link>
             <Link to="/blog" className={`header__nav-link ${isActive('/blog')}`}>Blog</Link>
-            <div className="header__auth">
-              <Link to="/login">
-                <Button variant="outline" size="small">Login</Button>
-              </Link>
-            </div>
           </nav>
         </div>
 
@@ -54,13 +48,7 @@ const Header = () => {
         <nav className="header__nav--mobile">
           <Link to="/" className={`header__nav-link ${isActive('/')}`} onClick={toggleMenu}>Home</Link>
           <Link to="/about" className={`header__nav-link ${isActive('/about')}`} onClick={toggleMenu}>About</Link>
-          <Link to="/prices" className={`header__nav-link ${isActive('/prices')}`} onClick={toggleMenu}>Prices</Link>
           <Link to="/blog" className={`header__nav-link ${isActive('/blog')}`} onClick={toggleMenu}>Blog</Link>
-          <div className="header__auth">
-            <Link to="/login">
-              <Button variant="outline" size="small" className="header__auth-btn">Login</Button>
-            </Link>
-          </div>
         </nav>
       )}
     </header>
