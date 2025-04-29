@@ -13,10 +13,17 @@ const BlogListing = () => {
     { key: CATEGORIES.SCIENCE, label: getCategoryLabel(CATEGORIES.SCIENCE) }
   ];
   
+  // Sort posts by date in descending order (newest first)
+  const sortedPosts = [...blogPosts].sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB - dateA;
+  });
+  
   // Filter posts by category
   const filteredPosts = activeCategory === 'all' 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === activeCategory);
+    ? sortedPosts 
+    : sortedPosts.filter(post => post.category === activeCategory);
 
   return (
     <div className="blog-listing">

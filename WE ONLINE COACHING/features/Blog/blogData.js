@@ -1,5 +1,122 @@
-// Collection of blog posts
+// Collection of blog posts;
 export const blogPosts = [
+  {
+    id: '2',
+    slug: 'strength-training-for-beginners',
+    title: 'Strength Training for New Beginners: Where to Start and Why It\'s Worth It! 💪🏽',
+    excerpt: 'When people first start strength training, many may find it intimidating. But here\'s what I learned: Strength training is for everyone, and you don\'t have to be an expert to start!',
+    author: 'Eirill',
+    authorImage: 'https://ui-avatars.com/api/?name=Eirill&background=0D8ABC&color=fff', // Temporary placeholder avatar
+    date: 'April 26, 2025',
+    category: 'personal-opinion',
+    featuredImage: '/images/blog/stnb-apr-25.jpg',
+    content: [
+      {
+        type: 'paragraph',
+        text: 'When people first start strength training, many may find it intimidating. Walking into a gym, seeing barbells, machines, and weights flying everywhere makes them wonder if they even belonged there. But here\'s what I learned, and what I want every beginner to know: Strength training is for everyone, and you don\'t have to be an expert to start!'
+      },
+      {
+        type: 'heading',
+        text: 'Why Strength Training Is Amazing (Even If You\'re New)'
+      },
+      {
+        type: 'paragraph',
+        text: 'Strength training isn\'t just for bodybuilders. It\'s one of the best things you can do for your body and your mind. Here\'s why:'
+      },
+      {
+        type: 'list',
+        items: [
+          {
+            description: 'It builds real strength so everyday tasks like lifting groceries or carrying your kid feel easier.'
+          },
+          {
+            description: 'It improves your posture and joint health, reducing your risk of injury.'
+          },
+          {
+            description: 'It boosts your confidence because there\'s something powerful about seeing yourself get stronger week after week.'
+          },
+          {
+            description: 'It even helps mental health, releasing endorphins and giving you a clear focus.'
+          }
+        ]
+      },
+      {
+        type: 'paragraph',
+        text: 'You don\'t need to chase huge weights right away. Starting simple is not just okay, it\'s smart.'
+      },
+      {
+        type: 'heading',
+        text: 'How to Start Strength Training as a Beginner'
+      },
+      {
+        type: 'paragraph',
+        text: 'If you\'re brand new, keep it simple. You don\'t need fancy programs or hours of complicated workouts. Here\'s what I recommend:'
+      },
+      {
+        type: 'list',
+        items: [
+          {
+            description: '1. Focus on compound exercises like squats, deadlifts, push-ups, bench press, and presses.'
+          },
+          {
+            description: '2. Start with bodyweight or light dumbbells to learn the technique.'
+          },
+          {
+            description: '3. Train 2–3 times per week to allow your body time to recover.'
+          },
+          {
+            description: '4. Progress slowly: Add a little more weight or a few more reps when it feels manageable.'
+          },
+          {
+            description: '5. Don\'t rush. Building strength is a journey, not a sprint.'
+          }
+        ]
+      },
+      {
+        type: 'paragraph',
+        text: 'Most importantly: Technique first, weight second. Good technique keeps you safe and helps you build strength faster in the long run.'
+      },
+      {
+        type: 'heading',
+        text: 'My Biggest Advice for New Lifters'
+      },
+      {
+        type: 'list',
+        items: [
+          {
+            title: 'Consistency beats perfection.',
+            description: 'Some days you\'ll feel strong. Some days you won\'t. That\'s okay. Just keep showing up.'
+          },
+          {
+            title: 'Track your progress.',
+            description: 'Write down your workouts: It\'s incredibly motivating to see how far you\'ve come.'
+          },
+          {
+            title: 'Get a Coach:',
+            description: 'Having someone guide you makes a huge difference in both confidence and results.'
+          }
+        ]
+      },
+      {
+        type: 'paragraph',
+        text: 'When I finally got help and a real structure from Coaches, my strength exploded and my love for Strength Training grew stronger.'
+      },
+      {
+        type: 'heading',
+        text: 'You\'re Stronger Than You Think'
+      },
+      {
+        type: 'paragraph',
+        text: 'If you\'re standing at the beginning, unsure if you should start: This is your sign to go for it! You don\'t need to be fit to start, you get fit by starting!'
+      },
+      {
+        type: 'paragraph',
+        text: 'Strength training will not only transform your body, it will transform how you see yourself. Trust me: The best time to start is today. WE-fam, let\'s go!🌟'
+      }
+    ],
+    tags: ['strength training', 'beginners', 'fitness', 'mindset', 'coaching'],
+    ctaText: 'Ready to start but don\'t know how? Fill out our free consultation form, and let\'s build your strength together!'
+  },
   {
     id: '1',
     slug: 'train-first-eat-better-later',
@@ -9,7 +126,7 @@ export const blogPosts = [
     authorImage: '/images/coaches/william.jpg',
     date: 'April 29, 2025',
     category: 'personal-opinion',
-    featuredImage: '/images/blog/irina-del-Mha5nyvZ2G4-unsplash.jpg', // Use the new image
+    featuredImage: '/images/blog/train-first.jpg',
     content: [
       {
         type: 'paragraph',
@@ -74,7 +191,7 @@ export const CATEGORIES = {
 export const getCategoryLabel = (categoryKey) => {
   switch(categoryKey) {
     case CATEGORIES.PERSONAL:
-      return 'Personal Opinion';
+      return 'Coaches Advice';
     case CATEGORIES.SCIENCE:
       return 'Science Based';
     default:

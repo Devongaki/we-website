@@ -1,43 +1,49 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getPostBySlug, getCategoryLabel } from './blogData';
-import TrainFirstImage from '../../../public/images/Blog/train-first.jpg';
 import './BlogPost.css';
 import BlogComments from './BlogComments';
+
+// Import blog images
+import trainFirstImage from '../../../public/images/blog/train-first.jpg';
+import strengthTrainingImage from '../../../public/images/blog/stnb-apr-25.jpg';
+
+// Map of image paths to imported images
+const imageMap = {
+  '/images/blog/train-first.jpg': trainFirstImage,
+  '/images/blog/stnb-apr-25.jpg': strengthTrainingImage,
+};
 
 const BlogPost = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [imageError, setImageError] = useState(false);
 
   useEffect(() => {
-    // Simulate loading data
     setIsLoading(true);
-    
-    // Get post data
     const postData = getPostBySlug(slug);
     
     if (postData) {
+      console.log('Post Data:', postData);
+      console.log('Featured Image Path:', postData.featuredImage);
+      console.log('Mapped Image:', imageMap[postData.featuredImage]);
+      
       setPost(postData);
       setIsLoading(false);
-      // Set page title
       document.title = `${postData.title} | WE Online Coaching`;
       
-      // Instead of Helmet, add meta tags directly
       const firstParagraph = postData.content.find(section => section.type === 'paragraph')?.text || '';
       
-      // Remove any existing meta tags
       document.querySelectorAll('meta[property^="og:"], meta[property^="twitter:"]').forEach(el => el.remove());
       
-      // Add Open Graph meta tags
       const metaTags = [
         { property: 'og:type', content: 'article' },
         { property: 'og:url', content: window.location.href },
         { property: 'og:title', content: postData.title },
         { property: 'og:description', content: postData.excerpt || firstParagraph },
         { property: 'og:image', content: postData.featuredImage },
-        
         { property: 'twitter:card', content: 'summary_large_image' },
         { property: 'twitter:url', content: window.location.href },
         { property: 'twitter:title', content: postData.title },
@@ -52,14 +58,11 @@ const BlogPost = () => {
         document.head.appendChild(meta);
       });
     } else {
-      // If post not found, redirect to blog listing
       navigate('/blog');
     }
     
-    // Cleanup
     return () => {
       document.title = 'WE Online Coaching';
-      // Remove meta tags on unmount
       document.querySelectorAll('meta[property^="og:"], meta[property^="twitter:"]').forEach(el => el.remove());
     };
   }, [slug, navigate]);
@@ -108,6 +111,10 @@ const BlogPost = () => {
                   src={post.authorImage} 
                   alt={post.author} 
                   className="blog-post__author-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.style.display = 'none';
+                  }}
                 />
               )}
               <span className="blog-post__author-name">By {post.author}</span>
@@ -118,15 +125,20 @@ const BlogPost = () => {
           </div>
         </header>
         
-        {post.featuredImage && (
+        {post.featuredImage && !imageError && (
           <div className="blog-post__featured-image">
             <img 
-              src={post.featuredImage} 
+              src={imageMap[post.featuredImage] || post.featuredImage}
               alt={post.title}
+              className="blog-post__featured-image-img"
               onError={(e) => {
-                e.target.onerror = null;
-                e.target.src = TrainFirstImage; 
-              }} 
+                console.error(`Failed to load image: ${post.featuredImage}`);
+                console.error('Image load error:', e);
+                setImageError(true);
+              }}
+              onLoad={() => {
+                console.log('Image loaded successfully:', post.featuredImage);
+              }}
             />
           </div>
         )}

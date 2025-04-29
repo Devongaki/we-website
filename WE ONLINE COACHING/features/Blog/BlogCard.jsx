@@ -1,7 +1,14 @@
 import { Link } from 'react-router-dom';
 import { getCategoryLabel } from './blogData';
-import TrainFirstImage from '../../../public/images/Blog/train-first.jpg';
+import trainFirstImage from '../../../public/images/blog/train-first.jpg';
+import strengthTrainingImage from '../../../public/images/blog/stnb-apr-25.jpg';
 import './BlogCard.css';
+
+// Map of image paths to imported images
+const imageMap = {
+  '/images/blog/train-first.jpg': trainFirstImage,
+  '/images/blog/stnb-apr-25.jpg': strengthTrainingImage,
+};
 
 const BlogCard = ({ post }) => {
   return (
@@ -10,12 +17,25 @@ const BlogCard = ({ post }) => {
         <div className="blog-card__image-container">
           {post.featuredImage ? (
             <img 
-              src={post.featuredImage} 
+              src={imageMap[post.featuredImage] || post.featuredImage} 
               alt={post.title} 
               className="blog-card__image"
               onError={(e) => {
+                console.error(`Failed to load image: ${post.featuredImage}`);
                 e.target.onerror = null;
-                e.target.src = TrainFirstImage;
+                // Create a placeholder with the first letter of the title
+                const canvas = document.createElement('canvas');
+                canvas.width = 400;
+                canvas.height = 300;
+                const ctx = canvas.getContext('2d');
+                ctx.fillStyle = '#f0f0f0';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.font = 'bold 100px Arial';
+                ctx.fillStyle = '#666';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(post.title.charAt(0), canvas.width/2, canvas.height/2);
+                e.target.src = canvas.toDataURL();
               }}
             />
           ) : (
@@ -41,9 +61,13 @@ const BlogCard = ({ post }) => {
                   src={post.authorImage} 
                   alt={post.author} 
                   className="blog-card__author-image"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.style.display = 'none';
+                  }}
                 />
               ) : null}
-              <span>{post.author}</span>
+              <span>Coach {post.author}</span>
             </div>
             
             {post.date && <div className="blog-card__date">{post.date}</div>}
