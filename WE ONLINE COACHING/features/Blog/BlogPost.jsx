@@ -125,7 +125,7 @@ const BlogPost = () => {
               alt={post.title}
               onError={(e) => {
                 e.target.onerror = null;
-                e.target.src = '/images/coaches/william.jpg'; 
+                e.target.src = TrainFirstImage; 
               }} 
             />
           </div>
