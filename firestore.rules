@@ -1,0 +1,47 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read/write access to all users for all documents during development
+    // IMPORTANT: Replace with more restrictive rules before going to production
+    match /{document=**} {
+      allow read, write: if true;
+    }
+    
+    // For more restrictive production rules, use these instead:
+    // Blogs collection - anyone can read, only authorized users can write
+    // match /blogs/{blogId} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null;
+    // }
+    
+    // Comments collection - anyone can read and add comments
+    // match /comments/{commentId} {
+    //   allow read: if true;
+    //   allow create: if request.resource.data.name != null && 
+    //                  request.resource.data.content != null;
+    //   allow update, delete: if request.auth != null;
+    // }
+    
+    // Likes collection - anyone can read, only authenticated users can write
+    // match /likes/{likeId} {
+    //   allow read: if true;
+    //   allow write: if request.auth != null;
+    // }
+  }
+} 
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow anyone to submit the form
+    match /submissions/{submissionId} {
+      allow create: if true;
+      allow read: if false;
+    }
+    
+    // Default deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,8 +1,5 @@
-import { getFirestore, collection, doc, getDoc, setDoc, addDoc, updateDoc, getDocs, increment, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
-import { firebaseApp } from './config'; // Import your existing Firebase app
-
-// Initialize Firestore using your existing Firebase app
-const db = getFirestore(firebaseApp);
+import { collection, doc, getDoc, setDoc, addDoc, updateDoc, getDocs, increment, query, orderBy, serverTimestamp, where } from 'firebase/firestore';
+import { db } from './config'; // Import db from config
 
 // Collection names
 const BLOGS_COLLECTION = 'blogs';
@@ -35,6 +32,11 @@ export const getPostData = async (postSlug) => {
 // Add a like to a post
 export const likePost = async (postSlug, userId) => {
   try {
+    if (!userId) {
+      console.log('No user ID provided for liking post');
+      return { success: false, message: 'Please log in to like posts' };
+    }
+    
     // First make sure the post document exists
     const postRef = doc(db, BLOGS_COLLECTION, postSlug);
     const postDoc = await getDoc(postRef);
@@ -54,7 +56,7 @@ export const likePost = async (postSlug, userId) => {
     
     if (likeDoc.exists()) {
       // User already liked this post
-      return false;
+      return { success: true, message: 'You already liked this post', alreadyLiked: true };
     }
     
     // Add the like
@@ -69,16 +71,18 @@ export const likePost = async (postSlug, userId) => {
       likesCount: increment(1)
     });
     
-    return true;
+    return { success: true, message: 'Post liked successfully' };
   } catch (error) {
     console.error('Error liking post:', error);
-    return false;
+    return { success: false, message: 'Failed to like post. Please try again.' };
   }
 };
 
 // Check if a user has liked a post
 export const hasUserLikedPost = async (postSlug, userId) => {
   try {
+    if (!userId) return false;
+    
     const likeId = `${postSlug}_${userId}`;
     const likeRef = doc(db, LIKES_COLLECTION, likeId);
     const likeDoc = await getDoc(likeRef);
@@ -93,21 +97,36 @@ export const hasUserLikedPost = async (postSlug, userId) => {
 // Add a comment to a post
 export const addComment = async (postSlug, comment) => {
   try {
+    // Validate comment data
+    if (!comment.name || !comment.content) {
+      throw new Error('Name and comment content are required');
+    }
+    
     const commentsRef = collection(db, COMMENTS_COLLECTION);
     
     const newComment = {
       postSlug,
       name: comment.name,
-      email: comment.email,
+      email: comment.email || '',
       content: comment.content,
       createdAt: serverTimestamp()
     };
     
     const docRef = await addDoc(commentsRef, newComment);
-    return { id: docRef.id, ...newComment, createdAt: new Date() };
+    return { 
+      success: true, 
+      comment: { 
+        id: docRef.id, 
+        ...newComment, 
+        createdAt: new Date() 
+      }
+    };
   } catch (error) {
     console.error('Error adding comment:', error);
-    throw error;
+    return { 
+      success: false, 
+      error: error.message || 'Failed to add comment' 
+    };
   }
 };
 
