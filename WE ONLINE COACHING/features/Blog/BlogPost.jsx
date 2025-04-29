@@ -169,6 +169,8 @@ const BlogPost = () => {
                   )}
                 </figure>
               );
+            } else if (section.type === 'selling-point') {
+              return <p key={index} className="blog-post__selling-point">{section.text}</p>;
             }
             return null;
           })}
