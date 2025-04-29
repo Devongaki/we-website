@@ -22,6 +22,34 @@ const BlogPost = () => {
       setIsLoading(false);
       // Set page title
       document.title = `${postData.title} | WE Online Coaching`;
+      
+      // Instead of Helmet, add meta tags directly
+      const firstParagraph = postData.content.find(section => section.type === 'paragraph')?.text || '';
+      
+      // Remove any existing meta tags
+      document.querySelectorAll('meta[property^="og:"], meta[property^="twitter:"]').forEach(el => el.remove());
+      
+      // Add Open Graph meta tags
+      const metaTags = [
+        { property: 'og:type', content: 'article' },
+        { property: 'og:url', content: window.location.href },
+        { property: 'og:title', content: postData.title },
+        { property: 'og:description', content: postData.excerpt || firstParagraph },
+        { property: 'og:image', content: postData.featuredImage },
+        
+        { property: 'twitter:card', content: 'summary_large_image' },
+        { property: 'twitter:url', content: window.location.href },
+        { property: 'twitter:title', content: postData.title },
+        { property: 'twitter:description', content: postData.excerpt || firstParagraph },
+        { property: 'twitter:image', content: postData.featuredImage }
+      ];
+      
+      metaTags.forEach(tag => {
+        const meta = document.createElement('meta');
+        meta.setAttribute('property', tag.property);
+        meta.setAttribute('content', tag.content);
+        document.head.appendChild(meta);
+      });
     } else {
       // If post not found, redirect to blog listing
       navigate('/blog');
@@ -30,6 +58,8 @@ const BlogPost = () => {
     // Cleanup
     return () => {
       document.title = 'WE Online Coaching';
+      // Remove meta tags on unmount
+      document.querySelectorAll('meta[property^="og:"], meta[property^="twitter:"]').forEach(el => el.remove());
     };
   }, [slug, navigate]);
 
@@ -152,13 +182,13 @@ const BlogPost = () => {
             <p>Share this article:</p>
             
             {/* Web Share API button for modern browsers */}
-            {navigator && navigator.share && (
+            {typeof navigator !== 'undefined' && navigator.share && (
               <button 
                 className="blog-post__web-share-button" 
                 onClick={() => {
                   navigator.share({
                     title: post.title,
-                    text: post.excerpt || 'Check out this article from WE Online Coaching',
+                    text: post.excerpt || firstParagraph,
                     url: window.location.href
                   })
                   .catch(err => console.error('Error sharing:', err));
@@ -175,19 +205,15 @@ const BlogPost = () => {
               </button>
             )}
             
+            {/* Social media sharing buttons */}
             <div className="blog-post__social-links">
-              {/* Facebook Share Button */}
+              {/* Facebook */}
               <button 
                 className="blog-post__social-button" 
                 aria-label="Share on Facebook"
                 onClick={() => {
-                  // Include title and description for better sharing
-                  const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(post.title)}`;
-                  window.open(
-                    shareUrl,
-                    'facebook-share-dialog',
-                    'width=626,height=436'
-                  );
+                  const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+                  window.open(shareUrl, 'facebook-share-dialog', 'width=626,height=436');
                 }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -195,28 +221,25 @@ const BlogPost = () => {
                 </svg>
               </button>
               
-              {/* Instagram Share Button - Use Instagram Stories sharing if on mobile */}
+              {/* Instagram */}
               <button 
                 className="blog-post__social-button" 
                 aria-label="Share on Instagram"
                 onClick={() => {
-                  // Check if on mobile for Instagram Stories sharing
-                  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                  // Since Instagram doesn't have a direct share API for web,
+                  // we'll use a simple copy-to-clipboard approach
+                  const tempInput = document.createElement('input');
+                  document.body.appendChild(tempInput);
+                  tempInput.value = window.location.href;
+                  tempInput.select();
+                  document.execCommand('copy');
+                  document.body.removeChild(tempInput);
                   
-                  if (isMobile) {
-                    // Instagram stories deep link (works on mobile)
-                    const text = `Check out this article: ${post.title}`;
-                    const url = `instagram://story?text=${encodeURIComponent(text)}&url=${encodeURIComponent(window.location.href)}`;
-                    window.location.href = url;
-                    
-                    // Fallback after a short delay if deep link fails
-                    setTimeout(() => {
-                      window.open('https://www.instagram.com/weonlinecoaching', '_blank');
-                    }, 1500);
-                  } else {
-                    // On desktop, just open Instagram profile
-                    window.open('https://www.instagram.com/weonlinecoaching', '_blank');
-                  }
+                  // Show a notification that the link was copied
+                  alert('Link copied! Now you can paste it in your Instagram post or story.');
+                  
+                  // Open Instagram in a new tab
+                  window.open('https://www.instagram.com/', '_blank');
                 }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -224,23 +247,13 @@ const BlogPost = () => {
                 </svg>
               </button>
               
-              {/* LinkedIn Share Button */}
+              {/* LinkedIn */}
               <button 
                 className="blog-post__social-button" 
                 aria-label="Share on LinkedIn"
                 onClick={() => {
-                  // The LinkedIn sharing API allows for title and summary
-                  const title = encodeURIComponent(post.title);
-                  const summary = encodeURIComponent(post.excerpt || 'Check out this article from WE Online Coaching');
-                  const source = encodeURIComponent('WE Online Coaching');
-                  
-                  const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&title=${title}&summary=${summary}&source=${source}`;
-                  
-                  window.open(
-                    shareUrl,
-                    'linkedin-share-dialog',
-                    'width=626,height=436'
-                  );
+                  const shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`;
+                  window.open(shareUrl, 'linkedin-share-dialog', 'width=626,height=436');
                 }}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
