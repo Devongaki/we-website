@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { getPostBySlug, getCategoryLabel } from './blogData';
+import TrainFirstImage from '../../../public/images/Blog/train-first.jpg';
 import './BlogPost.css';
 
 const BlogPost = () => {
@@ -94,7 +95,7 @@ const BlogPost = () => {
               onError={(e) => {
                 e.target.onerror = null; // Prevent infinite loop
                 // Use a default image that exists in your project
-                e.target.src = '/images/coaches/william.jpg'; 
+                e.target.src = TrainFirstImage; 
               }} 
             />
           </div>
