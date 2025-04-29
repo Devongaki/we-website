@@ -1,4 +1,7 @@
 // Collection of blog posts;
+import TrainFirstImage from '../../../public/images/Blog/train-first.jpg';
+import StrengthTrainingImage from '../../../public/images/Blog/stnb-apr-25.jpg';
+
 export const blogPosts = [
   {
     id: '2',
@@ -9,7 +12,7 @@ export const blogPosts = [
     authorImage: 'https://ui-avatars.com/api/?name=Eirill&background=0D8ABC&color=fff', // Temporary placeholder avatar
     date: 'April 26, 2025',
     category: 'personal-opinion',
-    featuredImage: '/images/blog/stnb-apr-25.jpg',
+    featuredImage: StrengthTrainingImage,
     content: [
       {
         type: 'paragraph',
@@ -130,7 +133,7 @@ export const blogPosts = [
     authorImage: '/images/coaches/william.jpg',
     date: 'April 29, 2025',
     category: 'personal-opinion',
-    featuredImage: '/images/blog/train-first.jpg',
+    featuredImage: TrainFirstImage,
     content: [
       {
         type: 'paragraph',

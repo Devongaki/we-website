@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
 import { getCategoryLabel } from './blogData';
-import trainFirstImage from '../../../public/images/blog/train-first.jpg';
-import strengthTrainingImage from '../../../public/images/blog/stnb-apr-25.jpg';
 import './BlogCard.css';
+
+// Import images
+const trainFirstImage = new URL('../../public/images/blog/train-first.jpg', import.meta.url).href;
+const strengthTrainingImage = new URL('../../public/images/blog/stnb-apr-25.jpg', import.meta.url).href;
 
 // Map of image paths to imported images
 const imageMap = {
