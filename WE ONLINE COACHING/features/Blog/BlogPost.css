@@ -136,6 +136,27 @@
   font-size: var(--font-size-body, clamp(1rem, 1.5vw, 1.125rem));
 }
 
+.blog-post__selling-point {
+  font-style: italic;
+  color: var(--color-text-secondary, #4b5563);
+  background-color: rgba(0, 0, 128, 0.03);
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  border-left: 3px solid var(--color-brand-primary, #000080);
+  position: relative;
+}
+
+.blog-post__selling-point::before {
+  content: '💡';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  font-size: 1.2rem;
+}
+
 .blog-post__section-title {
   font-size: var(--font-size-heading-3, clamp(1.5rem, 3vw, 2.25rem));
   font-weight: var(--font-weight-bold, 700);
@@ -146,11 +167,24 @@
 .blog-post__list {
   margin: 1.5rem 0;
   padding-left: 1.5rem;
+  list-style-type: none;
 }
 
 .blog-post__list-item {
   margin-bottom: 1rem;
   position: relative;
+  padding-left: 1.5rem;
+}
+
+.blog-post__list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-brand-primary, #000080);
+  border-radius: 50%;
 }
 
 .blog-post__list-item strong {

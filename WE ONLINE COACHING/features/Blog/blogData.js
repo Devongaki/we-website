@@ -56,19 +56,19 @@ export const blogPosts = [
         type: 'list',
         items: [
           {
-            description: '1. Focus on compound exercises like squats, deadlifts, push-ups, bench press, and presses.'
+            description: 'Focus on compound exercises like squats, deadlifts, push-ups, bench press, and presses.'
           },
           {
-            description: '2. Start with bodyweight or light dumbbells to learn the technique.'
+            description: 'Start with bodyweight or light dumbbells to learn the technique.'
           },
           {
-            description: '3. Train 2–3 times per week to allow your body time to recover.'
+            description: 'Train 2–3 times per week to allow your body time to recover.'
           },
           {
-            description: '4. Progress slowly: Add a little more weight or a few more reps when it feels manageable.'
+            description: 'Progress slowly: Add a little more weight or a few more reps when it feels manageable.'
           },
           {
-            description: '5. Don\'t rush. Building strength is a journey, not a sprint.'
+            description: 'Don\'t rush. Building strength is a journey, not a sprint.'
           }
         ]
       },
@@ -84,11 +84,11 @@ export const blogPosts = [
         type: 'list',
         items: [
           {
-            title: 'Consistency beats perfection.',
+            title: 'Consistency beats perfection:',
             description: 'Some days you\'ll feel strong. Some days you won\'t. That\'s okay. Just keep showing up.'
           },
           {
-            title: 'Track your progress.',
+            title: 'Track your progress:',
             description: 'Write down your workouts: It\'s incredibly motivating to see how far you\'ve come.'
           },
           {
@@ -112,6 +112,10 @@ export const blogPosts = [
       {
         type: 'paragraph',
         text: 'Strength training will not only transform your body, it will transform how you see yourself. Trust me: The best time to start is today. WE-fam, let\'s go!🌟'
+      },
+      {
+        type: 'selling-point',
+        text: 'Ready to start but don\'t know how? We offer beginner-friendly online coaching to make it simple, safe, and fun. 👉 Fill out our free consultation form, and let\'s build your strength together!'
       }
     ],
     tags: ['strength training', 'beginners', 'fitness', 'mindset', 'coaching'],
@@ -130,7 +134,7 @@ export const blogPosts = [
     content: [
       {
         type: 'paragraph',
-        text: 'Most people think they need to fix their diet before they start working out. But I believe the opposite. Training is harder to start—but once you do, it unlocks everything else, including your nutrition.'
+        text: 'Most people think they need to fix their diet before they start working out. But I believe the opposite. Training is harder to start but once you do, it unlocks everything else, including your nutrition.'
       },
       {
         type: 'heading',
@@ -153,7 +157,7 @@ export const blogPosts = [
           },
           {
             title: '4. It Builds Mental Toughness',
-            description: 'Training trains your mind, too. It teaches you to do hard things, even when you don\'t feel like it. That mental shift helps you take control of your life—and your eating.'
+            description: 'Training trains your mind, too. It teaches you to do hard things, even when you don\'t feel like it. That mental shift helps you take control of your life and your eating.'
           }
         ]
       },
