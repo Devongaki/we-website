@@ -4,14 +4,10 @@ import { getPostBySlug, getCategoryLabel } from './blogData';
 import './BlogPost.css';
 import BlogComments from './BlogComments';
 
-// Import blog images
-import trainFirstImage from '../../../public/images/blog/train-first.jpg';
-import strengthTrainingImage from '../../../public/images/blog/stnb-apr-25.jpg';
-
 // Map of image paths to imported images
 const imageMap = {
-  '/images/blog/train-first.jpg': trainFirstImage,
-  '/images/blog/stnb-apr-25.jpg': strengthTrainingImage,
+  '/images/blog/train-first.jpg': '/images/blog/train-first.jpg',
+  '/images/blog/stnb-apr-25.jpg': '/images/blog/stnb-apr-25.jpg',
 };
 
 const BlogPost = () => {
