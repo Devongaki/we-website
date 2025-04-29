@@ -124,7 +124,7 @@ const BlogPost = () => {
         {post.featuredImage && !imageError && (
           <div className="blog-post__featured-image">
             <img 
-              src={imageMap[post.featuredImage] || post.featuredImage}
+              src={post.featuredImage}
               alt={post.title}
               className="blog-post__featured-image-img"
               onError={(e) => {
