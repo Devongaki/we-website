@@ -1,4 +1,11 @@
 import { useState, useEffect } from 'react';
+import { 
+  getPostData, 
+  likePost, 
+  hasUserLikedPost, 
+  addComment, 
+  getComments 
+} from '../../firebase/blogService';
 import './BlogComments.css';
 
 const BlogComments = ({ postId, postSlug }) => {
@@ -9,49 +16,74 @@ const BlogComments = ({ postId, postSlug }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [likes, setLikes] = useState(0);
   const [hasLiked, setHasLiked] = useState(false);
+  const [userId, setUserId] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Load comments and likes from localStorage or a backend API
+  // Generate a unique ID for the user if they don't have one yet
   useEffect(() => {
-    // For now, we'll use localStorage as a simple storage solution
-    const savedComments = JSON.parse(localStorage.getItem(`comments-${postSlug}`)) || [];
-    const savedLikes = parseInt(localStorage.getItem(`likes-${postSlug}`)) || 0;
-    const userHasLiked = localStorage.getItem(`user-liked-${postSlug}`) === 'true';
+    const storedUserId = localStorage.getItem('blog_user_id');
+    if (storedUserId) {
+      setUserId(storedUserId);
+    } else {
+      const newUserId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      localStorage.setItem('blog_user_id', newUserId);
+      setUserId(newUserId);
+    }
     
-    setComments(savedComments);
-    setLikes(savedLikes);
-    setHasLiked(userHasLiked);
+    // Also load stored name and email if available
+    const storedName = localStorage.getItem('blog_user_name');
+    if (storedName) setName(storedName);
     
-    // In a real application, you would fetch from your backend:
-    // fetch(`/api/posts/${postSlug}/comments`)
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setComments(data.comments);
-    //     setLikes(data.likes);
-    //     setHasLiked(data.hasLiked);
-    //   });
-  }, [postSlug]);
+    const storedEmail = localStorage.getItem('blog_user_email');
+    if (storedEmail) setEmail(storedEmail);
+  }, []);
 
-  const handleLike = () => {
-    if (!hasLiked) {
-      const newLikes = likes + 1;
-      setLikes(newLikes);
-      setHasLiked(true);
+  // Load post data, comments, and check if user has liked
+  useEffect(() => {
+    const loadData = async () => {
+      if (!postSlug || !userId) return;
       
-      // Save to localStorage
-      localStorage.setItem(`likes-${postSlug}`, newLikes.toString());
-      localStorage.setItem(`user-liked-${postSlug}`, 'true');
-      
-      // In a real application, you would send to your backend:
-      // fetch(`/api/posts/${postSlug}/like`, {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   }
-      // });
+      setIsLoading(true);
+
+      try {
+        // Get post data including likes count
+        const postData = await getPostData(postSlug);
+        setLikes(postData.likesCount || 0);
+        
+        // Check if user has liked this post
+        const userHasLiked = await hasUserLikedPost(postSlug, userId);
+        setHasLiked(userHasLiked);
+        
+        // Get comments for this post
+        const postComments = await getComments(postSlug);
+        setComments(postComments);
+      } catch (error) {
+        console.error('Error loading blog data:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    if (userId) {
+      loadData();
+    }
+  }, [postSlug, userId]);
+
+  const handleLike = async () => {
+    if (hasLiked || !userId) return;
+    
+    try {
+      const success = await likePost(postSlug, userId);
+      if (success) {
+        setLikes(prevLikes => prevLikes + 1);
+        setHasLiked(true);
+      }
+    } catch (error) {
+      console.error('Error liking post:', error);
     }
   };
 
-  const handleSubmitComment = (e) => {
+  const handleSubmitComment = async (e) => {
     e.preventDefault();
     
     if (!newComment.trim() || !name.trim()) {
@@ -61,41 +93,44 @@ const BlogComments = ({ postId, postSlug }) => {
     
     setIsSubmitting(true);
     
-    // Create new comment object
-    const comment = {
-      id: Date.now().toString(),
-      name,
-      email,
-      content: newComment,
-      date: new Date().toISOString(),
-    };
+    // Save name and email for future comments
+    localStorage.setItem('blog_user_name', name);
+    if (email) localStorage.setItem('blog_user_email', email);
     
-    // Add to existing comments
-    const updatedComments = [...comments, comment];
-    
-    // Save to localStorage
-    localStorage.setItem(`comments-${postSlug}`, JSON.stringify(updatedComments));
-    setComments(updatedComments);
-    
-    // Reset form
-    setNewComment('');
-    setIsSubmitting(false);
-    
-    // In a real application, you would send to your backend:
-    // fetch(`/api/posts/${postSlug}/comments`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(comment),
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-    //     setComments([...comments, data]);
-    //     setNewComment('');
-    //     setIsSubmitting(false);
-    //   });
+    try {
+      // Create new comment object
+      const comment = {
+        name,
+        email,
+        content: newComment,
+      };
+      
+      // Add to Firestore
+      const addedComment = await addComment(postSlug, comment);
+      
+      // Add to existing comments
+      setComments(prevComments => [addedComment, ...prevComments]);
+      
+      // Reset form
+      setNewComment('');
+      setIsSubmitting(false);
+    } catch (error) {
+      console.error('Error submitting comment:', error);
+      alert('There was an error posting your comment. Please try again.');
+      setIsSubmitting(false);
+    }
   };
+
+  if (isLoading) {
+    return (
+      <div className="blog-comments blog-comments--loading">
+        <div className="blog-comments__loading">
+          <div className="spinner"></div>
+          <p>Loading comments...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="blog-comments">
@@ -133,7 +168,7 @@ const BlogComments = ({ postId, postSlug }) => {
               <div className="blog-comments__meta">
                 <div className="blog-comments__author">{comment.name}</div>
                 <div className="blog-comments__date">
-                  {new Date(comment.date).toLocaleDateString('en-US', {
+                  {new Date(comment.createdAt).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
