@@ -179,13 +179,14 @@
 .blog-post__footer {
   border-top: 1px solid var(--color-border-light, #e5e7eb);
   padding-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .blog-post__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin: 1.5rem 0;
 }
 
 .blog-post__tag {
@@ -208,11 +209,13 @@
 }
 
 .blog-post__social {
+  border-top: 1px solid var(--color-border-light, #e5e7eb);
+  padding-top: 2rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
 }
 
 .blog-post__social p {
