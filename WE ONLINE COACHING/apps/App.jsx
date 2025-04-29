@@ -22,6 +22,8 @@ import PaymentError from '../features/Checkout/Error';
 import Dashboard from '../features/Dashboard/Dashboard';
 import AuthGuard from '../features/Auth/AuthGuard';
 import DashboardLayout from '../ui/components/Layout/DashboardLayout/DashboardLayout';
+import BlogListing from '../features/Blog/BlogListing';
+import BlogPost from '../features/Blog/BlogPost';
 
 // Import theme styles
 import '../theme/index.css';
@@ -83,7 +85,8 @@ function App() {
           {/* <Route path="/prices" element={<Prices />} /> */}
           <Route path="/about" element={<About />} />
           <Route path="/checkout" element={<CheckoutPage />} />
-          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog" element={<BlogListing />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/free-consultation" element={<FreeConsultation />} />
           {/* Commenting out the login route to deactivate it */}
           {/* <Route path="/login" element={<Login />} /> */}
