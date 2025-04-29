@@ -1,0 +1,124 @@
+/* BlogListing.css */
+.blog-listing {
+    padding: 3rem 0;
+    background-color: white;
+    color: var(--color-text-primary, #111827);
+  }
+  
+  .blog-listing__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .blog-listing__title {
+    font-size: 2.5rem;
+    color: var(--color-brand-primary, #000080);
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .blog-listing__subtitle {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary, #4b5563);
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+  
+  .blog-listing__categories {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+  }
+  
+  .blog-listing__category-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-brand-primary, #000080);
+    background: transparent;
+    color: var(--color-brand-primary, #000080);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 120px;
+    text-align: center;
+  }
+  
+  .blog-listing__category-btn.active {
+    background: var(--color-brand-primary, #000080);
+    color: white;
+    font-weight: 500;
+  }
+  
+  .blog-listing__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .blog-listing__empty {
+    text-align: center;
+    padding: 3rem;
+    background-color: rgba(0, 0, 128, 0.05);
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 600px;
+  }
+  
+  .blog-listing__empty p {
+    color: var(--color-text-secondary, #4b5563);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .blog-listing__empty-sub {
+    font-size: 0.9rem !important;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+  }
+  
+  .blog-listing .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  
+  @media (max-width: 768px) {
+    .blog-listing__grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .blog-listing__categories {
+      flex-direction: column;
+      width: 100%;
+      max-width: 250px;
+      margin-left: auto;
+      margin-right: auto;
+      gap: 0.5rem;
+    }
+    
+    .blog-listing__category-btn {
+      width: 100%;
+      padding: 0.75rem 1rem;
+    }
+    
+    .blog-listing__subtitle {
+      margin-bottom: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    .blog-listing__title {
+      font-size: 2rem;
+    }
+    
+    .blog-listing__subtitle {
+      font-size: 1rem;
+    }
+    
+    .blog-listing {
+      padding: 2rem 0;
+    }
+  }
