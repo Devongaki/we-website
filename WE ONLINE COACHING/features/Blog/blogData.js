@@ -7,7 +7,7 @@ export const blogPosts = [
     excerpt: 'Most people think they need to fix their diet before they start working out. But I believe the opposite.',
     author: 'William',
     authorImage: '/images/coaches/william.jpg',
-    date: 'June 15, 2023',
+    date: 'April 29, 2025',
     category: 'personal-opinion',
     featuredImage: '/images/blog/irina-del-Mha5nyvZ2G4-unsplash.jpg', // Use the new image
     content: [

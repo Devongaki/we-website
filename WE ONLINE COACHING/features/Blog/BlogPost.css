@@ -209,25 +209,26 @@
 
 .blog-post__social {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
   gap: 1rem;
-  justify-content: center;
+  margin-top: 2rem;
 }
 
 .blog-post__social p {
   margin: 0;
   font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-secondary, #4b5563);
 }
 
 .blog-post__social-links {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .blog-post__social-button {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background-color: var(--color-bg-tertiary, #f3f4f6);
   display: flex;
@@ -235,12 +236,34 @@
   justify-content: center;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  color: var(--color-text-secondary, #4b5563);
 }
 
-.blog-post__social-button:hover {
-  background-color: var(--color-brand-primary-light, #1a1a99);
-  color: var(--color-white, #ffffff);
+.blog-post__social-button:nth-child(1):hover {
+  background-color: #1877f2;
+  color: white;
+}
+
+.blog-post__social-button:nth-child(2):hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+}
+
+.blog-post__social-button:nth-child(3):hover {
+  background-color: #0a66c2;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .blog-post__social-button {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .blog-post__social-links {
+    margin-top: 0.5rem;
+  }
 }
 
 /* Responsive design adjustments */
@@ -258,4 +281,33 @@
   .blog-post__cta {
     padding: 1.5rem;
   }
+}
+
+/* Add this to your CSS for the web share button */
+.blog-post__web-share-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--color-brand-primary, #000080);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.blog-post__web-share-button:hover {
+  background-color: var(--color-brand-primary-dark, #000066);
+}
+
+/* Update the social links container to handle both options */
+.blog-post__social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
 } 
