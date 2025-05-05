@@ -1,27 +1,32 @@
 .header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
-  z-index: 1000;
-  background: transparent !important;
+  z-index: 9999 !important;
+  border-bottom: 1.5px solid #d1d5db;
+  color: var(--color-text-primary);
   box-shadow: none;
-  border-bottom: none !important;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  transition: background 0.3s, box-shadow 0.3s;
+  border-bottom: none;
+  transition: background 0.3s, box-shadow 0.3s, border-bottom 0.3s;
 }
 
 .header.scrolled {
-  background: var(--color-white) !important;
+  background: #fff; /* solid white */
   box-shadow: 0 4px 24px rgba(0,0,0,0.07);
   border-bottom: 1.5px solid #e5e7eb;
 }
 
 .header__container {
+  background: transparent !important;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-md) 5%;
 }
 
 .header__logo {
@@ -31,6 +36,7 @@
   color: var(--color-text-primary);
   font-weight: 700;
   font-size: 1.5rem;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 .header__nav {
@@ -55,6 +61,7 @@
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
   position: relative;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
 
 .header__nav-link:hover {
@@ -97,16 +104,6 @@
 }
 
 /* Header Component */
-.header__container {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  padding: var(--spacing-md) 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .header__logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -306,4 +303,50 @@
   color: #000080 !important;
   border-radius: 6px;
   font-weight: 800;
+}
+
+.header:not(.scrolled) .header__nav-link,
+.header:not(.scrolled) .header__logo {
+  color: #fff !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+.header.scrolled .header__nav-link,
+.header.scrolled .header__logo {
+  color: var(--color-text-primary) !important;
+  text-shadow: none;
+}
+
+/* Active nav link when header is transparent */
+.header:not(.scrolled) .header__nav-link--active {
+  background: rgba(0,0,128,0.65); /* Brand blue, semi-transparent */
+  color: #fff !important;
+  border-radius: 6px;
+  font-weight: 800;
+  padding: 0.25em 0.75em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
+}
+
+/* Active nav link when header is scrolled (white) */
+.header.scrolled .header__nav-link--active {
+  background: transparent;
+  color: #000080 !important; /* Your brand blue */
+  /* Keep underline if you want */
+}
+
+.has-white-bg .header {
+  background: #fff !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  border-bottom: 1.5px solid #e5e7eb;
+}
+
+.has-white-bg .header__nav-link,
+.has-white-bg .header__logo {
+  color: var(--color-text-primary) !important;
+  text-shadow: none;
+}
+
+.has-white-bg .header__nav-link--active {
+  background: transparent;
+  color: #000080 !important;
 }

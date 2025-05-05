@@ -10,6 +10,32 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  // Only use scroll effect on home page
+  useEffect(() => {
+    if (location.pathname === '/') {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 10);
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    } else {
+      setScrolled(false); // Always solid on non-home pages
+    }
+  }, [location.pathname]);
+
+  // Add 'has-white-bg' class to body for white-background pages
+  useEffect(() => {
+    // List of routes that should have a white background header
+    const whiteBgRoutes = ['/about', '/blog'];
+    if (whiteBgRoutes.includes(location.pathname)) {
+      document.body.classList.add('has-white-bg');
+    } else {
+      document.body.classList.remove('has-white-bg');
+    }
+    // Clean up on unmount
+    return () => document.body.classList.remove('has-white-bg');
+  }, [location.pathname]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -18,16 +44,12 @@ const Header = () => {
     return location.pathname === path ? 'header__nav-link--active' : '';
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  // Determine header class
+  const isHome = location.pathname === '/';
+  const headerClass = isHome ? `header${scrolled ? ' scrolled' : ''}` : 'header scrolled';
 
   return (
-    <header className={`header${scrolled ? ' scrolled' : ''}`}>
+    <header className={headerClass}>
       <div className="header__container">
         <Link to="/" className="header__logo">
           <img src={logo} alt="WE Online Coaching" className="header__logo-img" />

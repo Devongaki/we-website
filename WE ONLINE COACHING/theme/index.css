@@ -166,7 +166,6 @@ table {
 
 /* Override all section backgrounds */
 .home {
-  background: linear-gradient(135deg, #000080, #000046) fixed;
   color: white;
   position: relative;
   z-index: 0;
@@ -229,18 +228,6 @@ table {
   background-image: none !important;
   border: none !important;
 } */
-
-/* Special header styling */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999 !important;
-  background: var(--color-white) !important;
-  border-bottom: 1.5px solid #d1d5db;
-  color: var(--color-text-primary);
-}
 
 /* Additional fixes for the hero section boundary */
 .hero {
