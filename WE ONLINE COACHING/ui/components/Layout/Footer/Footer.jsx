@@ -29,7 +29,6 @@ const Footer = () => {
             <div className="footer__links-columns">
               <ul className="footer__links-list">
                 <li><Link to="/" className="footer__link">Home</Link></li>
-                <li><Link to="/prices" className="footer__link">Prices</Link></li>
                 <li><Link to="/blog" className="footer__link">Blog</Link></li>
                 <li><Link to="/terms-of-service" className="footer__link">Terms of Service</Link></li>
               </ul>
