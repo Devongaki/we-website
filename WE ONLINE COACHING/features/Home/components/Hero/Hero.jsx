@@ -22,7 +22,7 @@ const Hero = () => {
               Build Your Best Self with Expert Online Coaching
             </h1>
             <p className="hero__description">
-              Transform your fitness journey with personalized coaching, expert guidance, and a supportive community. Start your path to a healthier, stronger you today.
+              Achieve your strength training goals with dedicated coaches. Get a personalized program, nutrition guidance, and consistent support to stay on track. Start your transformation today!
             </p>
             <div className="hero__cta-group">
               <button className="button button--primary" onClick={() => setShowFreeProgram(true)}>Free Program</button>
