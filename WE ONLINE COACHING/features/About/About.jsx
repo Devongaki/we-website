@@ -89,16 +89,20 @@ const About = () => {
               
               <div className="coach__bio">
                 <p>
-                After years in the healthcare industry, I've rediscovered my passion for improving quality of life through strength training
+                Heisann – Hey – Mabuhay – Mambo WE-fam! ❤️
+I’m Eirill, the Co-Founder of WE Online Coaching, and I’m passionate about helping people live stronger and healthier lives. 
+After years in the healthcare industry, I’ve shifted my focus from treatment to prevention. I’m dedicated to helping prevent lifestyle-related dise
                 </p>
+                <p>I work behind the scenes with confidentiality: Ensuring quality in our coaching, refining our programs, and supporting our mission to empower through strength.</p>
+                <p>WE = William & Eirill. Together, WE Online Coaching is built with care, backed by evidence, grounded in experience, and driven by heart.</p>
                 <p>
                   My certifications include:
                 </p>
                 <ul className="coach__certifications">
                   <li>Certified Personal Trainer - AFPT</li>
                   <li>Certified Nutrition Advisor - AFPT</li>
-                  <li>Registered Nurse</li>
-                  <li>Specialized in Surgical Nursing</li>
+                  <li>Registered Nurse – Høyskolen Diakonova</li>
+                  <li>Specialized in Surgical Nursing – OsloMet</li>
                 </ul>
 
                 <p>
@@ -115,38 +119,6 @@ const About = () => {
                 <a href="https://www.instagram.com/eiri.ll?igsh=dzA1ejM3d3NzZzM5" target="_blank" rel="noopener noreferrer" className="coach__social-link">
                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="about__philosophy">
-          <h2 className="about__philosophy-title">Our Coaching Philosophy</h2>
-          <div className="about__philosophy-content">
-            <p>
-              At WE Online Coaching, we believe that fitness should enhance your life, not consume it. Our approach is built on three core principles:
-            </p>
-            <div className="about__principles">
-              <div className="principle">
-                <div className="principle__icon">🎯</div>
-                <h3 className="principle__title">Personalization</h3>
-                <p className="principle__description">
-                  Every program is custom-built for your unique goals, lifestyle, and preferences. We don't believe in one-size-fits-all solutions.
-                </p>
-              </div>
-              <div className="principle">
-                <div className="principle__icon">⚖️</div>
-                <h3 className="principle__title">Balance</h3>
-                <p className="principle__description">
-                  We focus on sustainable approaches that fit into your life, allowing you to enjoy social events, favorite foods, and flexibility.
-                </p>
-              </div>
-              <div className="principle">
-                <div className="principle__icon">🔄</div>
-                <h3 className="principle__title">Consistency</h3>
-                <p className="principle__description">
-                  Small, consistent actions lead to remarkable results. We'll help you build sustainable habits that lead to lasting change.
-                </p>
               </div>
             </div>
           </div>
