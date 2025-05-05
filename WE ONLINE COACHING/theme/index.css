@@ -193,7 +193,8 @@ table {
 
 /* Force all section backgrounds to be transparent EXCEPT footer */
 .home .hero,
-.home .features--minimal{
+.home .features--minimal,
+.home .process {
   background: transparent !important;
   background-image: none !important;
   background-color: transparent !important;
