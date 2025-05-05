@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Button from '../../Button/Button';
 import logo from '../../../assets/WE_Logo.png';
@@ -7,6 +7,7 @@ import './Header.css';
 // Layout component - handles structural UI elements
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
   const toggleMenu = () => {
@@ -17,8 +18,16 @@ const Header = () => {
     return location.pathname === path ? 'header__nav-link--active' : '';
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="header">
+    <header className={`header${scrolled ? ' scrolled' : ''}`}>
       <div className="header__container">
         <Link to="/" className="header__logo">
           <img src={logo} alt="WE Online Coaching" className="header__logo-img" />
