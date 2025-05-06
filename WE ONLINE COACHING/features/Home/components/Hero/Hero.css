@@ -40,13 +40,13 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   padding: 2rem 5%;
   text-align: center;
 }
 
 .hero__content {
-  max-width: 800px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -299,11 +299,12 @@
 /* Make container wider on large screens */
 @media (min-width: 1200px) {
   .hero__container {
-    padding: 2rem 8%;
+    padding: 2rem 12%;
+    max-width: 1800px;
   }
   
   .hero__content {
-    max-width: 1000px;
+    max-width: 1500px;
   }
 }
 
