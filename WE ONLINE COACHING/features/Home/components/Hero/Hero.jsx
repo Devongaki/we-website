@@ -19,14 +19,14 @@ const Hero = () => {
           <div className="hero__content">
             <div className="hero__badge">WE Online Coaching</div>
             <h1 className="hero__title">
-              Build Your Best Self with Expert Online Coaching
+              Build Your Best Self with <span className="highlight-text">Dedicated Online Coaching</span>
             </h1>
             <p className="hero__description">
               Achieve your strength training goals with dedicated coaches. Get a personalized program, nutrition guidance, and consistent support to stay on track. Start your transformation today!
             </p>
             <div className="hero__cta-group">
-              <button className="button button--primary" onClick={() => setShowFreeProgram(true)}>Free Program</button>
-              <Link to="/free-consultation" className="button button--outline">Free Consultation</Link>
+              <Link to="/free-consultation" className="button button--primary">Free Consultation</Link>
+              <button className="button button--outline" onClick={() => setShowFreeProgram(true)}>Free Program</button>
             </div>
           </div>
         </div>

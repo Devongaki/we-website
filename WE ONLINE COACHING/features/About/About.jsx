@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import coachWilliam from '../../../public/images/coaches/william.jpg';
+import coachEirill from '../../../public/images/coaches/eirill.jpg';
 import './about.css';
 
 const About = () => {
@@ -14,7 +15,7 @@ const About = () => {
         <div className="about__header">
           <h1 className="about__title">Meet Your Coaches</h1>
           <p className="about__subtitle">
-            Dedicated professionals committed to transforming your fitness journey
+            Dedicated professionals committed to transforming your strength training journey
           </p>
         </div>
         
@@ -44,7 +45,7 @@ const About = () => {
                 During my three years as a group instructor at SATS ELIXIA, I've developed and refined my approach to fitness instruction, combining my dance background with effective training methodologies. My lifetime dedication to physical training has given me deep insights into sustainable fitness practices.
                 </p>
                 <p>
-                My certifications include:
+                Qualifications:
                 </p>
                 <ul className="coach__certifications">
                   <li>Professional Dance Certification - Bådar Akademiet, Oslo</li>
@@ -75,8 +76,8 @@ const About = () => {
             <div className="coach__image-container">
               <div className="coach__image-wrapper">
                 <img
-                  src="/images/coach2.jpg" 
-                  alt="Coach Name 2"
+                  src={coachEirill} 
+                  alt="Coach Eirill"
                   className="coach__image"
                 />
               </div>
@@ -85,18 +86,18 @@ const About = () => {
             
             <div className="coach__content">
               <h2 className="coach__name">Coach Eirill</h2>
-              <p className="coach__title">Certified Personal Trainer & Certified Nutrition Advisor</p>
               
               <div className="coach__bio">
                 <p>
-                Heisann – Hey – Mabuhay – Mambo WE-fam! ❤️
-I’m Eirill, the Co-Founder of WE Online Coaching, and I’m passionate about helping people live stronger and healthier lives. 
-After years in the healthcare industry, I’ve shifted my focus from treatment to prevention. I’m dedicated to helping prevent lifestyle-related dise
+                Heisann – Hey – Mabuhay – Mambo WE-fam! 💪🏽<br></br>
+I'm Eirill, the Co-Founder of WE Online Coaching, and I'm passionate about helping people live stronger and healthier lives. 
+After years in the healthcare industry, I've shifted my focus from treatment to prevention.  I'm dedicated to helping prevent lifestyle-related diseases through strength training.
+
                 </p>
                 <p>I work behind the scenes with confidentiality: Ensuring quality in our coaching, refining our programs, and supporting our mission to empower through strength.</p>
                 <p>WE = William & Eirill. Together, WE Online Coaching is built with care, backed by evidence, grounded in experience, and driven by heart.</p>
                 <p>
-                  My certifications include:
+                  Qualifications:
                 </p>
                 <ul className="coach__certifications">
                   <li>Certified Personal Trainer - AFPT</li>
@@ -126,8 +127,8 @@ After years in the healthcare industry, I’ve shifted my focus from treatment t
         
         <div className="about__cta">
           <h2 className="about__cta-title">Ready to Start Your Journey?</h2>
-          <p className="about__cta-text">Join our community of successful clients and transform your fitness with expert guidance.</p>
-          <a href="/prices" className="button button--primary about__cta-button">View Our Coaching Plans</a>
+          <p className="about__cta-text">Join our community and transform your fitness with dedicated guidance.</p>
+          <a href="/free-consultation" className="button button--primary about__cta-button">Book Your Free Consultation</a>
         </div>
       </div>
     </div>
