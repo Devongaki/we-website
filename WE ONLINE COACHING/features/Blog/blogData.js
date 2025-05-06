@@ -1,6 +1,7 @@
 // Collection of blog posts;
 import TrainFirstImage from '../../../public/images/Blog/train-first.jpg';
 import StrengthTrainingImage from '../../../public/images/Blog/stnb-apr-25.jpg';
+import ArmsTrainingImage from '../../../public/images/Blog/arms-training.jpg';
 
 export const blogPosts = [
   {
@@ -179,9 +180,119 @@ export const blogPosts = [
     ],
     tags: ['fitness', 'nutrition', 'mindset', 'habits'],
     ctaText: 'Want more mindset + movement tips?'
+  },
+  {
+    id: '3',
+    slug: 'girl-dont-want-train-arms',
+    title: "Girl, I Don't Want to Train My Arms – I Don't Want to Get Bulky!",
+    excerpt: "If I had a dumbbell for every time a woman told me, 'I'm skipping arms because I don't want to get bulky,' I could curl forever. Let's break this myth once and for all with honesty, not hype.",
+    author: 'Eirill',
+    authorImage: '/images/coaches/eirill.jpg',
+    date: 'May 5, 2025',
+    category: 'personal-opinion',
+    featuredImage: ArmsTrainingImage,
+    content: [
+      {
+        type: 'paragraph',
+        text: "That's what she said. She's new to strength training. But here's the truth."
+      },
+      {
+        type: 'paragraph',
+        text: "If I had a dumbbell for every time a woman told me, \"I'm skipping arms because I don't want to get bulky,\" I could curl forever."
+      },
+      {
+        type: 'paragraph',
+        text: "Let's break this myth once and for all with honesty, not hype."
+      },
+      {
+        type: 'heading',
+        text: "First: Getting \"Bulky\" Isn't That Easy"
+      },
+      {
+        type: 'paragraph',
+        text: "Building visible muscle, especially in the arms, takes time, structure, and often years of consistent heavy training, progressive overload, and high protein intake."
+      },
+      {
+        type: 'paragraph',
+        text: "Women have lower testosterone levels than men, which makes it significantly harder to gain large amounts of muscle mass. You're far more likely to get toned, strong, and defined than \"bulky.\""
+      },
+      {
+        type: 'paragraph',
+        text: "Most women who lift say they actually wish they had started sooner because they finally felt stronger, more athletic, and more confident."
+      },
+      {
+        type: 'heading',
+        text: "What Actually Happens When You Train Arms"
+      },
+      {
+        type: 'list',
+        items: [
+          {
+            description: "You build lean muscle → which increases definition"
+          },
+          {
+            description: "You improve upper body strength → which helps in every other lift"
+          },
+          {
+            description: "You boost overall balance and posture → no more \"I only train legs\" imbalances"
+          },
+          {
+            description: "Arm training doesn't mean biceps like a bodybuilder. It means you feel powerful, carry your groceries easier, and wear that tank top with pride."
+          }
+        ]
+      },
+      {
+        type: 'heading',
+        text: "Function Over Fear"
+      },
+      {
+        type: 'paragraph',
+        text: "When you start gaining strength, you might notice your muscles firming up, clothes fitting differently, or that new tightness in your arms."
+      },
+      {
+        type: 'paragraph',
+        text: "But instead of fear, think function."
+      },
+      {
+        type: 'list',
+        items: [
+          {
+            description: "Can you do more push-ups?"
+          },
+          {
+            description: "Can you carry heavier bags?"
+          },
+          {
+            description: "Do your workouts feel easier?"
+          }
+        ]
+      },
+      {
+        type: 'paragraph',
+        text: "That's strength. That's growth. And it looks amazing."
+      },
+      {
+        type: 'heading',
+        text: "Final Word"
+      },
+      {
+        type: 'paragraph',
+        text: "Training your arms will not make you bulky. It will make you strong and empowered. So if you've been skipping upper body exercises, maybe this is your sign to start now."
+      },
+      {
+        type: 'paragraph',
+        text: "Remember: Function over fear."
+      },
+      {
+        type: 'paragraph',
+        text: "Your future self will thank you every time she lifts, carries, and conquers. WE-fam, let's go!"
+      }
+    ],
+    tags: ['strength training', 'women', 'myths', 'confidence'],
+    ctaText: 'Ready to get strong? Fill out our free consultation form and let\'s build your confidence together!'
   }
-  // The science-based blog has been removed
 ];
+// The science-based blog has been removed
 
 // Helper function to get post by slug
 export const getPostBySlug = (slug) => {

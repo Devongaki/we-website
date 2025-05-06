@@ -1,6 +1,6 @@
 .process {
   padding: 120px 0;
-  background: var(--color-white) !important;
+  background: linear-gradient(180deg, rgba(0, 0, 128, 0.03) 0%, rgba(0, 0, 128, 0.06) 100%) !important;
   overflow: hidden;
 }
 
@@ -8,6 +8,8 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .process__header {
@@ -58,15 +60,18 @@
   align-items: center;
   text-align: center;
   padding: 48px 32px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.06);
-  transition: box-shadow 0.3s;
-  border: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 128, 0.05);
+  backdrop-filter: blur(10px);
 }
 
 .process__step:hover {
   box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 128, 0.1);
 }
 
 .process__step-header {

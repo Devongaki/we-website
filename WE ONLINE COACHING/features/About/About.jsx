@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import coachWilliam from '../../../public/images/coaches/william.jpg';
+import coachEirill from '../../../public/images/coaches/eirill.jpg';
 import './about.css';
 
 const About = () => {
@@ -14,7 +15,7 @@ const About = () => {
         <div className="about__header">
           <h1 className="about__title">Meet Your Coaches</h1>
           <p className="about__subtitle">
-            Dedicated professionals committed to transforming your fitness journey
+            Dedicated professionals committed to transforming your strength training journey
           </p>
         </div>
         
@@ -44,7 +45,7 @@ const About = () => {
                 During my three years as a group instructor at SATS ELIXIA, I've developed and refined my approach to fitness instruction, combining my dance background with effective training methodologies. My lifetime dedication to physical training has given me deep insights into sustainable fitness practices.
                 </p>
                 <p>
-                My certifications include:
+                Qualifications:
                 </p>
                 <ul className="coach__certifications">
                   <li>Professional Dance Certification - Bådar Akademiet, Oslo</li>
@@ -75,8 +76,8 @@ const About = () => {
             <div className="coach__image-container">
               <div className="coach__image-wrapper">
                 <img
-                  src="/images/coach2.jpg" 
-                  alt="Coach Name 2"
+                  src={coachEirill} 
+                  alt="Coach Eirill"
                   className="coach__image"
                 />
               </div>
@@ -85,20 +86,24 @@ const About = () => {
             
             <div className="coach__content">
               <h2 className="coach__name">Coach Eirill</h2>
-              <p className="coach__title">Certified Personal Trainer & Certified Nutrition Advisor</p>
               
               <div className="coach__bio">
                 <p>
-                After years in the healthcare industry, I've rediscovered my passion for improving quality of life through strength training
+                Heisann – Hey – Mabuhay – Mambo WE-fam! 💪🏽<br></br>
+I'm Eirill, the Co-Founder of WE Online Coaching, and I'm passionate about helping people live stronger and healthier lives. 
+After years in the healthcare industry, I've shifted my focus from treatment to prevention.  I'm dedicated to helping prevent lifestyle-related diseases through strength training.
+
                 </p>
+                <p>I work behind the scenes with confidentiality: Ensuring quality in our coaching, refining our programs, and supporting our mission to empower through strength.</p>
+                <p>WE = William & Eirill. Together, WE Online Coaching is built with care, backed by evidence, grounded in experience, and driven by heart.</p>
                 <p>
-                  My certifications include:
+                  Qualifications:
                 </p>
                 <ul className="coach__certifications">
                   <li>Certified Personal Trainer - AFPT</li>
                   <li>Certified Nutrition Advisor - AFPT</li>
-                  <li>Registered Nurse</li>
-                  <li>Specialized in Surgical Nursing</li>
+                  <li>Registered Nurse – Høyskolen Diakonova</li>
+                  <li>Specialized in Surgical Nursing – OsloMet</li>
                 </ul>
 
                 <p>
@@ -120,42 +125,10 @@ const About = () => {
           </div>
         </div>
         
-        <div className="about__philosophy">
-          <h2 className="about__philosophy-title">Our Coaching Philosophy</h2>
-          <div className="about__philosophy-content">
-            <p>
-              At WE Online Coaching, we believe that fitness should enhance your life, not consume it. Our approach is built on three core principles:
-            </p>
-            <div className="about__principles">
-              <div className="principle">
-                <div className="principle__icon">🎯</div>
-                <h3 className="principle__title">Personalization</h3>
-                <p className="principle__description">
-                  Every program is custom-built for your unique goals, lifestyle, and preferences. We don't believe in one-size-fits-all solutions.
-                </p>
-              </div>
-              <div className="principle">
-                <div className="principle__icon">⚖️</div>
-                <h3 className="principle__title">Balance</h3>
-                <p className="principle__description">
-                  We focus on sustainable approaches that fit into your life, allowing you to enjoy social events, favorite foods, and flexibility.
-                </p>
-              </div>
-              <div className="principle">
-                <div className="principle__icon">🔄</div>
-                <h3 className="principle__title">Consistency</h3>
-                <p className="principle__description">
-                  Small, consistent actions lead to remarkable results. We'll help you build sustainable habits that lead to lasting change.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <div className="about__cta">
           <h2 className="about__cta-title">Ready to Start Your Journey?</h2>
-          <p className="about__cta-text">Join our community of successful clients and transform your fitness with expert guidance.</p>
-          <a href="/prices" className="button button--primary about__cta-button">View Our Coaching Plans</a>
+          <p className="about__cta-text">Join our community and transform your fitness with dedicated guidance.</p>
+          <a href="/free-consultation" className="button button--primary about__cta-button">Book Your Free Consultation</a>
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 /* BlogListing.css */
 .blog-listing {
-    padding: 3rem 0;
+    padding: 80px 0 3rem 0;
     background-color: white;
     color: var(--color-text-primary, #111827);
   }

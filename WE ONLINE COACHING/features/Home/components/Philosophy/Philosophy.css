@@ -2,6 +2,8 @@
   padding: 120px 0;
   background: var(--color-white);
   position: relative;
+  z-index: 1;
+  isolation: isolate;
 }
 
 .philosophy__card {
@@ -10,6 +12,7 @@
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
+  z-index: 1;
 }
 
 .philosophy__header {
@@ -40,6 +43,7 @@
   flex-direction: row;
   gap: 40px;
   position: relative;
+  z-index: 1;
 }
 
 .philosophy__principle {
