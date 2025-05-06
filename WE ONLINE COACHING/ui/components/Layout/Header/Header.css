@@ -171,6 +171,14 @@
   transition: all 0.3s ease;
 }
 
+.header__menu-icon:not(.scrolled) {
+  color: #fff;
+}
+.header__menu-icon:not(.scrolled)::before,
+.header__menu-icon:not(.scrolled)::after {
+  background-color: #fff;
+}
+
 .header__menu-icon::before,
 .header__menu-icon::after {
   content: '';
@@ -190,7 +198,7 @@
 }
 
 .header__menu-icon.active {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .header__menu-icon.active::before {
@@ -208,20 +216,31 @@
   flex-direction: column;
   gap: var(--spacing-md);
   padding: var(--spacing-md);
-  background: linear-gradient(135deg, #000080, #000046);
+  background: #fff !important;
   box-shadow: var(--shadow-md);
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 1050;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
 }
 
 .header__nav--mobile .header__nav-link {
-  display: block;
-  padding: var(--spacing-sm) var(--spacing-md);
+  color: #000080 !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+  font-size: 1.25rem !important;
+  padding: 1rem 0.5rem !important;
+  display: block !important;
+}
+
+.header__nav--mobile .header__nav-link--active {
+  background-color: #000080 !important;
   color: #fff !important;
-  font-weight: 700;
 }
 
 /* Mobile Styles */
@@ -261,6 +280,16 @@
 
   .header__nav--mobile .header__auth-btn {
     width: 100%;
+  }
+
+  .header__nav--mobile .header__nav-link--active::after {
+    left: 0 !important;
+    right: 0 !important;
+    background-color: #000080 !important;
+  }
+  .header__nav--mobile .header__nav-link--active {
+    border-radius: 0 !important;
+    background: transparent !important;
   }
 }
 
@@ -307,7 +336,6 @@
 
 .header:not(.scrolled) .header__nav-link,
 .header:not(.scrolled) .header__logo {
-  color: #fff !important;
   text-shadow: 0 2px 8px rgba(0,0,0,0.45);
 }
 
@@ -320,7 +348,6 @@
 /* Active nav link when header is transparent */
 .header:not(.scrolled) .header__nav-link--active {
   background: rgba(0,0,128,0.65); /* Brand blue, semi-transparent */
-  color: #fff !important;
   border-radius: 6px;
   font-weight: 800;
   padding: 0.25em 0.75em;
@@ -349,4 +376,47 @@
 .has-white-bg .header__nav-link--active {
   background: transparent;
   color: #000080 !important;
+}
+
+.header.scrolled .header__nav--mobile {
+  background: #fff;
+}
+
+.header.scrolled .header__nav--mobile .header__nav-link {
+  color: #000080 !important;
+}
+
+.header.scrolled .header__nav--mobile .header__nav-link--active {
+  background-color: #000080 !important;
+
+}
+
+.header__nav--mobile .header__nav-link--active {
+  background: transparent !important;
+  color: #000080 !important;
+  font-weight: 800;
+  position: relative;
+}
+
+.header__nav--mobile .header__nav-link--active::after {
+  left: 0 !important;
+  right: 0 !important;
+  bottom: -3px !important;
+  height: 2px !important;
+  background-color: #000080 !important;
+  transform: scaleX(1) !important;
+  opacity: 1 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.header:not(.scrolled) .header__menu-icon,
+.header:not(.scrolled) .header__menu-icon::before,
+.header:not(.scrolled) .header__menu-icon::after {
+  background-color: #fff ;
+}
+
+.header.scrolled .header__menu-icon::before,
+.header.scrolled .header__menu-icon::after {
+  background-color: #000080 !important;
 }
